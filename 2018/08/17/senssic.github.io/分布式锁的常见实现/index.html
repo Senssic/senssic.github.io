@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T16:22:18.399Z">
+<meta property="og:updated_time" content="2018-08-16T16:25:50.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式锁的常见实现">
 <meta name="twitter:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,016
+                  2,012
                 </span>
               
 
@@ -528,7 +528,7 @@
 <li>由于需要很多判断和信息写入读取,以及分发信息,效率并没有基于缓存的高</li>
 <li>有极低的概率会(zk有重试机制只有多次重试仍检测不到客户端心跳就会删除客户端临时节点)导致并发问题,如:当网络抖动失去客户端连接,别的客户端可能会得到分布式锁。</li>
 </ol>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3>
+
       
     </div>
     
@@ -704,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于数据库实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">基于数据库实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于唯一索引实现"><span class="nav-number">1.1.</span> <span class="nav-text">基于唯一索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据库的排他锁"><span class="nav-number">1.2.</span> <span class="nav-text">基于数据库的排他锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加锁代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加锁代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#释放锁代码"><span class="nav-number">1.2.2.</span> <span class="nav-text">释放锁代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于缓存实现分布式锁"><span class="nav-number">2.</span> <span class="nav-text">基于缓存实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加锁代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">添加锁代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于zookeeper实现分布式锁"><span class="nav-number">3.</span> <span class="nav-text">基于zookeeper实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.0.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于数据库实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">基于数据库实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于唯一索引实现"><span class="nav-number">1.1.</span> <span class="nav-text">基于唯一索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据库的排他锁"><span class="nav-number">1.2.</span> <span class="nav-text">基于数据库的排他锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加锁代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加锁代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#释放锁代码"><span class="nav-number">1.2.2.</span> <span class="nav-text">释放锁代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于缓存实现分布式锁"><span class="nav-number">2.</span> <span class="nav-text">基于缓存实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加锁代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">添加锁代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于zookeeper实现分布式锁"><span class="nav-number">3.</span> <span class="nav-text">基于zookeeper实现分布式锁</span></a></li></ol></div>
             
 
           </div>

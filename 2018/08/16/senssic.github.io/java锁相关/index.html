@@ -94,20 +94,20 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="在并发系统中常常需要对某些业务资源进行加锁操作，解决一些因并发操作导致的数据不一致,以及读到脏数据问题。 加锁的目的本质上是对资源的一种操作控制,防止其数据或状态出现不可控的变化。 java中对于锁的支持使用volatilejava提供了volatile关键字,在多个处理器中可以立即读到最新的值,即一个线程修改值后另一个线程立即能获取到更新后的值。 在某些适用volatile场景的地方使用vola">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/java锁相关_1.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_2.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_3.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_4.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_5.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_6.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_7.jpeg">
-<meta property="og:image" content="http://yoursite.com/java锁相关_8.png">
-<meta property="og:image" content="http://yoursite.com/java锁相关_9.png">
-<meta property="og:updated_time" content="2018-08-16T16:22:21.338Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_1.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_2.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_3.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_4.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_5.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_6.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_7.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_8.png">
+<meta property="og:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_9.png">
+<meta property="og:updated_time" content="2018-08-16T16:25:13.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java锁相关">
 <meta name="twitter:description" content="在并发系统中常常需要对某些业务资源进行加锁操作，解决一些因并发操作导致的数据不一致,以及读到脏数据问题。 加锁的目的本质上是对资源的一种操作控制,防止其数据或状态出现不可控的变化。 java中对于锁的支持使用volatilejava提供了volatile关键字,在多个处理器中可以立即读到最新的值,即一个线程修改值后另一个线程立即能获取到更新后的值。 在某些适用volatile场景的地方使用vola">
-<meta name="twitter:image" content="http://yoursite.com/java锁相关_1.jpeg">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/16/senssic.github.io/java锁相关/java锁相关_1.jpeg">
 
 
 
@@ -476,7 +476,7 @@
 <li>其他线程调用 notify() / notifyAll() 接口唤醒等待集合中的线程，这些等待的线程需要重新获取监视锁后才能执行 wait() 之后的代码。</li>
 <li>同步方法执行完毕了，线程退出临界区，并释放监视锁。</li>
 </ol>
-<p><img src="/java锁相关_1.jpeg" alt="monitor工作原理"></p>
+<p><img src="java锁相关_1.jpeg" alt="monitor工作原理"></p>
 <h3 id="synchronize锁机制的优化"><a href="#synchronize锁机制的优化" class="headerlink" title="synchronize锁机制的优化"></a>synchronize锁机制的优化</h3><p>为了减少锁获取和释放带来的开销在JSE1.6版本锁的状态达到了四个,级别从低到高依次为</p>
 <p><strong>无锁状态&lt;偏向锁状态&lt;轻量级锁状态&lt;重量级锁状态</strong>随着竞争激烈程度依次递增。synchronize不支持锁的降级,这种策略是为了提高获取和释放锁的效率。</p>
 <ul>
@@ -495,7 +495,7 @@
 <li><p>自旋状态-轻量级锁的具体实现原理,指尝试获取锁的线程不会立即阻塞，而是采用循环的方式去尝试获取锁，这样的好处是减少线程上下文切换的消耗，缺点是循环会消耗CPU。</p>
 </li>
 </ul>
-<p><img src="/java锁相关_2.jpeg" alt="轻量级锁以及膨胀流程图"></p>
+<p><img src="java锁相关_2.jpeg" alt="轻量级锁以及膨胀流程图"></p>
 <h2 id="CAS-compare-and-swap-和AQS-AbstractQueuedSynchronizer"><a href="#CAS-compare-and-swap-和AQS-AbstractQueuedSynchronizer" class="headerlink" title="CAS(compare and swap)和AQS(AbstractQueuedSynchronizer)"></a>CAS(compare and swap)和AQS(AbstractQueuedSynchronizer)</h2><h3 id="CAS的介绍"><a href="#CAS的介绍" class="headerlink" title="CAS的介绍"></a>CAS的介绍</h3><p><strong>CAS是一个原子操作</strong>,利用了处理器的CMPXCHG指令实现的,CAS操作包括三个操作数,内存位置(V),预期原值(A)和新值(B)。如果内存位置和预期原值相等则处理器会将内存位置更新为新值(B),若反之则不做任何操作。</p>
 <p>CAS的优点在于竞争不大的情况下系统开销小,缺点是只能保证一个变量的原子操作,以及不能避免ABA问题(<em>如果另一个线程修改V值假设原来是A，先修改成B，再修改回成A,当前线程的CAS操作无法分辨当前V值是否发生过变化</em>)。</p>
 <h3 id="AQS的介绍"><a href="#AQS的介绍" class="headerlink" title="AQS的介绍"></a>AQS的介绍</h3><p>AQS是JDK下提供的一套用于实现基于FIFO等待队列的阻塞锁或相关的同步组件的一个同步框架。</p>
@@ -504,29 +504,29 @@
 <p>内置的FIFO双向队列来完成获取锁线程的排队工作</p>
 <ul>
 <li><p>同步器包含两个节点类型的应用，一个指向头节点，一个指向尾节点，未获取到锁的线程会创建节点线程安全（compareAndSetTail）的加入队列尾部。同步队列遵循FIFO，首节点是获取同步状态成功的节点。</p>
-<p><img src="/java锁相关_3.jpeg" alt="双向队列"></p>
+<p><img src="java锁相关_3.jpeg" alt="双向队列"></p>
 </li>
 <li><p>未获取到锁的线程将创建一个节点，设置到尾节点</p>
-<p><img src="/java锁相关_4.jpeg" alt="未获取到锁队列"></p>
+<p><img src="java锁相关_4.jpeg" alt="未获取到锁队列"></p>
 </li>
 <li><p>首节点的线程在释放锁时，将会唤醒后继节点。而后继节点将会在获取锁成功时将自己设置为首节点</p>
-<p><img src="/java锁相关_5.jpeg" alt="双向队列锁释放"></p>
+<p><img src="java锁相关_5.jpeg" alt="双向队列锁释放"></p>
 <h4 id="独占式和共享式获取锁"><a href="#独占式和共享式获取锁" class="headerlink" title="独占式和共享式获取锁"></a>独占式和共享式获取锁</h4><p>独享锁-指该锁一次只能被一个线程所持有<br>共享锁-指该锁可被多个线程所持有</p>
 <ul>
 <li>独占锁(ReentrantLock)</li>
 </ul>
 <p>​         每个节点自旋观察自己的前一节点是不是Header节点，如果是，就去尝试获取锁</p>
-<p><img src="/java锁相关_6.jpeg" alt="独占式锁"></p>
+<p><img src="java锁相关_6.jpeg" alt="独占式锁"></p>
 <p>​        独占式锁获取流程</p>
-<p><img src="/java锁相关_7.jpeg" alt="独占式锁获取流程"></p>
+<p><img src="java锁相关_7.jpeg" alt="独占式锁获取流程"></p>
 <p>​</p>
 <ul>
 <li>共享锁(CountDownLatch)</li>
 </ul>
 <p>​       共享式与独占式的区别</p>
-<p><img src="/java锁相关_8.png" alt="共享与独占式的区别"></p>
+<p><img src="java锁相关_8.png" alt="共享与独占式的区别"></p>
 <p>​       共享锁获取流程</p>
-<p><img src="/java锁相关_9.png" alt="共享锁获取流程"></p>
+<p><img src="java锁相关_9.png" alt="共享锁获取流程"></p>
 <p>​</p>
 </li>
 </ul>
