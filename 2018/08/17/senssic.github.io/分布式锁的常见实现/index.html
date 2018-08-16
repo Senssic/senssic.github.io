@@ -90,11 +90,11 @@
 <meta name="keywords" content="锁,分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式锁的常见实现">
-<meta property="og:url" content="http://yoursite.com/2018/08/09/senssic.github.io/分布式锁的常见实现/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/senssic.github.io/分布式锁的常见实现/index.html">
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T17:13:59.918Z">
+<meta property="og:updated_time" content="2018-08-16T16:12:53.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式锁的常见实现">
 <meta name="twitter:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/09/senssic.github.io/分布式锁的常见实现/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/17/senssic.github.io/分布式锁的常见实现/"/>
 
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/senssic.github.io/分布式锁的常见实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/senssic.github.io/分布式锁的常见实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T01:13:59+08:00">
-                2018-08-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T00:12:53+08:00">
+                2018-08-17
               </time>
             
 
@@ -383,7 +383,7 @@
 
           
           
-             <span id="/2018/08/09/senssic.github.io/分布式锁的常见实现/" class="leancloud_visitors" data-flag-title="分布式锁的常见实现">
+             <span id="/2018/08/17/senssic.github.io/分布式锁的常见实现/" class="leancloud_visitors" data-flag-title="分布式锁的常见实现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,012
+                  2,016
                 </span>
               
 
@@ -528,6 +528,7 @@
 <li>由于需要很多判断和信息写入读取,以及分发信息,效率并没有基于缓存的高</li>
 <li>有极低的概率会(zk有重试机制只有多次重试仍检测不到客户端心跳就会删除客户端临时节点)导致并发问题,如:当网络抖动失去客户端连接,别的客户端可能会得到分布式锁。</li>
 </ol>
+<p>###参考资料</p>
 
       
     </div>
@@ -564,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/09/senssic.github.io/你好,世界/" rel="next" title="你好,世界">
-                <i class="fa fa-chevron-left"></i> 你好,世界
+              <a href="/2018/08/16/senssic.github.io/java锁相关/" rel="next" title="java锁相关">
+                <i class="fa fa-chevron-left"></i> java锁相关
               </a>
             
           </div>
@@ -573,10 +574,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/16/senssic.github.io/java锁相关/" rel="prev" title="java锁相关">
-                java锁相关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
