@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_3.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_4.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_5.jpeg">
-<meta property="og:updated_time" content="2018-09-16T09:22:05.107Z">
+<meta property="og:updated_time" content="2018-09-16T09:27:23.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java并发编程">
 <meta name="twitter:description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致大">
@@ -516,11 +516,11 @@
 </ul>
 </li>
 <li><p>使用锁机制实现原子同步;只有获得锁的线程才能够操作锁定的内存区域。JVM锁机制有偏向锁,轻量级锁和互斥锁等。除了偏向锁,JVM实现锁的方式都用了循环 CAS,即当一个线程想进入同步块的时候使用循环CAS的方式来获取锁,当它退出同步块的时候使用循环CAS释放锁。</p>
-<h1 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h1></li>
+</li>
 </ol>
 </li>
 </ol>
-<p>​    在并发编程中,线程之间通讯和线程之间的同步是关键问题。</p>
+<h1 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h1><p>​    在并发编程中,线程之间通讯和线程之间的同步是关键问题。</p>
 <p>​    线程间的通讯一般使用<strong>共享内存和消息传递</strong>。在共享内存的并发模型中,通过写-读内存中的公共状态进行隐式通讯。在消息传递的并发模型里,线程之间没有内存公共状态,必须通过显式发送消息进行通讯。</p>
 <p>​    线程同步是指程序中不同线程之间操作发生相对顺序控制机制。<strong>在共享内存中,同步是显式进行的</strong>,必须指定摸个方法或代码段在线程之间互斥。<strong>在消息传递模型中,同步是隐式进行的</strong>,因为发送必须在消息的接收之前。</p>
 <p>​    java的并发使用的共享内存模型,所以线程通讯总是隐式进行的,而同步需要显式指定需要互斥的方法或者代码段。</p>
