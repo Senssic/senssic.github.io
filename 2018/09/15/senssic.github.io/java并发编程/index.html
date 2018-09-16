@@ -86,24 +86,25 @@
 
 
 
-<meta name="description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致大">
+<meta name="description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致">
 <meta name="keywords" content="并发编程,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java并发编程">
 <meta property="og:url" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致大">
+<meta property="og:description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_6.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_1.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_2.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_3.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_4.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_5.jpeg">
-<meta property="og:updated_time" content="2018-09-16T09:27:23.575Z">
+<meta property="og:updated_time" content="2018-09-16T12:06:01.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java并发编程">
-<meta name="twitter:description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致大">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_1.jpeg">
+<meta name="twitter:description" content="并发编程的挑战上下文切换​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。  无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。 使用最少线程；避免创建不需要的线程,不然会导致">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/15/senssic.github.io/java并发编程/java并发编程_6.jpg">
 
 
 
@@ -463,7 +464,8 @@
       
 
       
-        <h1 id="并发编程的挑战"><a href="#并发编程的挑战" class="headerlink" title="并发编程的挑战"></a>并发编程的挑战</h1><h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2><p>​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。</p>
+        <p><img src="java并发编程_6.jpg" alt="java并发编程"></p>
+<h1 id="并发编程的挑战"><a href="#并发编程的挑战" class="headerlink" title="并发编程的挑战"></a>并发编程的挑战</h1><h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2><p>​    CPU会给每个线程分配时间片用于分配给各个线程执行和占用资源,所以在多线程执行的情况下需要对执行上下文不停切换,会消耗CPU资源,所以在某些特定情况下单线程会比多线程消耗时间少。我们要尽可能的减少上下文切换。</p>
 <ul>
 <li>无锁并发编程；多线程的锁竞争会引起上下文切换,处理数据时尽量避免使用锁。例如hash取模,CAS算法等。</li>
 <li>使用最少线程；避免创建不需要的线程,不然会导致大量线程等待。</li>
