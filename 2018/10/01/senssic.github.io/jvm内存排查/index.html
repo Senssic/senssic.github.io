@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="一般线上JVM问题属于比较紧急的情况,需要立即保留现场信息,并及时回复生产。 保留现场 打印堆栈信息    jstack java进程id dump堆内存 jmap -dump:format=b,file=./jvmdump java进程id 打印至少30秒的jvm垃圾回收情况 jstat -gcutil java进程id 1000 查看堆内存占用情况 jmap -histo java进程id,或">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-01T05:39:14.714Z">
+<meta property="og:updated_time" content="2018-10-01T05:41:07.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm内存排查">
 <meta name="twitter:description" content="一般线上JVM问题属于比较紧急的情况,需要立即保留现场信息,并及时回复生产。 保留现场 打印堆栈信息    jstack java进程id dump堆内存 jmap -dump:format=b,file=./jvmdump java进程id 打印至少30秒的jvm垃圾回收情况 jstat -gcutil java进程id 1000 查看堆内存占用情况 jmap -histo java进程id,或">
@@ -477,11 +477,11 @@
 <li>查询系统日志/var/log/messages  一般java进程突然消失,可以到这个里面查看信息</li>
 </ul>
 <p>有事在tomcat的jvm配置时候需要添加一些额外参数,这样在系统宕机之前可以保留一些关键的信息</p>
-<p>-XX:+PrintGCDetails</p>
-<p>-XX:+PrintGCDateStamps</p>
-<p>-XX:+HeapDumpOnOutOfMemoryError </p>
-<p>-XX:HeapDumpPath=/usr/temp/dump </p>
-<p> -Xloggc:/usr/temp/dump/heap_trace.txt  [<strong>确保/usr/temp目录存在</strong>]</p>
+<p>​    -XX:+PrintGCDetails</p>
+<p>​    -XX:+PrintGCDateStamps</p>
+<p>​    -XX:+HeapDumpOnOutOfMemoryError </p>
+<p>​    -XX:HeapDumpPath=/usr/temp/dump </p>
+<p>​     -Xloggc:/usr/temp/dump/heap_trace.txt  [<strong>确保/usr/temp目录存在</strong>]</p>
 <h1 id="一般问题原因"><a href="#一般问题原因" class="headerlink" title="一般问题原因"></a>一般问题原因</h1><ul>
 <li>持续发生Full GC，但是系统不抛出OOM错误</li>
 <li>堆内存溢出：java.lang.OutOfMemoryError：Java heap space</li>
@@ -496,6 +496,7 @@
 <li>Jprofile</li>
 <li>Btrace</li>
 </ul>
+<hr>
 <p><a href="https://www.jianshu.com/p/c8e0f8748ac0" target="_blank" rel="noopener">MAT使用进阶</a></p>
 <p><a href="https://blog.csdn.net/zhaozheng7758/article/details/8623549" target="_blank" rel="noopener">jstat命令详解</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/43435903" target="_blank" rel="noopener">JVM问题分析处理手册</a></p>
