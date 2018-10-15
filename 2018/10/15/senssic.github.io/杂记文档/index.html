@@ -100,11 +100,11 @@
 <meta name="keywords" content="杂记,记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杂记文档">
-<meta property="og:url" content="http://yoursite.com/2018/09/24/senssic.github.io/杂记文档/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/senssic.github.io/杂记文档/index.html">
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="缓存队列相关1.为什么使用mq？mq的优点？解耦,异步,削峰(可以限流发送或接收) 2.mq的缺点有哪些？系统可用性降低(mq挂掉),数据丢失问题,一致性问题,消息顺序问题,消息积压,消息重复问题等需要考虑，导致系统复杂性增加。 3.主流MQ框架的对比   特性 ActiveMQ RabbitMQ RocketMQ Kafka     单机吞吐量 万级，吞吐量比RocketMQ和Kafka要低了一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T14:56:22.173Z">
+<meta property="og:updated_time" content="2018-10-15T15:07:48.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂记文档">
 <meta name="twitter:description" content="缓存队列相关1.为什么使用mq？mq的优点？解耦,异步,削峰(可以限流发送或接收) 2.mq的缺点有哪些？系统可用性降低(mq挂掉),数据丢失问题,一致性问题,消息顺序问题,消息积压,消息重复问题等需要考虑，导致系统复杂性增加。 3.主流MQ框架的对比   特性 ActiveMQ RabbitMQ RocketMQ Kafka     单机吞吐量 万级，吞吐量比RocketMQ和Kafka要低了一">
@@ -137,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/24/senssic.github.io/杂记文档/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/15/senssic.github.io/杂记文档/"/>
 
 
 
@@ -324,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/senssic.github.io/杂记文档/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/senssic.github.io/杂记文档/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T14:26:46+08:00">
-                2018-09-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T14:26:46+08:00">
+                2018-10-15
               </time>
             
 
@@ -395,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/24/senssic.github.io/杂记文档/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/24/senssic.github.io/杂记文档/" itemprop="commentCount"></span>
+                <a href="/2018/10/15/senssic.github.io/杂记文档/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/15/senssic.github.io/杂记文档/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +404,7 @@
 
           
           
-             <span id="/2018/09/24/senssic.github.io/杂记文档/" class="leancloud_visitors" data-flag-title="杂记文档">
+             <span id="/2018/10/15/senssic.github.io/杂记文档/" class="leancloud_visitors" data-flag-title="杂记文档">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6,884
+                  7,369
                 </span>
               
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  25
+                  26
                 </span>
               
             </div>
@@ -666,26 +666,42 @@
 </li>
 <li><p>写数据底层原理</p>
 <p>1）先写入buffer,在buffer里的时候数据是搜索不到的;同时将数据写入translog日志文件</p>
+<p>2）如果buffer快满了,或者到一定时间,就会将buffer数据refresh到一个新的segment file中,但是此时数据不是直接进入segment file的磁盘文件的,而是先进入os cache的,这个过程就是refresh。每隔1秒钟，es将buffer中的数据写入一个新的segment file,每秒钟会产生一个新的磁盘文件,segment file,这个segment file中就存储最近1秒内buffer中写入的数据,但是如果buffer里面此时没有数据,不会执行refresh操作,每秒创建换一个空的segment file,如果buffer里面有数据,默认1秒钟执行一次refresh操作,刷入一个新的segment file中,操作系统里面,磁盘文件其实都有一个东西,叫做os cache,操作系统缓存,就是说数据写入磁盘文件之前,会先进入os cache,先进入操作系统级别的一个内存缓存中去,只要buffer中的数据被refresh操作,刷入os cache中，就代表这个数据就可以被搜索到了,<strong>内存 buffer 生成一个新的 segment，刷到文件系统缓存中，Lucene 即可检索这个新 segment,此时segment位于文件内存缓存中</strong>,为什么叫es是准实时的？NRT，near real-time,准实时。默认是每隔1秒refresh一次的,所以es是准实时的,因为写入的数据1秒之后才能被看到。可以通过es的restful api或者java api，手动执行一次refresh操作，就是手动将buffer中的数据刷入os cache中，让数据立马就可以被搜索到。只要数据被输入os cache中，buffer就会被清空了，因为不需要保留buffer了，数据在translog里面已经持久化到磁盘去一份了</p>
+<p>3）只要数据进入os cache,此时就可以让这个segment file的数据对外提供搜索了</p>
+<p>4）重复1~3步骤，新的数据不断进入buffer和translog,不断将buffer数据写入一个又一个新的segment file中去，每次refresh完buffer清空，translog保留。随着这个过程推进，translog会变得越来越大。当translog达到一定长度的时候，就会触发commit操作。buffer中的数据，每隔1秒就被刷到os cache中去，然后这个buffer就被清空了。所以说这个buffer的数据始终是可以保持住不会填满es进程的内存的。每次一条数据写入buffer,同时会写入一条日志到translog日志文件中去,所以这个translog日志文件是不断变大的,当translog日志文件大到一定程度的时候，就会执行commit操作。</p>
+<p>5）commit操作发生第一步，就是将buffer中现有数据refresh到os cache中去，清空buffer</p>
+<p>6）将一个commit point写入磁盘文件，里面标识着这个commit point对应的<strong>所有os cache内存segment file</strong></p>
+<p>7）强行将os cache中目前所有的数据都fsync到磁盘文件中去,translog日志文件的作用是什么？就是在你执行commit操作之前，数据要么是停留在buffer中，要么是停留在os cache中，无论是buffer还是os cache都是内存，一旦这台机器死了，内存中的数据就全丢了。所以需要将数据对应的操作写入一个专门的日志文件，translog日志文件中，一旦此时机器宕机，再次重启的时候，es会自动读取translog日志文件中的数据，恢复到内存buffer和os cache中去。</p>
+<p>commit操作：</p>
+<p>1、写commit point；</p>
+<p>2、将os cache数据fsync强刷到磁盘上去；</p>
+<p>3、清空translog日志文件</p>
+<p>8）将现有的translog清空，然后再次重启启用一个translog，此时commit操作完成。默认每隔30分钟会自动执行一次commit，但是如果translog过大，也会触发commit。整个commit的过程，叫做flush操作。我们可以手动执行flush操作，就是将所有os cache数据刷到磁盘文件中去。不叫做commit操作，flush操作。es中的flush操作，就对应着commit的全过程。我们也可以通过es api，手动执行flush操作，手动将os cache中的数据fsync强刷到磁盘上去，记录一个commit point，清空translog日志文件。</p>
+<p>9）translog其实也是先写入os cache的，默认每隔5秒刷一次到磁盘中去，所以默认情况下，可能有5秒的数据会仅仅停留在buffer或者translog文件的os cache中，如果此时机器挂了，会丢失5秒钟的数据。但是这样性能比较好，最多丢5秒的数据。也可以将translog设置成每次写操作必须是直接fsync到磁盘，但是性能会差很多。其实es第一是准实时的，数据写入1秒后可以搜索到；可能会丢失数据的，你的数据有5秒的数据，停留在buffer、translog os cache、segment file os cache中，有5秒的数据不在磁盘上，此时如果宕机，会导致5秒的数据丢失。如果你希望一定不能丢失数据的话，你可以设置个参数每次写入一条数据，都是写入buffer，同时写入磁盘上的translog，但是这会导致写性能、写入吞吐量会下降一个数量级。</p>
+<p>Elasticsearch 2.0 新加入的特性。为了保证不丢数据，每次 index、bulk、delete、update 完成的时候，一定触发刷新 translog 到磁盘上，才给请求返回 200 OK。这个改变在提高数据安全性的同时当然也降低了一点性能。</p>
+<p>10）如果是删除操作，commit的时候会生成一个.del文件，里面将某个doc标识为deleted状态，那么搜索的时候根据.del文件就知道这个doc被删除了</p>
+<p>11）如果是更新操作，就是将原来的doc标识为deleted状态，然后新写入一条数据</p>
+<p>12）buffer每次refresh一次，就会产生一个segment file，所以默认情况下是1秒钟一个segment file，segment file会越来越多，此时会定期执行merge</p>
+<p>13）每次merge的时候，会将多个segment file合并成一个，同时这里会将标识为deleted的doc给物理删除掉，然后将新的segment file写入磁盘，这里会写一个commit point，标识所有新的segment file，然后打开segment file供搜索使用，同时删除旧的segment file。</p>
+<p>es里的写流程，有4个底层的核心概念，refresh、flush、translog、merge,当segment file多到一定程度的时候，es就会自动触发merge操作，将多个segment file给merge成一个segment file。</p>
 </li>
 </ol>
-<p>   2）如果buffer快满了,或者到一定时间,就会将buffer数据refresh到一个新的segment file中,但是此时数据不是直接进入segment file的磁盘文件的,而是先进入os cache的,这个过程就是refresh。每隔1秒钟，es将buffer中的数据写入一个新的segment file,每秒钟会产生一个新的磁盘文件,segment file,这个segment file中就存储最近1秒内buffer中写入的数据,但是如果buffer里面此时没有数据,不会执行refresh操作,每秒创建换一个空的segment file,如果buffer里面有数据,默认1秒钟执行一次refresh操作,刷入一个新的segment file中,操作系统里面,磁盘文件其实都有一个东西,叫做os cache,操作系统缓存,就是说数据写入磁盘文件之前,会先进入os cache,先进入操作系统级别的一个内存缓存中去,只要buffer中的数据被refresh操作,刷入os cache中，就代表这个数据就可以被搜索到了,<strong>内存 buffer 生成一个新的 segment，刷到文件系统缓存中，Lucene 即可检索这个新 segment,此时segment位于文件内存缓存中</strong>,为什么叫es是准实时的？NRT，near real-time,准实时。默认是每隔1秒refresh一次的,所以es是准实时的,因为写入的数据1秒之后才能被看到。可以通过es的restful api或者java api，手动执行一次refresh操作，就是手动将buffer中的数据刷入os cache中，让数据立马就可以被搜索到。只要数据被输入os cache中，buffer就会被清空了，因为不需要保留buffer了，数据在translog里面已经持久化到磁盘去一份了</p>
-<p>   3）只要数据进入os cache,此时就可以让这个segment file的数据对外提供搜索了</p>
-<p>   4）重复1~3步骤，新的数据不断进入buffer和translog,不断将buffer数据写入一个又一个新的segment file中去，每次refresh完buffer清空，translog保留。随着这个过程推进，translog会变得越来越大。当translog达到一定长度的时候，就会触发commit操作。buffer中的数据，每隔1秒就被刷到os cache中去，然后这个buffer就被清空了。所以说这个buffer的数据始终是可以保持住不会填满es进程的内存的。每次一条数据写入buffer,同时会写入一条日志到translog日志文件中去,所以这个translog日志文件是不断变大的,当translog日志文件大到一定程度的时候，就会执行commit操作。</p>
-<p>   5）commit操作发生第一步，就是将buffer中现有数据refresh到os cache中去，清空buffer</p>
-<p>   6）将一个commit point写入磁盘文件，里面标识着这个commit point对应的<strong>所有os cache内存segment file</strong></p>
-<p>   7）强行将os cache中目前所有的数据都fsync到磁盘文件中去,translog日志文件的作用是什么？就是在你执行commit操作之前，数据要么是停留在buffer中，要么是停留在os cache中，无论是buffer还是os cache都是内存，一旦这台机器死了，内存中的数据就全丢了。所以需要将数据对应的操作写入一个专门的日志文件，translog日志文件中，一旦此时机器宕机，再次重启的时候，es会自动读取translog日志文件中的数据，恢复到内存buffer和os cache中去。</p>
-<p>   commit操作：</p>
-<p>   1、写commit point；</p>
-<p>   2、将os cache数据fsync强刷到磁盘上去；</p>
-<p>   3、清空translog日志文件</p>
-<p>   8）将现有的translog清空，然后再次重启启用一个translog，此时commit操作完成。默认每隔30分钟会自动执行一次commit，但是如果translog过大，也会触发commit。整个commit的过程，叫做flush操作。我们可以手动执行flush操作，就是将所有os cache数据刷到磁盘文件中去。不叫做commit操作，flush操作。es中的flush操作，就对应着commit的全过程。我们也可以通过es api，手动执行flush操作，手动将os cache中的数据fsync强刷到磁盘上去，记录一个commit point，清空translog日志文件。</p>
-<p>   9）translog其实也是先写入os cache的，默认每隔5秒刷一次到磁盘中去，所以默认情况下，可能有5秒的数据会仅仅停留在buffer或者translog文件的os cache中，如果此时机器挂了，会丢失5秒钟的数据。但是这样性能比较好，最多丢5秒的数据。也可以将translog设置成每次写操作必须是直接fsync到磁盘，但是性能会差很多。其实es第一是准实时的，数据写入1秒后可以搜索到；可能会丢失数据的，你的数据有5秒的数据，停留在buffer、translog os cache、segment file os cache中，有5秒的数据不在磁盘上，此时如果宕机，会导致5秒的数据丢失。如果你希望一定不能丢失数据的话，你可以设置个参数每次写入一条数据，都是写入buffer，同时写入磁盘上的translog，但是这会导致写性能、写入吞吐量会下降一个数量级。</p>
-<p>   Elasticsearch 2.0 新加入的特性。为了保证不丢数据，每次 index、bulk、delete、update 完成的时候，一定触发刷新 translog 到磁盘上，才给请求返回 200 OK。这个改变在提高数据安全性的同时当然也降低了一点性能。</p>
-<p>   10）如果是删除操作，commit的时候会生成一个.del文件，里面将某个doc标识为deleted状态，那么搜索的时候根据.del文件就知道这个doc被删除了</p>
-<p>   11）如果是更新操作，就是将原来的doc标识为deleted状态，然后新写入一条数据</p>
-<p>   12）buffer每次refresh一次，就会产生一个segment file，所以默认情况下是1秒钟一个segment file，segment file会越来越多，此时会定期执行merge</p>
-<p>   13）每次merge的时候，会将多个segment file合并成一个，同时这里会将标识为deleted的doc给物理删除掉，然后将新的segment file写入磁盘，这里会写一个commit point，标识所有新的segment file，然后打开segment file供搜索使用，同时删除旧的segment file。</p>
-<p>   es里的写流程，有4个底层的核心概念，refresh、flush、translog、merge,当segment file多到一定程度的时候，es就会自动触发merge操作，将多个segment file给merge成一个segment file。</p>
+<h2 id="es搜索的性能优化-几十亿"><a href="#es搜索的性能优化-几十亿" class="headerlink" title="es搜索的性能优化(几十亿)"></a>es搜索的性能优化(几十亿)</h2><p>es搜索优化不是银弹,关键的底层性能影响就是内存的es缓存(filesystem cache)</p>
+<ol>
+<li><p>增加filesystem cache的值设置足够大,确保es机器内存足够大,如果es未命中filesystem cache数据,会到磁盘中读取十分影响读取的性能。(filesystem cache尽量足够大)</p>
+</li>
+<li><p>尽量少的字段存放到es这样filesystem cache能更大存放es数据,真正大的数据存放到外部mysql或hbase中通过es中的关键字段到外置存储中查询。(filesystem cache尽量保留关键)</p>
+</li>
+<li><p>数据预热,如果实在是有数据被存放在了磁盘中,对于经常访问的数据,可以定时查询一下,保证filesystem cache中的都基本是热数据,提升体验。(filesystem cach尽量多存放热数据)</p>
+</li>
+<li><p>冷热分离,将热数据和冷数据尽量水平拆分,这样可以保证尽可能多的热数据位于filesystem cache中。(filesystem cach尽量多存放热数据)</p>
+</li>
+<li><p>优化document模型设计,对于原始数据有关联的结果,尽量在写入的时候就将结果写入,尽量避免使用复杂关联的查询。复杂的计算尽量在程序中做。(es尽量少的计算合并读取)</p>
+</li>
+<li><p>分页的优化,es的分页,分页深度越大越慢,因为是分布式存储数据,分页深度大的情况下,协调节点依然会将pagesize*pageindex的量的数据查询出来然后做合并排序等操作,再取出分页的数据。</p>
+<p>对于不需要跳转,只需要一页一页下翻的分页,可以使用scroll api,其原理是使用了es数据快照,将查询出来的数据进行快照,然后通过游标一页一页的展示,缺点是无法指定页数以及页跳转。</p>
+</li>
+</ol>
 <h1 id="分布式缓存"><a href="#分布式缓存" class="headerlink" title="分布式缓存"></a>分布式缓存</h1><h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1>
       
     </div>
@@ -722,8 +738,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/15/senssic.github.io/java并发编程/" rel="next" title="java并发编程">
-                <i class="fa fa-chevron-left"></i> java并发编程
+              <a href="/2018/10/01/senssic.github.io/jvm内存排查/" rel="next" title="jvm内存排查">
+                <i class="fa fa-chevron-left"></i> jvm内存排查
               </a>
             
           </div>
@@ -731,10 +747,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/01/senssic.github.io/jvm内存排查/" rel="prev" title="jvm内存排查">
-                jvm内存排查 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -873,7 +885,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存队列相关"><span class="nav-number">1.</span> <span class="nav-text">缓存队列相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么使用mq？mq的优点？"><span class="nav-number">1.1.</span> <span class="nav-text">1.为什么使用mq？mq的优点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-mq的缺点有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.mq的缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主流MQ框架的对比"><span class="nav-number">1.3.</span> <span class="nav-text">3.主流MQ框架的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mq的高可用模式"><span class="nav-number">1.4.</span> <span class="nav-text">4.mq的高可用模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消息重复的处理"><span class="nav-number">1.5.</span> <span class="nav-text">5.消息重复的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-消息丢失情况分析"><span class="nav-number">1.6.</span> <span class="nav-text">6.消息丢失情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-保证消息的顺序性"><span class="nav-number">1.7.</span> <span class="nav-text">7.保证消息的顺序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-处理消息积压"><span class="nav-number">1.8.</span> <span class="nav-text">8.处理消息积压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式搜索引擎"><span class="nav-number">2.</span> <span class="nav-text">分布式搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#es的基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">es的基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">es的工作原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式缓存"><span class="nav-number">3.</span> <span class="nav-text">分布式缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.</span> <span class="nav-text">分布式系统</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存队列相关"><span class="nav-number">1.</span> <span class="nav-text">缓存队列相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么使用mq？mq的优点？"><span class="nav-number">1.1.</span> <span class="nav-text">1.为什么使用mq？mq的优点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-mq的缺点有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.mq的缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主流MQ框架的对比"><span class="nav-number">1.3.</span> <span class="nav-text">3.主流MQ框架的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mq的高可用模式"><span class="nav-number">1.4.</span> <span class="nav-text">4.mq的高可用模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消息重复的处理"><span class="nav-number">1.5.</span> <span class="nav-text">5.消息重复的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-消息丢失情况分析"><span class="nav-number">1.6.</span> <span class="nav-text">6.消息丢失情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-保证消息的顺序性"><span class="nav-number">1.7.</span> <span class="nav-text">7.保证消息的顺序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-处理消息积压"><span class="nav-number">1.8.</span> <span class="nav-text">8.处理消息积压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式搜索引擎"><span class="nav-number">2.</span> <span class="nav-text">分布式搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#es的基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">es的基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">es的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es搜索的性能优化-几十亿"><span class="nav-number">2.3.</span> <span class="nav-text">es搜索的性能优化(几十亿)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式缓存"><span class="nav-number">3.</span> <span class="nav-text">分布式缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.</span> <span class="nav-text">分布式系统</span></a></li></ol></div>
             
 
           </div>
@@ -908,7 +920,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">20.3k</span>
+    <span title="本站总字数">20.8k</span>
   
 </div>
 
