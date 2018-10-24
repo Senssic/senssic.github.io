@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="缓存队列相关1.为什么使用mq？mq的优点？解耦,异步,削峰(可以限流发送或接收) 2.mq的缺点有哪些？系统可用性降低(mq挂掉),数据丢失问题,一致性问题,消息顺序问题,消息积压,消息重复问题等需要考虑，导致系统复杂性增加。 3.主流MQ框架的对比   特性 ActiveMQ RabbitMQ RocketMQ Kafka     单机吞吐量 万级，吞吐量比RocketMQ和Kafka要低了一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-22T16:10:46.225Z">
+<meta property="og:updated_time" content="2018-10-24T14:58:03.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂记文档">
 <meta name="twitter:description" content="缓存队列相关1.为什么使用mq？mq的优点？解耦,异步,削峰(可以限流发送或接收) 2.mq的缺点有哪些？系统可用性降低(mq挂掉),数据丢失问题,一致性问题,消息顺序问题,消息积压,消息重复问题等需要考虑，导致系统复杂性增加。 3.主流MQ框架的对比   特性 ActiveMQ RabbitMQ RocketMQ Kafka     单机吞吐量 万级，吞吐量比RocketMQ和Kafka要低了一">
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  13,993
+                  15,586
                 </span>
               
 
@@ -446,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  51
+                  56
                 </span>
               
             </div>
@@ -918,7 +918,94 @@
 </ol>
 <p>   没有办法去给大家深入讲解redis底层的设计的细节，核心原理和设计的细节，那个除非单独开一门课，redis底层原理深度剖析，redis源码</p>
 <p>   对于咱们这个架构课来说，主要关注的是架构，不是底层的细节，对于架构来说，核心的原理的基本思路，是要梳理清晰的</p>
-<h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1>
+<h4 id="缓存穿透和缓存雪崩"><a href="#缓存穿透和缓存雪崩" class="headerlink" title="缓存穿透和缓存雪崩"></a>缓存穿透和缓存雪崩</h4><ol>
+<li><p>缓存雪崩</p>
+<p>缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过重雪崩。</p>
+<p>事前：redis高可用，主从+哨兵，redis cluster，避免全盘崩溃</p>
+<p>事中：本地ehcache缓存 + hystrix限流&amp;降级，避免MySQL被打死</p>
+<p>事后：redis持久化，快速恢复缓存数据</p>
+</li>
+<li><p>缓存穿透</p>
+<p>缓存穿透是指查询一个一定不存在的数据,由于缓存一般是命中后才写入缓存,如果有大量这样的查询请求(黑客攻击,恶意请求),会全部打到DB上,导致DB宕机</p>
+<p>解决方式:</p>
+<p>​    1,使用布隆过滤器，将所有可能存在的数据哈希到一个足够大的bitmap中，一个一定不存在的数据会被 这个bitmap拦截掉</p>
+<p>​    2,如果查询未命中将未命中的key仍然写入缓存,value为UNKONW等,过期时间为5到10分钟来冲抵短时恶意攻击</p>
+</li>
+<li><p>缓存击穿</p>
+<p>对于一些设置了过期时间的key，如果这些key可能会在某些时间点被超高并发地访问，是一种非常“热点”的数据。和缓存雪崩的区别在于这里针对某一key缓存，前者则是很多key。</p>
+<p>1.使用互斥锁(mutex key),推荐使用</p>
+<p>​    就是在缓存失效的时候（判断拿出来的值为空），不是立即去load db，而是先使用缓存工具的某些带成功操作返回值的操作（比如Redis的SETNX或者Memcache的ADD）去set一个mutex key，当操作返回成功时，再进行load db的操作并回设缓存；否则，就重试整个get缓存的方法。</p>
+<p>2.热点key设置不过期,或者使用快过期时预热key</p>
+<p>3.采用netflix的hystrix,抵挡冲击</p>
+</li>
+</ol>
+<h4 id="缓存数据库双写不一致"><a href="#缓存数据库双写不一致" class="headerlink" title="缓存数据库双写不一致"></a>缓存数据库双写不一致</h4><ul>
+<li><p>先更新数据库,再更新缓存</p>
+<p>这种操作太费时费力一般不使用</p>
+</li>
+</ul>
+<ul>
+<li><p>先更新数据库，再删除缓存这种策略比较多平台使用，如：Facebook。但是这种策略也存在一些问题，如：一、脏数据造成脏数据的原因主要由并发引起，如：</p>
+<p>用户A请求数据A</p>
+<p>数据A缓存失效</p>
+<p>用户A从数据库中得到旧数据数据A</p>
+<p>用户B更新了数据A（新数据）</p>
+<p>用户B删除了缓存</p>
+<p>用户A将查到旧数据写入了缓存</p>
+<p>此时就产生了脏数据，虽然这种概率非常小，但对于更新不频繁的网站来说，此时的脏数据就是个很严重的错误。</p>
+<p>二、缓存删除失败</p>
+<p>用户A更新了数据A</p>
+<p>用户A删除数据A的缓存失败</p>
+<p>用户B读到数据A缓存的旧数据</p>
+<p>此时就产生了数据不一致的问题。</p>
+<p>解决方案</p>
+<p>置缓存的有效时间（最简单的方案）优点:易操作  缺点:会存在短时间内的旧数据,如果数据量太多，缓存有效时间短，容易发生一段时间内缓存大量失效，此时的数据库压力突然剧增，引发缓存雪崩现象（缓存有效时间为随机值减少发生缓存雪崩的可能性）</p>
+<p>消息队列（比较复杂，需要引入消息队列系统）</p>
+<p>步骤：</p>
+<p>更新数据库；</p>
+<p>删除缓存失败；</p>
+<p>将需要删除的Key发送到消息队列；</p>
+<p>隔断时间从消息队列中拉取要删除的key；</p>
+<p>继续删除，直至成功为止。</p>
+<p>优点：不会引发缓存雪崩,只删除需要删除的缓存 缺点：引入了消息系统（增加了系统的复杂性）</p>
+</li>
+</ul>
+<ul>
+<li><p>先删除缓存，推荐使用，但是也会出现脏数据的问题：</p>
+<p>用户A删除缓存失败</p>
+<p>用户A成功更新了数据</p>
+<p>或者</p>
+<p>用户A删除了缓存；</p>
+<p>用户B读取缓存，缓存不存在；</p>
+<p>用户B从数据库拿到旧数据；</p>
+<p>用户B更新了缓存；</p>
+<p>用户A更新了数据。</p>
+<p>以上两种情况都能造成脏数据的产生。</p>
+<p>解决方式同上</p>
+</li>
+</ul>
+<h4 id="redis并发竞争问题"><a href="#redis并发竞争问题" class="headerlink" title="redis并发竞争问题"></a>redis并发竞争问题</h4><p>一般使用分布式锁(zookeeper)保证统一时间只有一个实例获取到锁</p>
+<p>使用版本控制和锁重试机制来处理并发的竞争顺序</p>
+<h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1><p>​    分布式系统一般使用RPC框架相互调用,RPC一般提供了负载,超时重试,自动感知上下线.等如果不使用RPC框架就需要自己处理这些复杂的问题。</p>
+<h3 id="dubbo工作原理注册中心挂了可以继续通讯么"><a href="#dubbo工作原理注册中心挂了可以继续通讯么" class="headerlink" title="dubbo工作原理注册中心挂了可以继续通讯么"></a>dubbo工作原理注册中心挂了可以继续通讯么</h3><p>1.dubbo工作原理</p>
+<p>第一层：service层，接口层，给服务提供者和消费者来实现的</p>
+<p>第二层：config层，配置层，主要是对dubbo进行各种配置的</p>
+<p>第三层：proxy层，服务代理层，透明生成客户端的stub和服务单的skeleton</p>
+<p>第四层：registry层，服务注册层，负责服务的注册与发现</p>
+<p>第五层：cluster层，集群层，封装多个服务提供者的路由以及负载均衡，将多个实例组合成一个服务</p>
+<p>第六层：monitor层，监控层，对rpc接口的调用次数和调用时间进行监控</p>
+<p>第七层：protocol层，远程调用层，封装rpc调用</p>
+<p>第八层：exchange层，信息交换层，封装请求响应模式，同步转异步</p>
+<p>第九层：transport层，网络传输层，抽象mina和netty为统一接口</p>
+<p>第十层：serialize层，数据序列化层</p>
+<p>工作流程：</p>
+<p>1）第一步，provider向注册中心去注册</p>
+<p>2）第二步，consumer从注册中心订阅服务，注册中心会通知consumer注册好的服务</p>
+<p>3）第三步，consumer调用provider</p>
+<p>4）第四步，consumer和provider都异步的通知监控中心</p>
+<p> 2.注册中心挂了可以继续通信吗？</p>
+<p>​    可以,因为刚开始初始化的时候,消费者会将提供者的地址等信息拉取到本地缓存,所以注册中心挂了可以继续通信,但是因为信息是旧的如果服务方挂了无法感知。</p>
+<h3 id="dubbo的通讯协议以及序列化协议"><a href="#dubbo的通讯协议以及序列化协议" class="headerlink" title="dubbo的通讯协议以及序列化协议"></a>dubbo的通讯协议以及序列化协议</h3>
       
     </div>
     
@@ -1101,7 +1188,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存队列相关"><span class="nav-number">1.</span> <span class="nav-text">缓存队列相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么使用mq？mq的优点？"><span class="nav-number">1.1.</span> <span class="nav-text">1.为什么使用mq？mq的优点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-mq的缺点有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.mq的缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主流MQ框架的对比"><span class="nav-number">1.3.</span> <span class="nav-text">3.主流MQ框架的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mq的高可用模式"><span class="nav-number">1.4.</span> <span class="nav-text">4.mq的高可用模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消息重复的处理"><span class="nav-number">1.5.</span> <span class="nav-text">5.消息重复的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-消息丢失情况分析"><span class="nav-number">1.6.</span> <span class="nav-text">6.消息丢失情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-保证消息的顺序性"><span class="nav-number">1.7.</span> <span class="nav-text">7.保证消息的顺序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-处理消息积压"><span class="nav-number">1.8.</span> <span class="nav-text">8.处理消息积压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式搜索引擎"><span class="nav-number">2.</span> <span class="nav-text">分布式搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#es的基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">es的基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">es的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es搜索的性能优化-几十亿"><span class="nav-number">2.3.</span> <span class="nav-text">es搜索的性能优化(几十亿)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式缓存"><span class="nav-number">3.</span> <span class="nav-text">分布式缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用缓存缓存缺点"><span class="nav-number">3.1.</span> <span class="nav-text">为什么用缓存缓存缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis缓存相关知识"><span class="nav-number">3.2.</span> <span class="nav-text">redis缓存相关知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis和memcache主要区别"><span class="nav-number">3.2.1.</span> <span class="nav-text">redis和memcache主要区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis线程模型"><span class="nav-number">3.2.2.</span> <span class="nav-text">redis线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis数据类型以及使用场景"><span class="nav-number">3.2.3.</span> <span class="nav-text">redis数据类型以及使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的过期策略和淘汰机制"><span class="nav-number">3.2.4.</span> <span class="nav-text">redis的过期策略和淘汰机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis高并发和高可用-现在可以直接使用redis集群进行读写的水平扩展"><span class="nav-number">3.2.5.</span> <span class="nav-text">redis高并发和高可用[现在可以直接使用redis集群进行读写的水平扩展]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#redis读写分离架构中的master和slave数据复制-现在一般不用这种架构而是使用redis集群架构"><span class="nav-number">3.2.5.1.</span> <span class="nav-text">redis读写分离架构中的master和slave数据复制[现在一般不用这种架构而是使用redis集群架构]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis高可用架构"><span class="nav-number">3.2.5.2.</span> <span class="nav-text">redis高可用架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis持久化方式-AOF-RDB-以及优缺点"><span class="nav-number">3.2.5.3.</span> <span class="nav-text">redis持久化方式[AOF,RDB]以及优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis-cluster集群-数据会分片到相应的redis-master-slave主从架构"><span class="nav-number">3.2.5.4.</span> <span class="nav-text">redis cluster集群(数据会分片到相应的redis master-slave主从架构)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.</span> <span class="nav-text">分布式系统</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存队列相关"><span class="nav-number">1.</span> <span class="nav-text">缓存队列相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么使用mq？mq的优点？"><span class="nav-number">1.1.</span> <span class="nav-text">1.为什么使用mq？mq的优点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-mq的缺点有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">2.mq的缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主流MQ框架的对比"><span class="nav-number">1.3.</span> <span class="nav-text">3.主流MQ框架的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mq的高可用模式"><span class="nav-number">1.4.</span> <span class="nav-text">4.mq的高可用模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消息重复的处理"><span class="nav-number">1.5.</span> <span class="nav-text">5.消息重复的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-消息丢失情况分析"><span class="nav-number">1.6.</span> <span class="nav-text">6.消息丢失情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-保证消息的顺序性"><span class="nav-number">1.7.</span> <span class="nav-text">7.保证消息的顺序性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-处理消息积压"><span class="nav-number">1.8.</span> <span class="nav-text">8.处理消息积压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式搜索引擎"><span class="nav-number">2.</span> <span class="nav-text">分布式搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#es的基础知识"><span class="nav-number">2.1.</span> <span class="nav-text">es的基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">es的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#es搜索的性能优化-几十亿"><span class="nav-number">2.3.</span> <span class="nav-text">es搜索的性能优化(几十亿)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式缓存"><span class="nav-number">3.</span> <span class="nav-text">分布式缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用缓存缓存缺点"><span class="nav-number">3.1.</span> <span class="nav-text">为什么用缓存缓存缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis缓存相关知识"><span class="nav-number">3.2.</span> <span class="nav-text">redis缓存相关知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis和memcache主要区别"><span class="nav-number">3.2.1.</span> <span class="nav-text">redis和memcache主要区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis线程模型"><span class="nav-number">3.2.2.</span> <span class="nav-text">redis线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis数据类型以及使用场景"><span class="nav-number">3.2.3.</span> <span class="nav-text">redis数据类型以及使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的过期策略和淘汰机制"><span class="nav-number">3.2.4.</span> <span class="nav-text">redis的过期策略和淘汰机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis高并发和高可用-现在可以直接使用redis集群进行读写的水平扩展"><span class="nav-number">3.2.5.</span> <span class="nav-text">redis高并发和高可用[现在可以直接使用redis集群进行读写的水平扩展]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#redis读写分离架构中的master和slave数据复制-现在一般不用这种架构而是使用redis集群架构"><span class="nav-number">3.2.5.1.</span> <span class="nav-text">redis读写分离架构中的master和slave数据复制[现在一般不用这种架构而是使用redis集群架构]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis高可用架构"><span class="nav-number">3.2.5.2.</span> <span class="nav-text">redis高可用架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis持久化方式-AOF-RDB-以及优缺点"><span class="nav-number">3.2.5.3.</span> <span class="nav-text">redis持久化方式[AOF,RDB]以及优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis-cluster集群-数据会分片到相应的redis-master-slave主从架构"><span class="nav-number">3.2.5.4.</span> <span class="nav-text">redis cluster集群(数据会分片到相应的redis master-slave主从架构)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存穿透和缓存雪崩"><span class="nav-number">3.2.5.5.</span> <span class="nav-text">缓存穿透和缓存雪崩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存数据库双写不一致"><span class="nav-number">3.2.5.6.</span> <span class="nav-text">缓存数据库双写不一致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis并发竞争问题"><span class="nav-number">3.2.5.7.</span> <span class="nav-text">redis并发竞争问题</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.</span> <span class="nav-text">分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dubbo工作原理注册中心挂了可以继续通讯么"><span class="nav-number">4.0.1.</span> <span class="nav-text">dubbo工作原理注册中心挂了可以继续通讯么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dubbo的通讯协议以及序列化协议"><span class="nav-number">4.0.2.</span> <span class="nav-text">dubbo的通讯协议以及序列化协议</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1136,7 +1223,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">27.4k</span>
+    <span title="本站总字数">29.0k</span>
   
 </div>
 
