@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maven,docker," />
 
 
 
@@ -96,16 +96,21 @@
 
 
 
-<meta name="description" content="不要在生活中迷失">
-<meta property="og:type" content="website">
-<meta property="og:title" content="senssic">
-<meta property="og:url" content="http://yoursite.com/tags/分布式/index.html">
+<meta name="description" content="搭建docker私有仓库创建私有仓库 拉取仓库镜像 docker pull registry  启动仓库镜像 docker run ‐di ‐‐name=registry ‐p 5000:5000 registry  修改daemon.json,让docker信任私有仓库地址 vi /etc/docker/daemon.json 添加 {&amp;quot;insecure‐registries&amp;quot">
+<meta name="keywords" content="maven,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker的maven插件使用">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="不要在生活中迷失">
+<meta property="og:description" content="搭建docker私有仓库创建私有仓库 拉取仓库镜像 docker pull registry  启动仓库镜像 docker run ‐di ‐‐name=registry ‐p 5000:5000 registry  修改daemon.json,让docker信任私有仓库地址 vi /etc/docker/daemon.json 添加 {&amp;quot;insecure‐registries&amp;quot">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/maven的docker插件_01.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/maven的docker插件_02.png">
+<meta property="og:updated_time" content="2019-01-06T16:49:57.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="senssic">
-<meta name="twitter:description" content="不要在生活中迷失">
+<meta name="twitter:title" content="docker的maven插件使用">
+<meta name="twitter:description" content="搭建docker私有仓库创建私有仓库 拉取仓库镜像 docker pull registry  启动仓库镜像 docker run ‐di ‐‐name=registry ‐p 5000:5000 registry  修改daemon.json,让docker信任私有仓库地址 vi /etc/docker/daemon.json 添加 {&amp;quot;insecure‐registries&amp;quot">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/maven的docker插件_01.png">
 
 
 
@@ -135,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/分布式/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/"/>
 
 
 
 
 
-  <title>标签: 分布式 | senssic</title>
+  <title>docker的maven插件使用 | senssic</title>
   
 
 
@@ -170,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,54 +313,277 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>分布式<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/senssic.github.io/docker的maven插件使用/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="senssic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="senssic">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/08/17/senssic.github.io/分布式锁的常见实现/" itemprop="url">
-              
-                <span itemprop="name">分布式锁的常见实现</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">docker的maven插件使用</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-17T00:12:53+08:00"
-              content="2018-08-17" >
-          08-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T17:57:07+08:00">
+                2019-01-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/插件/" itemprop="url" rel="index">
+                    <span itemprop="name">插件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/06/senssic.github.io/docker的maven插件使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/06/senssic.github.io/docker的maven插件使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/06/senssic.github.io/docker的maven插件使用/" class="leancloud_visitors" data-flag-title="docker的maven插件使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+                
+			   <span class="leancloud-visitors-count"></span>
+			   <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  992
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="搭建docker私有仓库"><a href="#搭建docker私有仓库" class="headerlink" title="搭建docker私有仓库"></a>搭建docker私有仓库</h1><h3 id="创建私有仓库"><a href="#创建私有仓库" class="headerlink" title="创建私有仓库"></a>创建私有仓库</h3><ul>
+<li><p>拉取仓库镜像</p>
+<p>docker pull registry</p>
+</li>
+<li><p>启动仓库镜像</p>
+<p>docker run ‐di ‐‐name=registry ‐p 5000:5000 registry</p>
+</li>
+<li><p>修改daemon.json,让docker信任私有仓库地址</p>
+<p>vi /etc/docker/daemon.json</p>
+<p>添加</p>
+<p><code>{&quot;insecure‐registries&quot;:[&quot;127.0.0.1:5000&quot;]}</code></p>
+</li>
+<li><p>重启docker服务</p>
+<p>systemctl restart docker</p>
+</li>
+</ul>
+<h3 id="镜像上传到私有仓库"><a href="#镜像上传到私有仓库" class="headerlink" title="镜像上传到私有仓库"></a>镜像上传到私有仓库</h3><p>为了验证私有仓库搭建以及能正常上传到私有仓库,新建tag并尝试push镜像</p>
+<ul>
+<li><p>标记此镜像为私有仓库的镜像</p>
+<p>docker tag java:8 127.0.0.1:5000/jdk1.8</p>
+<p>注意:java:8为本身已经存在的镜像</p>
+</li>
+<li><p>再次启动私服容器</p>
+<p>docker start registry</p>
+</li>
+<li><p>上传标记的镜像</p>
+<p>docker push 127.0.0.1:5000/jdk1.8</p>
+<p><img src="maven的docker插件_01.png" alt="上传标记的镜像"></p>
+</li>
+</ul>
+<h3 id="docker的maven插件使用"><a href="#docker的maven插件使用" class="headerlink" title="docker的maven插件使用"></a>docker的maven插件使用</h3><h3 id="生成TLS认证远程访问-Docker"><a href="#生成TLS认证远程访问-Docker" class="headerlink" title="生成TLS认证远程访问 Docker"></a>生成TLS认证远程访问 Docker</h3><p>需要生成三种证书类型:</p>
+<ul>
+<li>CA 证书用来生成客户端和服务端证书</li>
+<li>远端Docker使用的客户端生疏</li>
+<li>服务端使用的Docker daemon证书</li>
+</ul>
+<h4 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"># 生成 CA 私钥</span><br><span class="line"></span><br><span class="line">$ openssl genrsa -aes256 -out ca-key.pem 4096</span><br><span class="line"></span><br><span class="line"># 需要输入两次密码(自定义)</span><br><span class="line"></span><br><span class="line"># 生成 CA 公钥</span><br><span class="line"></span><br><span class="line">$ openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem</span><br><span class="line"></span><br><span class="line"># 输入上一步中设置的密码，然后需要填写一些信息</span><br><span class="line"></span><br><span class="line"># 下面是服务器证书生成</span><br><span class="line"></span><br><span class="line"># 生成服务器私钥</span><br><span class="line"></span><br><span class="line">$ openssl genrsa -out server-key.pem 4096</span><br><span class="line"></span><br><span class="line"># 用私钥生成证书请求文件</span><br><span class="line"></span><br><span class="line">$ openssl req -subj &quot;/CN=localhost&quot; -sha256 -new -key server-key.pem -out server.csr</span><br><span class="line"></span><br><span class="line">$ echo subjectAltName = DNS:localhost,DNS:www.khs1994.com,DNS:tencent,IP:192.168.199.100,IP:192.168.57.110,IP:127.0.0.1 &gt;&gt; extfile.cnf</span><br><span class="line"></span><br><span class="line"># 允许服务端哪些 IP 或 host 能被客户端连接，下文会进行测试。</span><br><span class="line"></span><br><span class="line"># DNS 我也不是很理解，这里配置 localhost ，公共 DNS 解析的域名，/etc/hosts 文件中的列表进行测试。</span><br><span class="line"></span><br><span class="line">$ echo extendedKeyUsage = serverAuth &gt;&gt; extfile.cnf</span><br><span class="line"></span><br><span class="line"># 用 CA 来签署证书</span><br><span class="line"></span><br><span class="line">$ openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem \</span><br><span class="line">  -CAcreateserial -out server-cert.pem -extfile extfile.cnf</span><br><span class="line"></span><br><span class="line"># 再次输入第一步设置的密码</span><br><span class="line"></span><br><span class="line"># 下面是客户端证书文件生成</span><br><span class="line"></span><br><span class="line"># 生成客户端私钥</span><br><span class="line"></span><br><span class="line">$ openssl genrsa -out key.pem 4096</span><br><span class="line"></span><br><span class="line"># 用私钥生成证书请求文件  </span><br><span class="line"></span><br><span class="line">$ openssl req -subj &apos;/CN=client&apos; -new -key key.pem -out client.csr</span><br><span class="line"></span><br><span class="line">$ echo extendedKeyUsage = clientAuth &gt;&gt; extfile.cnf</span><br><span class="line"></span><br><span class="line"># 用 CA 来签署证书</span><br><span class="line"></span><br><span class="line">$ openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem \</span><br><span class="line">  -CAcreateserial -out cert.pem -extfile extfile.cnf</span><br><span class="line"></span><br><span class="line"># 再次输入第一步设置的密码</span><br><span class="line"></span><br><span class="line"># 删除文件，更改文件权限</span><br><span class="line"></span><br><span class="line">$ rm -v client.csr server.csr</span><br><span class="line"></span><br><span class="line">$ chmod -v 0400 ca-key.pem key.pem server-key.pem</span><br><span class="line"></span><br><span class="line">$ chmod -v 0444 ca.pem server-cert.pem cert.pem</span><br></pre></td></tr></table></figure>
+<p>把 <code>ca.pem</code> <code>server-cert.pem</code> <code>server-key.pem</code> 三个文件移动到 <code>/etc/docker/</code> 文件夹中。</p>
+<h4 id="在远端配置Docker"><a href="#在远端配置Docker" class="headerlink" title="在远端配置Docker"></a>在远端配置Docker</h4><p>配置/etc/docker/daemon.json文件如下,注意,镜像地址与本文无关,可不配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;insecure-registries&quot;:[&quot;127.0.0.1:5000&quot;],</span><br><span class="line">  &quot;tlsverify&quot;: true,</span><br><span class="line">  &quot;tlscacert&quot;: &quot;/etc/docker/ca.pem&quot;,</span><br><span class="line">  &quot;tlscert&quot;: &quot;/etc/docker/server-cert.pem&quot;,</span><br><span class="line">  &quot;tlskey&quot;: &quot;/etc/docker/server-key.pem&quot;,</span><br><span class="line">  &quot;hosts&quot;: [&quot;tcp://0.0.0.0:2376&quot;,&quot;unix:///var/run/docker.sock&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CoreOS-官方文档的方法"><a href="#CoreOS-官方文档的方法" class="headerlink" title="CoreOS 官方文档的方法"></a>CoreOS 官方文档的方法</h3><p>首先需要修改 <code>/etc/systemd/system/docker-tcp.socket</code> 文件内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ListenStream=2375</span><br><span class="line"></span><br><span class="line"># 修改为</span><br><span class="line"></span><br><span class="line">ListenStream=2376</span><br></pre></td></tr></table></figure>
+<p>重新启动服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line">$ sudo systemctl stop docker</span><br><span class="line">$ sudo systemctl restart docker-tcp.socket</span><br><span class="line">$ sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>将 <code>ca.pem</code> <code>cert.pem</code> <code>key.pem</code>下载到客户端,放置到~/.docker目录下</p>
+<p>运行测试命令</p>
+<p>docker –tlsverify -H=tcp://207.246.117.90:2376 info</p>
+<p><img src="maven的docker插件_02.png" alt="成功返回docker信息"></p>
+<h3 id="Maven插件自动部署步"><a href="#Maven插件自动部署步" class="headerlink" title="Maven插件自动部署步"></a>Maven插件自动部署步</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.4.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>127.0.0.1:5000/$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">baseImage</span>&gt;</span>java:8<span class="tag">&lt;/<span class="name">baseImage</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">entryPoint</span>&gt;</span>["java", "-jar", "/$&#123;project.build.finalName&#125;.jar"]<span class="tag">&lt;/<span class="name">entryPoint</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--&lt;dockerDirectory&gt;$&#123;project.basedir&#125;/src/main/docker&lt;/dockerDirectory&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http://207.246.117.90:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerCertPath</span>&gt;</span>/Users/senssic/.docker/<span class="tag">&lt;/<span class="name">dockerCertPath</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/maven/" rel="tag"><i class="fa fa-tag"></i>
+
+ maven</a>
+          
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i>
+
+ docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/senssic.github.io/杂记文档/" rel="next" title="杂记文档">
+                <i class="fa fa-chevron-left"></i> 杂记文档
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +591,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -383,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -448,6 +692,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建docker私有仓库"><span class="nav-number">1.</span> <span class="nav-text">搭建docker私有仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有仓库"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建私有仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像上传到私有仓库"><span class="nav-number">1.0.2.</span> <span class="nav-text">镜像上传到私有仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker的maven插件使用"><span class="nav-number">1.0.3.</span> <span class="nav-text">docker的maven插件使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成TLS认证远程访问-Docker"><span class="nav-number">1.0.4.</span> <span class="nav-text">生成TLS认证远程访问 Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端配置"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">服务端配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在远端配置Docker"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">在远端配置Docker</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CoreOS-官方文档的方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">CoreOS 官方文档的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven插件自动部署步"><span class="nav-number">1.0.6.</span> <span class="nav-text">Maven插件自动部署步</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -587,6 +847,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
