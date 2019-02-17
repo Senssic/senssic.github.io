@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/8.png">
-<meta property="og:updated_time" content="2019-02-17T15:32:41.795Z">
+<meta property="og:updated_time" content="2019-02-17T15:36:31.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql索引原理">
 <meta name="twitter:description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,223
+                  2,249
                 </span>
               
 
@@ -573,7 +573,9 @@
 </table>
 <p>结果值从好到坏依次是：<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL</p>
 <h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>通过上面的了解,我们可以大概明白开始的几个问题,对于常用的InnoDB的索引,不建议使用过长的字段作为主键,因为对于InnoDB所有辅助索引的子节点数据都是引用主索引,若主索引过大会令辅助索引变得过大,十分占用索引文件。而一般用自增是因为InnoDB数据文件本身是一个B+树,非单调的主键会造成在插入新记录的时候为维持B+tree的数据单调而频繁的移动位置和页分裂调整。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000015416513" target="_blank" rel="noopener">Mysql联合索引最左匹配原则</a></p>
+<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></p>
+
       
     </div>
     
