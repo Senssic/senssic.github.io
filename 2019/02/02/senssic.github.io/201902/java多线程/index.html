@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="java多线程编程进程与线程 进程是资源分配的最小单位,线程是程序执行的最小单位。  进程:进程是程序执行的一个实例，系统进行资源分配和调度的一个独立单位，是担当资源分配的最小单位； 线程:线程是进程的一个执行流,是CPU调度和分派的基本单位。一个线程就是一个独立的栈结构，每个进程至少有一个线程。  1) New新建状态：当程序使用 new 关键字创建了一个线程后，该线程就处于新建状态，此时线程还">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/02/senssic.github.io/201902/java多线程/pic_001.jpg">
-<meta property="og:updated_time" content="2019-02-02T09:01:18.961Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/02/senssic.github.io/201902/java多线程/pic_001.png">
+<meta property="og:updated_time" content="2019-02-18T13:05:27.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程">
 <meta name="twitter:description" content="java多线程编程进程与线程 进程是资源分配的最小单位,线程是程序执行的最小单位。  进程:进程是程序执行的一个实例，系统进行资源分配和调度的一个独立单位，是担当资源分配的最小单位； 线程:线程是进程的一个执行流,是CPU调度和分派的基本单位。一个线程就是一个独立的栈结构，每个进程至少有一个线程。  1) New新建状态：当程序使用 new 关键字创建了一个线程后，该线程就处于新建状态，此时线程还">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/02/senssic.github.io/201902/java多线程/pic_001.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/02/senssic.github.io/201902/java多线程/pic_001.png">
 
 
 
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,560
+                  2,535
                 </span>
               
 
@@ -474,7 +474,7 @@
 </blockquote>
 <p>进程:进程是程序执行的一个实例，系统进行资源分配和调度的一个独立单位，是担当资源分配的最小单位；</p>
 <p>线程:线程是进程的一个执行流,是CPU调度和分派的基本单位。一个线程就是一个独立的栈结构，每个进程至少有一个线程。</p>
-<p><img src="pic_001.jpg" alt="java线程状态"></p>
+<p><img src="pic_001.png" alt="java线程状态"></p>
 <p><strong>1) New新建状态：</strong><br>当程序使用 new 关键字创建了一个线程后，该线程就处于新建状态，此时线程还未启动（此时还是一个普通的对象）；</p>
 <p><strong>2) Runnable就绪状态：</strong><br>一个新创建的线程并不自动开始运行，要执行线程，必须调用线程的 start() 方法（这时才是一个真正的线程而不是普通对象）；<br>当线程对象调用 start() 方法即启动了线程，start() 方法创建线程运行的系统资源，并调度线程运行 run() 方法；当 start() 方法返回后，线程就处于就绪状态；处于就绪状态的线程并不一定立即运行 run() 方法，线程还必须同其它线程竞争 CPU 时间，只有获得 CPU 时间才可以运行线程；<br>因为在单 CPU 的计算机系统中，不可能同时运行多个线程，一个时刻仅有一个线程处于运行状态；因此此时可能有多个线程处于就绪状态；对多个处于就绪状态的线程是由 Java 运行时系统的线程调度程序来调度的；</p>
 <p><strong>3) Running运行状态：</strong><br>当线程获得 CPU 时间后，它才进入运行状态，真正开始执行 run() 方法（此时线程获得 CPU 时间片，真正开始运行）；</p>
@@ -500,7 +500,7 @@
 <blockquote>
 <p>synchronized 用于线程间的数据共享，而 ThreadLocal 则用于线程间的数据隔离。</p>
 </blockquote>
-<p><strong>ThreadLocal 实现原理</strong><br>具体的源码分析过程这里就不贴出来了，我简略的概括一下：</p>
+<p><strong>ThreadLocal 实现原理</strong></p>
 <ul>
 <li>每个 Thread 对象中都有一个<code>ThreadLocal.ThreadLocalMap threadLocals = null</code>成员，ThreadLocalMap 就是一个普通的 Map，Key 为 ThreadLocal 类，Value 则为 Object 类；因此每个线程可以同时维护多个 ThreadLocal - Object 键值对。</li>
 <li>ThreadLocalMap 的 Key 是<strong>弱引用对象</strong>（如果一个对象只存在弱引用，那么它随时都会被 GC）；而 Value 则是强引用的；为了避免内存泄漏，在<code>get()</code>、<code>set()</code>、<code>remove()</code>方法内部会自动清理所有 Key 为 null 的 Value；当然还是建议使用 remove() 来显式的释放。</li>
@@ -639,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -729,7 +729,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">39.0k</span>
+    <span title="本站总字数">42.6k</span>
   
 </div>
 
