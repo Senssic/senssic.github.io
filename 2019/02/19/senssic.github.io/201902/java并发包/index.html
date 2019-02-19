@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/19/senssic.github.io/201902/java并发包/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/19/senssic.github.io/201902/java并发包/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/19/senssic.github.io/201902/java并发包/8.png">
-<meta property="og:updated_time" content="2019-02-19T17:03:16.387Z">
+<meta property="og:updated_time" content="2019-02-19T17:18:20.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java并发包">
 <meta name="twitter:description" content="JAVA并发包简介J.U.C框架是jdk1.5引入的。主要包含：  Executor框架(线程池,Callable,Future),任务的执行和调度框架; AbstractQueueSynchronizer(AQS框架),并发包中实现锁和同步机制的基础,AQS的以CAS和volatile为基础实现的; Locks&amp;amp;Condition(锁和条件变量),比synchronized,wait,n">
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  14,795
+                  14,792
                 </span>
               
 
@@ -510,8 +510,7 @@
 </li>
 <li><p><code>keepAliveTime</code>：空闲线程的存活时间（默认针对临时线程）；</p>
 </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unit</span><br></pre></td></tr></table></figure>
-<p>：keepAliveTime 单位；</p>
+<li><p><code>unit</code>：keepAliveTime 单位；</p>
 <ul>
 <li><code>TimeUnit.NANOSECONDS</code>纳秒</li>
 <li><code>TimeUnit.MICROSECONDS</code>微秒</li>
@@ -522,8 +521,7 @@
 <li><code>TimeUnit.DAYS</code>天</li>
 </ul>
 </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workQueue</span><br></pre></td></tr></table></figure>
-<p>：缓存任务的阻塞队列；</p>
+<li><p><code>workQueue</code>：缓存任务的阻塞队列；</p>
 <ul>
 <li><code>ArrayBlockingQueue</code>：一个由<code>数组结构</code>组成的<code>有界</code>阻塞队列；</li>
 <li><code>LinkedBlockingQueue</code>：一个由<code>链表结构</code>组成的<code>有界</code>阻塞队列；</li>
@@ -536,8 +534,7 @@
 </li>
 <li><p><code>threadFactory</code>：创建线程的工厂；</p>
 </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handler</span><br></pre></td></tr></table></figure>
-<p>：当 workQueue 已满，且线程数达 maximumPoolSize 时，拒绝新任务采取的策略；</p>
+<li><p><code>handler</code>：当 workQueue 已满，且线程数达 maximumPoolSize 时，拒绝新任务采取的策略；</p>
 <ul>
 <li><code>ThreadPoolExecutor.AbortPolicy</code>：（默认）丢弃新任务并抛出 RejectedExecutionException 异常（RT）</li>
 <li><code>ThreadPoolExecutor.CallerRunsPolicy</code>：让调用线程执行新任务</li>
@@ -577,7 +574,7 @@
 <p>方式一：首先定义任务集合，然后定义 Future 集合用于存放执行结果，执行任务，最后遍历 Future 集合获取结果；<br>优点：可以依次得到有序的结果；<br>缺点：不能及时获取已完成的结果；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService pool = Executors.newCachedThreadPool();</span><br><span class="line">       List&lt;Future&lt;String&gt;&gt; futures = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">       futures.add(pool.submit(<span class="keyword">new</span> Task(<span class="string">"Task-A"</span>)));</span><br><span class="line">       futures.add(pool.submit(<span class="keyword">new</span> Task(<span class="string">"Task-B"</span>)));</span><br><span class="line">       futures.add(pool.submit(<span class="keyword">new</span> Task(<span class="string">"Task-C"</span>)));</span><br><span class="line">       futures.add(pool.submit(<span class="keyword">new</span> Task(<span class="string">"Task-D"</span>)));</span><br><span class="line">       futures.add(pool.submit(<span class="keyword">new</span> Task(<span class="string">"Task-E"</span>)));</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (Future&lt;String&gt; future : futures)</span><br><span class="line">           <span class="comment">//阻塞获取,可以依次获取结果,不能及时获取已完成的结果</span></span><br><span class="line">           System.out.println(<span class="string">"task result: "</span> + future.get());</span><br><span class="line">       pool.shutdown();</span><br></pre></td></tr></table></figure>
 <p>方式二：首先定义任务集合，通过 CompletionService 包装 Executor 来执行任务，然后调用其 take() 方法去取 Future 对象；<br>优点：能及时得到已完成的结果；<br>缺点：不能依次得到有序的结果；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">        ExecutorCompletionService&lt;String&gt; executorCompletion =</span><br><span class="line">            new ExecutorCompletionService&lt;&gt;(executor);</span><br><span class="line">        executorCompletion.submit(new Task(&quot;Task-A&quot;));</span><br><span class="line">        executorCompletion.submit(new Task(&quot;Task-B&quot;));</span><br><span class="line">        executorCompletion.submit(new Task(&quot;Task-C&quot;));</span><br><span class="line">        executorCompletion.submit(new Task(&quot;Task-D&quot;));</span><br><span class="line">        executorCompletion.submit(new Task(&quot;Task-E&quot;));</span><br><span class="line">        for (int i = 0; i &lt; 5; i++)</span><br><span class="line">        	//能及时获取最先完成的结果,但不能知道完成的顺序</span><br><span class="line">            System.out.println(&quot;task result: &quot; + executorCompletion.take().get());</span><br><span class="line">        executor.shutdown();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">        ExecutorCompletionService&lt;String&gt; executorCompletion =</span><br><span class="line">            <span class="keyword">new</span> ExecutorCompletionService&lt;&gt;(executor);</span><br><span class="line">        executorCompletion.submit(<span class="keyword">new</span> Task(<span class="string">"Task-A"</span>));</span><br><span class="line">        executorCompletion.submit(<span class="keyword">new</span> Task(<span class="string">"Task-B"</span>));</span><br><span class="line">        executorCompletion.submit(<span class="keyword">new</span> Task(<span class="string">"Task-C"</span>));</span><br><span class="line">        executorCompletion.submit(<span class="keyword">new</span> Task(<span class="string">"Task-D"</span>));</span><br><span class="line">        executorCompletion.submit(<span class="keyword">new</span> Task(<span class="string">"Task-E"</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">        	<span class="comment">//能及时获取最先完成的结果,但不能知道完成的顺序</span></span><br><span class="line">            System.out.println(<span class="string">"task result: "</span> + executorCompletion.take().get());</span><br><span class="line">        executor.shutdown();</span><br></pre></td></tr></table></figure>
 <p>在方式一中，从集合中遍历的每个 Future 对象并不一定处于完成状态，这时调用 get() 方法就会被阻塞住，所以后面的任务即使已完成也不能得到结果；<br>而方式二中，CompletionService 的实现是维护一个保存 Future 对象的 BlockingQueue，只有当这个 Future 对象状态是结束的时候，才会加入到这个 Queue 中，所以调用 take() 能从阻塞队列中拿到最新的已完成任务的结果；</p>
 <h3 id="Fork-Join-并行框架"><a href="#Fork-Join-并行框架" class="headerlink" title="Fork/Join 并行框架"></a>Fork/Join 并行框架</h3><p>Fork/Join 框架是 Java7 提供的一个用于并行执行任务的框架，是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。</p>
 <p><img src="2.png" alt="Fork/Join框架"></p>
@@ -626,7 +623,7 @@
 </ol>
 <p><strong>偏向锁的释放过程</strong><br>当线程持有偏向锁后，并不会主动去释放偏向锁，只有当其它线程尝试竞争锁时才会发生偏向锁撤销。具体的撤销细节在上面的步骤 4 中有说到。因为存在 STW，虽然很短暂，但是如果频繁出现，会对性能产生较大影响。</p>
 <p><img src="5.png" alt="偏向锁的获取和释放过程"></p>
-<p>轻量级锁的获取过程**</p>
+<p><strong>轻量级锁的获取过程</strong></p>
 <ol>
 <li>如果对象为无锁状态，即锁标志位为 01 且偏向锁标志位为 0；那么将在当前线程栈中创建锁记录（Lock Record）空间，用于存放当前对象头的 Mark Word 拷贝（称为 Displaced Mark Word）；</li>
 <li>拷贝当前对象头的 Mark Word 字段至锁记录空间；</li>
