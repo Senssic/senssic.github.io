@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="数据库," />
+  <meta name="keywords" content="spring," />
 
 
 
@@ -96,27 +96,18 @@
 
 
 
-<meta name="description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
-<meta name="keywords" content="数据库">
+<meta name="description" content="spring注解1.声明bean的注解@Component 组件，没有明确的角色 @Service 在业务逻辑层使用（service层） @Repository 在数据访问层使用（dao层） @Controller 在展现层使用，控制器的声明（C） 2.注入bean的注解@Autowired：由Spring提供 @Inject：由JSR-330提供 @Resource：由JSR-250提供 都可以">
+<meta name="keywords" content="spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql索引原理">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/index.html">
+<meta property="og:title" content="spring和springboot主要注解">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
+<meta property="og:description" content="spring注解1.声明bean的注解@Component 组件，没有明确的角色 @Service 在业务逻辑层使用（service层） @Repository 在数据访问层使用（dao层） @Controller 在展现层使用，控制器的声明（C） 2.注入bean的注解@Autowired：由Spring提供 @Inject：由JSR-330提供 @Resource：由JSR-250提供 都可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/2.gif">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/4.gif">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/8.png">
-<meta property="og:updated_time" content="2019-02-17T15:36:31.030Z">
+<meta property="og:updated_time" content="2019-02-26T14:36:37.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql索引原理">
-<meta name="twitter:description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/1.png">
+<meta name="twitter:title" content="spring和springboot主要注解">
+<meta name="twitter:description" content="spring注解1.声明bean的注解@Component 组件，没有明确的角色 @Service 在业务逻辑层使用（service层） @Repository 在数据访问层使用（dao层） @Controller 在展现层使用，控制器的声明（C） 2.注入bean的注解@Autowired：由Spring提供 @Inject：由JSR-330提供 @Resource：由JSR-250提供 都可以">
 
 
 
@@ -146,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/"/>
 
 
 
 
 
-  <title>mysql索引原理 | senssic</title>
+  <title>spring和springboot主要注解 | senssic</title>
   
 
 
@@ -333,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -350,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mysql索引原理</h1>
+          <h1 class="post-title" itemprop="name headline">spring和springboot主要注解</h1>
         
 
         <div class="post-meta">
@@ -362,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-17T21:21:10+08:00">
-                2019-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T21:21:10+08:00">
+                2019-02-26
               </time>
             
 
@@ -386,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
                   </a>
                 </span>
 
@@ -404,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/17/senssic.github.io/201902/MySql索引原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/17/senssic.github.io/201902/MySql索引原理/" itemprop="commentCount"></span>
+                <a href="/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -413,7 +404,7 @@
 
           
           
-             <span id="/2019/02/17/senssic.github.io/201902/MySql索引原理/" class="leancloud_visitors" data-flag-title="mysql索引原理">
+             <span id="/2019/02/26/senssic.github.io/201902/spring和springboot主要注解/" class="leancloud_visitors" data-flag-title="spring和springboot主要注解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,249
+                  2,648
                 </span>
               
 
@@ -455,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  10
                 </span>
               
             </div>
@@ -476,105 +467,145 @@
       
 
       
-        <p>在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？</p>
-<p>带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。</p>
-<h2 id="B-tree和B-tree"><a href="#B-tree和B-tree" class="headerlink" title="B-tree和B+tree"></a>B-tree和B+tree</h2><p>b树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数都是最优的,但对于需要访问磁盘IO这种慢操作就不太适用了,使用B树可以使计算机在IO操作的时候基于局部原理和磁盘预读的页读取更少。进而使IO操作更少,每次都恰好读取到B树的一个节点数据。</p>
-<h3 id="B-tree的特点"><a href="#B-tree的特点" class="headerlink" title="B-tree的特点"></a>B-tree的特点</h3><p>一个M阶的b树具有如下几个特征(M阶为每个节点最多包含M个孩子)：定义任意非叶子结点最多只有M个儿子，且M&gt;2；</p>
-<ol>
-<li>根结点的儿子数为[2, M]；</li>
-<li>除根结点以外的非叶子结点的儿子数为[M/2, M]，向上取整；</li>
-<li>非叶子结点的关键字个数=儿子数-1；</li>
-<li>所有叶子结点位于同一层；</li>
-<li>k个关键字把节点拆成k+1段，分别指向k+1个儿子，同时满足查找树的大小关系。</li>
-</ol>
-<p>如图为一个M=4的B树</p>
-<p><img src="1.png" alt="M=4阶的b树"></p>
-<p>依次插入<strong>6 10 4 14 5 11 15 3 2 12 1 7 8 8 6 3 6 21 5 15 15 6 32 23 45 65 7 8 6 5 4</strong>B树的演示图片</p>
-<p><img src="2.gif" alt="b树的插入"></p>
-<h3 id="B-tree的特点-1"><a href="#B-tree的特点-1" class="headerlink" title="B+tree的特点"></a>B+tree的特点</h3><p>b+tree是b-tree的一种变形,在B树的基础上有如下新特点</p>
-<ul>
-<li>有k个子结点的结点必然有k个关键码；</li>
-<li>非叶结点仅具有索引作用，跟记录有关的信息均存放在叶结点中。</li>
-<li>树的所有叶结点构成一个有序链表，可以按照关键码排序的次序遍历全部记录。</li>
-</ul>
-<p>如图为一个M=4的B+树</p>
-<p><img src="3.png" alt="M=4的b+树"></p>
-<p>B+树的插入演示</p>
-<p><img src="4.gif" alt="b+树的演示"></p>
-<p>相较于B树,B+树的非叶子结点只包含导航信息,不包含实际的值,所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。但B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。</p>
-<h2 id="MyISAM的索引和InnoDB索引"><a href="#MyISAM的索引和InnoDB索引" class="headerlink" title="MyISAM的索引和InnoDB索引"></a>MyISAM的索引和InnoDB索引</h2><h3 id="一-、MyISAM的索引"><a href="#一-、MyISAM的索引" class="headerlink" title="一 、MyISAM的索引"></a>一 、MyISAM的索引</h3><p>MyISAM的索引方式是“非聚集”索引。MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是<strong>*数据记录的地址*</strong>。</p>
-<h4 id="1-MyISam主索引"><a href="#1-MyISam主索引" class="headerlink" title="1. MyISam主索引"></a>1. MyISam主索引</h4><p><img src="5.png" alt="MyISAM表的主索引"></p>
-<p>如图一共有三列，假设我们以Col1为主键，以col1构造B+树。B+树的叶子节点上保存的是该记录的地址，可以理解为该行数据的物理存储位置。</p>
-<h4 id="2-MyISam辅助索引"><a href="#2-MyISam辅助索引" class="headerlink" title="2. MyISam辅助索引"></a>2. MyISam辅助索引</h4><p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。</p>
-<p><img src="6.png" alt="Myisam 辅助索引(Second index)"></p>
-<p>如图，在col2上建立辅助索引，则以col2构造B+树，B+树的叶子节点上保存的是该记录的地址。</p>
-<h3 id="二、InnoDB索引"><a href="#二、InnoDB索引" class="headerlink" title="二、InnoDB索引"></a>二、InnoDB索引</h3><p>在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的<strong>叶节点data域保存了完整的数据记录</strong>。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
-<h4 id="1-InnoDB主索引"><a href="#1-InnoDB主索引" class="headerlink" title="1. InnoDB主索引"></a>1. InnoDB主索引</h4><p>因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形.</p>
-<p><img src="7.png" alt="InnoDB主索引（同时也是数据文件）"></p>
-<p>如图，主键是col1，则根据col1构造B+树,整个数据行其实就存在B+树的叶子上。</p>
-<h4 id="2-InnoDB的辅助索引"><a href="#2-InnoDB的辅助索引" class="headerlink" title="2. InnoDB的辅助索引"></a>2. InnoDB的辅助索引</h4><p>InnoDB的辅助索引<strong>data域存储相应记录主键的值而不是地址</strong>。</p>
-<p><img src="8.png" alt="InnoDB的辅助索引"></p>
-<p>如图在col3上建立辅助索引，则根据col3构造B+树，B+树的叶节点存的是该行的主键，即col1的值。</p>
-<p>在Innodb中，聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</p>
-<h2 id="最左前匹配原则"><a href="#最左前匹配原则" class="headerlink" title="最左前匹配原则"></a>最左前匹配原则</h2><p>在mysql建立联合索引时会遵循最左前缀匹配的原则，即最左优先，在检索数据时从联合索引的最左边开始匹配，示例：<br>对列col1、列col2和列col3建一个联合索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEY test_col1_col2_col3 on test(col1,col2,col3);</span><br></pre></td></tr></table></figure>
-<p>联合索引 test_col1_col2_col3 实际建立了(col1)、(col1,col2)、(col,col2,col3)三个索引。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col1=“<span class="number">1</span>” <span class="keyword">AND</span> clo2=“<span class="number">2</span>” <span class="keyword">AND</span> clo4=“<span class="number">4</span>”</span><br></pre></td></tr></table></figure>
-<p>上面这个查询语句执行时会依照最左前缀匹配原则，检索时会使用索引(col1,col2)进行数据匹配。</p>
-<p><strong><em>SELECT </em> FROM test WHERE  clo2=“2”*</strong><br>会触发索引么,答案是会的,只是触发的类型为index,表示msql会对整个索引进行扫描,只要是索引或者某个联合索引的一部分,mysql会从索引中的一个数据一个个查找到最后一个数据,直到找到符合判断条件的某个索引。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col2=<span class="number">2</span>;   <span class="comment">--type=index</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col1=<span class="number">1</span>;   <span class="comment">--type=ref</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
-<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
-</ul>
-<p><strong>对于Explain中Type字段的说明</strong></p>
-<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>type显示的是访问类型，是较为重要的一个指标，结果值从好到坏依次是：<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL ，一般来说，得保证查询至少达到range级别，最好能达到ref。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>All</td>
-<td>最坏的情况,全表扫描</td>
-</tr>
-<tr>
-<td>index</td>
-<td>和全表扫描一样。只是扫描表的时候按照索引次序进行而不是行。主要优点就是避免了排序, 但是开销仍然非常大。如在Extra列看到Using index，说明正在使用覆盖索引，只扫描索引的数据，它比按索引次序全表扫描的开销要小很多</td>
-</tr>
-<tr>
-<td>range</td>
-<td>范围扫描，一个有限制的索引扫描。key 列显示使用了哪个索引。当使用=、 &lt;&gt;、&gt;、&gt;=、&lt;、&lt;=、IS NULL、&lt;=&gt;、BETWEEN 或者 IN 操作符,用常量比较关键字列时,可以使用 range</td>
-</tr>
-<tr>
-<td>ref</td>
-<td>一种索引访问，它返回所有匹配某个单个值的行。此类索引访问只有当使用非唯一性索引或唯一性索引非唯一性前缀时才会发生。这个类型跟eq_ref不同的是，它用在关联操作只使用了索引的最左前缀，或者索引不是UNIQUE和PRIMARY KEY。ref可以用于使用=或&lt;=&gt;操作符的带索引的列。</td>
-</tr>
-<tr>
-<td>eq_ref</td>
-<td>最多只返回一条符合条件的记录。使用唯一性索引或主键查找时会发生 （高效）</td>
-</tr>
-<tr>
-<td>const</td>
-<td>当确定最多只会有一行匹配的时候，MySQL优化器会在查询前读取它而且只读取一次，因此非常快。当主键放入where子句时，mysql把这个查询转为一个常量（高效）</td>
-</tr>
-<tr>
-<td>system</td>
-<td>这是const连接类型的一种特例，表仅有一行满足条件。</td>
-</tr>
-<tr>
-<td>Null</td>
-<td>意味说mysql能在优化阶段分解查询语句，在执行阶段甚至用不到访问表或索引（高效）</td>
-</tr>
-</tbody>
-</table>
-<p>结果值从好到坏依次是：<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL</p>
-<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>通过上面的了解,我们可以大概明白开始的几个问题,对于常用的InnoDB的索引,不建议使用过长的字段作为主键,因为对于InnoDB所有辅助索引的子节点数据都是引用主索引,若主索引过大会令辅助索引变得过大,十分占用索引文件。而一般用自增是因为InnoDB数据文件本身是一个B+树,非单调的主键会造成在插入新记录的时候为维持B+tree的数据单调而频繁的移动位置和页分裂调整。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000015416513" target="_blank" rel="noopener">Mysql联合索引最左匹配原则</a></p>
-<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></p>
+        <h1 id="spring注解"><a href="#spring注解" class="headerlink" title="spring注解"></a>spring注解</h1><h2 id="1-声明bean的注解"><a href="#1-声明bean的注解" class="headerlink" title="1.声明bean的注解"></a>1.声明bean的注解</h2><p>@Component 组件，没有明确的角色</p>
+<p>@Service 在业务逻辑层使用（service层）</p>
+<p>@Repository 在数据访问层使用（dao层）</p>
+<p>@Controller 在展现层使用，控制器的声明（C）</p>
+<h2 id="2-注入bean的注解"><a href="#2-注入bean的注解" class="headerlink" title="2.注入bean的注解"></a>2.注入bean的注解</h2><p>@Autowired：由Spring提供</p>
+<p>@Inject：由JSR-330提供</p>
+<p>@Resource：由JSR-250提供</p>
+<p>都可以注解在set方法和属性上，推荐注解在属性上（一目了然，少写代码）。</p>
+<h2 id="3-java配置类相关注解"><a href="#3-java配置类相关注解" class="headerlink" title="3.java配置类相关注解"></a>3.java配置类相关注解</h2><p>@Configuration 声明当前类为配置类，相当于xml形式的Spring配置（类上）</p>
+<p>@Bean 注解在方法上，声明当前方法的返回值为一个bean，替代xml中的方式（方法上）</p>
+<p>@Configuration 声明当前类为配置类，其中内部组合了@Component注解，表明这个类是一个bean（类上）</p>
+<p>@ComponentScan 用于对Component进行扫描，相当于xml中的（类上）</p>
+<p>@WishlyConfiguration 为@Configuration与@ComponentScan的组合注解，可以替代这两个注解</p>
+<h2 id="4-切面（AOP）相关注解"><a href="#4-切面（AOP）相关注解" class="headerlink" title="4.切面（AOP）相关注解"></a>4.切面（AOP）相关注解</h2><p>Spring支持AspectJ的注解式切面编程。</p>
+<p>@Aspect 声明一个切面（类上）<br>使用@After、@Before、@Around定义建言（advice），可直接将拦截规则（切点）作为参数。</p>
+<p>@After 在方法执行之后执行（方法上）<br>@Before 在方法执行之前执行（方法上）<br>@Around 在方法执行之前与之后执行（方法上）</p>
+<p>@PointCut 声明切点<br>在java配置类中使用@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持（类上）</p>
+<h2 id="5-Bean的属性支持"><a href="#5-Bean的属性支持" class="headerlink" title="5.@Bean的属性支持"></a>5.@Bean的属性支持</h2><p>@Scope 设置Spring容器如何新建Bean实例（方法上，得有@Bean）<br>其设置类型包括：</p>
+<p>Singleton （单例,一个Spring容器中只有一个bean实例，默认模式）,<br>Protetype （每次调用新建一个bean）,<br>Request （web项目中，给每个http request新建一个bean）,<br>Session （web项目中，给每个http session新建一个bean）,<br>GlobalSession（给每一个 global http session新建一个Bean实例）</p>
+<p>@StepScope 在Spring Batch中还有涉及</p>
+<p>@PostConstruct 由JSR-250提供，在构造函数执行完之后执行，等价于xml配置文件中bean的initMethod</p>
+<p>@PreDestory 由JSR-250提供，在Bean销毁之前执行，等价于xml配置文件中bean的destroyMethod</p>
+<h2 id="6-Value注解"><a href="#6-Value注解" class="headerlink" title="6.@Value注解"></a>6.@Value注解</h2><p>@Value 为属性注入值（属性上）<br>支持如下方式的注入：<br>》注入普通字符</p>
+<p>@Value(“Michael Jackson”)String name;</p>
+<p>》注入操作系统属性</p>
+<p>@Value(“#{systemProperties[‘os.name’]}”)String osName;</p>
+<p>》注入表达式结果</p>
+<p>@Value(“#{ T(java.lang.Math).random() * 100 }”) String randomNumber;</p>
+<p>》注入其它bean属性</p>
+<p>@Value(“#{domeClass.name}”)String name;</p>
+<p>》注入文件资源</p>
+<p>@Value(“classpath:com/hgs/hello/test.txt”)String Resource file;</p>
+<p>》注入网站资源</p>
+<p>@Value(“<a href="http://www.javastack.cn&quot;)Resource" target="_blank" rel="noopener">http://www.javastack.cn&quot;)Resource</a> url;</p>
+<p>》注入配置文件</p>
+<p>Value(“${book.name}”)String bookName;</p>
+<p>注入配置使用方法：<br>① 编写配置文件（test.properties）</p>
+<p>book.name=《三体》</p>
+<p>② @PropertySource 加载配置文件(类上)</p>
+<p>@PropertySource(“classpath:com/hgs/hello/test/test.propertie”)</p>
+<p>③ 还需配置一个PropertySourcesPlaceholderConfigurer的bean。</p>
+<h2 id="7-环境切换"><a href="#7-环境切换" class="headerlink" title="7.环境切换"></a>7.环境切换</h2><p>@Profile 通过设定Environment的ActiveProfiles来设定当前context需要使用的配置环境。（类或方法上）</p>
+<p>@Conditional Spring4中可以使用此注解定义条件话的bean，通过实现Condition接口，并重写matches方法，从而决定该bean是否被实例化。（方法上）</p>
+<h2 id="8-异步相关"><a href="#8-异步相关" class="headerlink" title="8.异步相关"></a>8.异步相关</h2><p>@EnableAsync 配置类中，通过此注解开启对异步任务的支持，叙事性AsyncConfigurer接口（类上），点击<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247484241&amp;idx=1&amp;sn=2d0378b4842db91985f61c5388584b0c&amp;chksm=eb538667dc240f71c1746f6dd74cc9b3d94a58868139c4a102a8bd794f821467dddb06b543b0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener"><em>这里</em></a>了解使用详情。</p>
+<p>@Async 在实际执行的bean方法使用该注解来申明其是一个异步任务（方法上或类上<em>所有的方法都将异步</em>，需要@EnableAsync开启异步任务）</p>
+<h2 id="9-定时任务相关"><a href="#9-定时任务相关" class="headerlink" title="9.定时任务相关"></a>9.定时任务相关</h2><p>@EnableScheduling 在配置类上使用，开启计划任务的支持（类上）</p>
+<p>@Scheduled 来申明这是一个任务，包括cron,fixDelay,fixRate等类型（方法上，需先开启计划任务的支持）</p>
+<h2 id="10-Enable-注解说明"><a href="#10-Enable-注解说明" class="headerlink" title="10.@Enable*注解说明"></a>10.@Enable*注解说明</h2><p>这些注解主要用来开启对xxx的支持。<br>@EnableAspectJAutoProxy 开启对AspectJ自动代理的支持</p>
+<p>@EnableAsync 开启异步方法的支持</p>
+<p>@EnableScheduling 开启计划任务的支持</p>
+<p>@EnableWebMvc 开启Web MVC的配置支持</p>
+<p>@EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持</p>
+<p>@EnableJpaRepositories 开启对SpringData JPA Repository的支持</p>
+<p>@EnableTransactionManagement 开启注解式事务的支持</p>
+<p>@EnableTransactionManagement 开启注解式事务的支持</p>
+<p>@EnableCaching 开启注解式的缓存支持</p>
+<h2 id="11-测试相关注解"><a href="#11-测试相关注解" class="headerlink" title="11.测试相关注解"></a>11.测试相关注解</h2><p>@RunWith 运行器，Spring中通常用于对JUnit的支持</p>
+<p>@RunWith(SpringJUnit4ClassRunner.class)</p>
+<p>@ContextConfiguration 用来加载配置ApplicationContext，其中classes属性用来加载配置类</p>
+<p>@ContextConfiguration(classes={TestConfig.class})</p>
+<h2 id="12-SpringMVC相关注解"><a href="#12-SpringMVC相关注解" class="headerlink" title="12.SpringMVC相关注解"></a>12.SpringMVC相关注解</h2><p>@EnableWebMvc 在配置类中开启Web MVC的配置支持，如一些ViewResolver或者MessageConverter等，若无此句，重写WebMvcConfigurerAdapter方法（用于对SpringMVC的配置）。</p>
+<p>@Controller 声明该类为SpringMVC中的Controller</p>
+<p>@RequestMapping 用于映射Web请求，包括访问路径和参数（类或方法上）</p>
+<p>@ResponseBody 支持将返回值放在response内，而不是一个页面，通常用户返回json数据（返回值旁或方法上）</p>
+<p>@RequestBody 允许request的参数在request体中，而不是在直接连接在地址后面。（放在参数前）</p>
+<p>@PathVariable 用于接收路径参数，比如@RequestMapping(“/hello/{name}”)申明的路径，将注解放在参数中前，即可获取该值，通常作为Restful的接口实现方法。</p>
+<p>@RestController 该注解为一个组合注解，相当于@Controller和@ResponseBody的组合，注解在类上，意味着，该Controller的所有方法都默认加上了@ResponseBody。</p>
+<p>@ControllerAdvice 通过该注解，我们可以将对于控制器的全局配置放置在同一个位置，注解了@Controller的类的方法可使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上，<br>这对所有注解了 @RequestMapping的控制器内的方法有效。</p>
+<p>@ExceptionHandler 用于全局处理控制器里的异常</p>
+<p>@InitBinder 用来设置WebDataBinder，WebDataBinder用来自动绑定前台请求参数到Model中。</p>
+<p>@ModelAttribute 本来的作用是绑定键值对到Model里，在@ControllerAdvice中是让全局的@RequestMapping都能获得在此处设置的键值对。</p>
+<h1 id="springboot相关"><a href="#springboot相关" class="headerlink" title="springboot相关"></a>springboot相关</h1><p><strong>1、@SpringBootApplication</strong></p>
+<p>这是 Spring Boot 最最最核心的注解，用在 Spring Boot 主类上，标识这是一个 Spring Boot 应用，用来开启 Spring Boot 的各项能力。</p>
+<p>其实这个注解就是 <code>@SpringBootConfiguration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code> 这三个注解的组合，也可以用这三个注解来代替 <code>@SpringBootApplication</code> 注解。</p>
+<p><strong>2、@EnableAutoConfiguration</strong></p>
+<p>允许 Spring Boot 自动配置注解，开启这个注解之后，Spring Boot 就能根据当前类路径下的包或者类来配置 Spring Bean。</p>
+<p>如：当前类路径下有 Mybatis 这个 JAR 包，<code>MybatisAutoConfiguration</code> 注解就能根据相关参数来配置 Mybatis 的各个 Spring Bean。</p>
+<p><strong>3、@Configuration</strong></p>
+<p>这是 Spring 3.0 添加的一个注解，用来代替 applicationContext.xml 配置文件，所有这个配置文件里面能做到的事情都可以通过这个注解所在类来进行注册。</p>
+<p><strong>4、@SpringBootConfiguration</strong></p>
+<p>这个注解就是 @Configuration 注解的变体，只是用来修饰是 Spring Boot 配置而已，或者可利于 Spring Boot 后续的扩展。</p>
+<p><strong>5、@ComponentScan</strong></p>
+<p>这是 Spring 3.1 添加的一个注解，用来代替配置文件中的 component-scan 配置，开启组件扫描，即自动扫描包路径下的 @Component 注解进行注册 bean 实例到 context 中。</p>
+<p>前面 5 个注解可以在这篇文章《<a href="https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247487381&amp;idx=2&amp;sn=89de186873960e5a1f0f90904c2e7cef&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Boot 最核心的 3 个注解详解</a>》中了解更多细节的。</p>
+<p><strong>6、@Conditional</strong></p>
+<p>这是 Spring 4.0 添加的新注解，用来标识一个 Spring Bean 或者  Configuration 配置文件，当满足指定的条件才开启配置。</p>
+<p><strong>7、@ConditionalOnBean</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当容器中有指定的 Bean 才开启配置。</p>
+<p><strong>8、@ConditionalOnMissingBean</strong></p>
+<p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnBean</code> 注解相反，当容器中没有指定的 Bean 才开启配置。</p>
+<p><strong>9、@ConditionalOnClass</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当容器中有指定的 Class 才开启配置。</p>
+<p><strong>10、@ConditionalOnMissingClass</strong></p>
+<p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnMissingClass</code> 注解相反，当容器中没有指定的 Class 才开启配置。</p>
+<p><strong>11、@ConditionalOnWebApplication</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当前项目类型是 WEB 项目才开启配置。</p>
+<p>当前项目有以下 3 种类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">enum Type &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Any web application will match.</span><br><span class="line">     */</span><br><span class="line">    ANY,</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Only servlet-based web application will match.</span><br><span class="line">     */</span><br><span class="line">    SERVLET,</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Only reactive-based web application will match.</span><br><span class="line">     */</span><br><span class="line">    REACTIVE</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>12、@ConditionalOnNotWebApplication</strong></p>
+<p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnWebApplication</code> 注解相反，当前项目类型不是 WEB 项目才开启配置。</p>
+<p><strong>13、@ConditionalOnProperty</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当指定的属性有指定的值时才开启配置。</p>
+<p><strong>14、@ConditionalOnExpression</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当 SpEL 表达式为 true 时才开启配置。</p>
+<p><strong>15、@ConditionalOnJava</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当运行的 Java JVM 在指定的版本范围时才开启配置。</p>
+<p><strong>16、@ConditionalOnResource</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当类路径下有指定的资源才开启配置。</p>
+<p><strong>17、@ConditionalOnJndi</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当指定的 JNDI 存在时才开启配置。</p>
+<p><strong>18、@ConditionalOnCloudPlatform</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当指定的云平台激活时才开启配置。</p>
+<p><strong>19、@ConditionalOnSingleCandidate</strong></p>
+<p>组合 <code>@Conditional</code> 注解，当指定的 class 在容器中只有一个 Bean，或者同时有多个但为首选时才开启配置。</p>
+<p><strong>20、@ConfigurationProperties</strong></p>
+<p>用来加载额外的配置（如 .properties 文件），可用在 <code>@Configuration</code> 注解类，或者 <code>@Bean</code> 注解方法上面。</p>
+<p>关于这个注解的用法可以参考《<a href="https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247484575&amp;idx=1&amp;sn=56c88cd7283374345d891e85a800539b&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Boot读取配置的几种方式</a>》这篇文章。</p>
+<p><strong>21、@EnableConfigurationProperties</strong></p>
+<p>一般要配合 <code>@ConfigurationProperties</code> 注解使用，用来开启对 <code>@ConfigurationProperties</code> 注解配置 Bean 的支持。</p>
+<p><strong>22、@AutoConfigureAfter</strong></p>
+<p>用在自动配置类上面，表示该自动配置类需要在另外指定的自动配置类配置完之后。</p>
+<p>如 Mybatis 的自动配置类，需要在数据源自动配置类之后。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@AutoConfigureAfter(DataSourceAutoConfiguration.class)</span><br><span class="line">public class MybatisAutoConfiguration &#123;</span><br></pre></td></tr></table></figure>
+<p><strong>23、@AutoConfigureBefore</strong></p>
+<p>这个和 <code>@AutoConfigureAfter</code> 注解使用相反，表示该自动配置类需要在另外指定的自动配置类配置之前。</p>
+<p><strong>24、@Import</strong></p>
+<p>这是 Spring 3.0 添加的新注解，用来导入一个或者多个 <code>@Configuration</code> 注解修饰的类，这在 Spring Boot 里面应用很多。</p>
+<p><strong>25、@ImportResource</strong></p>
+<p>这是 Spring 3.0 添加的新注解，用来导入一个或者多个 Spring  配置文件，这对 Spring Boot 兼容老项目非常有用，因为有些配置无法通过 Java Config 的形式来配置就只能用这个注解来导入。</p>
+<h1 id="springcloud相关"><a href="#springcloud相关" class="headerlink" title="springcloud相关"></a>springcloud相关</h1><h3 id="1-EnableEurekaServer"><a href="#1-EnableEurekaServer" class="headerlink" title="1.@EnableEurekaServer:"></a>1.@EnableEurekaServer:</h3><p>用在springboot启动类上，表示这是一个eureka服务注册中心；</p>
+<h3 id="2-EnableDiscoveryClient"><a href="#2-EnableDiscoveryClient" class="headerlink" title="2.@EnableDiscoveryClient:"></a>2.@EnableDiscoveryClient:</h3><p>用在springboot启动类上，表示这是一个服务，可以被注册中心找到；</p>
+<h3 id="3-LoadBalanced"><a href="#3-LoadBalanced" class="headerlink" title="3.@LoadBalanced:"></a>3.@LoadBalanced:</h3><p>开启负载均衡能力；</p>
+<h3 id="4-EnableCircuitBreaker"><a href="#4-EnableCircuitBreaker" class="headerlink" title="4.@EnableCircuitBreaker:"></a>4.@EnableCircuitBreaker:</h3><p>用在启动类上，开启断路器功能；</p>
+<h3 id="5-HystrixCommand-fallbackMethod-”backMethod”"><a href="#5-HystrixCommand-fallbackMethod-”backMethod”" class="headerlink" title="5.@HystrixCommand(fallbackMethod=”backMethod”):"></a>5.@HystrixCommand(fallbackMethod=”backMethod”):</h3><p>用在方法上，fallbackMethod指定断路回调方法；</p>
+<h3 id="6-EnableConfigServer"><a href="#6-EnableConfigServer" class="headerlink" title="6.@EnableConfigServer:"></a>6.@EnableConfigServer:</h3><p>用在启动类上，表示这是一个配置中心，开启Config Server；</p>
+<h3 id="7-EnableZuulProxy"><a href="#7-EnableZuulProxy" class="headerlink" title="7.@EnableZuulProxy:"></a>7.@EnableZuulProxy:</h3><p>开启zuul路由，用在启动类上；</p>
+<h3 id="8-SpringCloudApplication"><a href="#8-SpringCloudApplication" class="headerlink" title="8.@SpringCloudApplication:"></a>8.@SpringCloudApplication:</h3><p>包含@SpringBootApplication、@EnableDiscoveryClient、@EnableCircuitBreaker这三个注解。</p>
+<h1 id="呜谢"><a href="#呜谢" class="headerlink" title="呜谢"></a>呜谢</h1><p><a href="https://blog.csdn.net/IT_faquir/article/details/78025203" target="_blank" rel="noopener">spring注解大全</a></p>
+<p><a href="https://blog.csdn.net/qq_34870296/article/details/78581799" target="_blank" rel="noopener">springboot注解详解</a></p>
 
       
     </div>
@@ -592,9 +623,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/spring/" rel="tag"><i class="fa fa-tag"></i>
 
- 数据库</a>
+ spring</a>
           
         </div>
       
@@ -607,8 +638,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/02/senssic.github.io/201902/java多线程/" rel="next" title="java多线程">
-                <i class="fa fa-chevron-left"></i> java多线程
+              <a href="/2019/02/19/senssic.github.io/201902/java并发包/" rel="next" title="java并发包">
+                <i class="fa fa-chevron-left"></i> java并发包
               </a>
             
           </div>
@@ -616,10 +647,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/18/senssic.github.io/201902/java内存模型/" rel="prev" title="java内存模型">
-                java内存模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -758,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-tree和B-tree"><span class="nav-number">1.</span> <span class="nav-text">B-tree和B+tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree的特点"><span class="nav-number">1.1.</span> <span class="nav-text">B-tree的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree的特点-1"><span class="nav-number">1.2.</span> <span class="nav-text">B+tree的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM的索引和InnoDB索引"><span class="nav-number">2.</span> <span class="nav-text">MyISAM的索引和InnoDB索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-、MyISAM的索引"><span class="nav-number">2.1.</span> <span class="nav-text">一 、MyISAM的索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MyISam主索引"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. MyISam主索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MyISam辅助索引"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. MyISam辅助索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、InnoDB索引"><span class="nav-number">2.2.</span> <span class="nav-text">二、InnoDB索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-InnoDB主索引"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. InnoDB主索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-InnoDB的辅助索引"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. InnoDB的辅助索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最左前匹配原则"><span class="nav-number">3.</span> <span class="nav-text">最左前匹配原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">3.1.</span> <span class="nav-text">type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回顾"><span class="nav-number">4.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spring注解"><span class="nav-number">1.</span> <span class="nav-text">spring注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-声明bean的注解"><span class="nav-number">1.1.</span> <span class="nav-text">1.声明bean的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注入bean的注解"><span class="nav-number">1.2.</span> <span class="nav-text">2.注入bean的注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-java配置类相关注解"><span class="nav-number">1.3.</span> <span class="nav-text">3.java配置类相关注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-切面（AOP）相关注解"><span class="nav-number">1.4.</span> <span class="nav-text">4.切面（AOP）相关注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Bean的属性支持"><span class="nav-number">1.5.</span> <span class="nav-text">5.@Bean的属性支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Value注解"><span class="nav-number">1.6.</span> <span class="nav-text">6.@Value注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-环境切换"><span class="nav-number">1.7.</span> <span class="nav-text">7.环境切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-异步相关"><span class="nav-number">1.8.</span> <span class="nav-text">8.异步相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-定时任务相关"><span class="nav-number">1.9.</span> <span class="nav-text">9.定时任务相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Enable-注解说明"><span class="nav-number">1.10.</span> <span class="nav-text">10.@Enable*注解说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-测试相关注解"><span class="nav-number">1.11.</span> <span class="nav-text">11.测试相关注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-SpringMVC相关注解"><span class="nav-number">1.12.</span> <span class="nav-text">12.SpringMVC相关注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot相关"><span class="nav-number">2.</span> <span class="nav-text">springboot相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springcloud相关"><span class="nav-number">3.</span> <span class="nav-text">springcloud相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-EnableEurekaServer"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.@EnableEurekaServer:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-EnableDiscoveryClient"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.@EnableDiscoveryClient:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-LoadBalanced"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.@LoadBalanced:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-EnableCircuitBreaker"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.@EnableCircuitBreaker:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-HystrixCommand-fallbackMethod-”backMethod”"><span class="nav-number">3.0.5.</span> <span class="nav-text">5.@HystrixCommand(fallbackMethod=”backMethod”):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-EnableConfigServer"><span class="nav-number">3.0.6.</span> <span class="nav-text">6.@EnableConfigServer:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-EnableZuulProxy"><span class="nav-number">3.0.7.</span> <span class="nav-text">7.@EnableZuulProxy:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-SpringCloudApplication"><span class="nav-number">3.0.8.</span> <span class="nav-text">8.@SpringCloudApplication:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#呜谢"><span class="nav-number">4.</span> <span class="nav-text">呜谢</span></a></li></ol></div>
             
 
           </div>
