@@ -105,7 +105,7 @@
 <meta property="og:description" content="一般线上JVM问题属于比较紧急的情况,需要立即保留现场信息,并及时回复生产。 保留现场 打印堆栈信息    jstack java进程id dump堆内存 jmap -dump:format=b,file=./jvmdump java进程id 打印至少30秒的jvm垃圾回收情况 jstat -gcutil java进程id 1000 查看堆内存占用情况 jmap -histo java进程id,或">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/01/senssic.github.io/201901/jvm内存排查/生产问题排查命令.png">
-<meta property="og:updated_time" content="2019-04-01T14:15:50.169Z">
+<meta property="og:updated_time" content="2019-04-01T14:25:58.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm内存排查">
 <meta name="twitter:description" content="一般线上JVM问题属于比较紧急的情况,需要立即保留现场信息,并及时回复生产。 保留现场 打印堆栈信息    jstack java进程id dump堆内存 jmap -dump:format=b,file=./jvmdump java进程id 打印至少30秒的jvm垃圾回收情况 jstat -gcutil java进程id 1000 查看堆内存占用情况 jmap -histo java进程id,或">
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,174
+                  3,335
                 </span>
               
 
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12
+                  13
                 </span>
               
             </div>
@@ -550,7 +550,19 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span> <span class="attr">appBase</span>=<span class="string">""</span></span></span><br><span class="line"><span class="tag">  <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xmlValidation</span>=<span class="string">"false"</span> <span class="attr">xmlNamespaceAware</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">""</span> <span class="attr">docBase</span>=<span class="string">"/www/xxxx/site/web"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span> <span class="attr">debug</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="基于linux的IPv4的网络优化"><a href="#基于linux的IPv4的网络优化" class="headerlink" title="基于linux的IPv4的网络优化"></a>基于linux的IPv4的网络优化</h1><h3 id="两种修改内核参数方法"><a href="#两种修改内核参数方法" class="headerlink" title="两种修改内核参数方法"></a>两种修改内核参数方法</h3><ol>
+<h1 id="基于linux的IPv4的网络优化"><a href="#基于linux的IPv4的网络优化" class="headerlink" title="基于linux的IPv4的网络优化"></a>基于linux的IPv4的网络优化</h1><h3 id="查看当前linux网络状态"><a href="#查看当前linux网络状态" class="headerlink" title="查看当前linux网络状态"></a>查看当前linux网络状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END&#123;for(a in S) print a, S[a]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>CLOSED：无活动的或正在进行的连接。</p>
+<p>LISTEN：服务器正在等待进入呼叫。</p>
+<p>SYN_RECV：一个连接请求已经到达，等待确认。</p>
+<p>SYN_SENT：应用已经开始，打开一个连接。</p>
+<p>ESTABLISHED：正常数据传输状态。</p>
+<p>FIN_WAIT1：应用说它已经完成。</p>
+<p>FIN_WAIT2：另一边已同意释放。</p>
+<p>ITMED_WAIT：等待所有分组死掉。</p>
+<p>CLOSING：两边尝试同时关闭。</p>
+<p>TIME_WAIT：另一边已初始化一个释放,若过高会造成卡死等，关注设置超时时间。</p>
+<p>LAST_ACK：等待所有分组死掉。</p>
+<h3 id="两种修改内核参数方法"><a href="#两种修改内核参数方法" class="headerlink" title="两种修改内核参数方法"></a>两种修改内核参数方法</h3><ol>
 <li>使用echo value方式直接追加到文件里如echo “1” &gt;/proc/sys/net/ipv4/tcp_syn_retries，但这种方法设备重启后又会恢复为默认值</li>
 <li>把参数添加到/etc/sysctl.conf中，然后执行sysctl -p使参数生效，永久生效。</li>
 </ol>
@@ -920,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#保留现场"><span class="nav-number">1.</span> <span class="nav-text">保留现场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般问题原因"><span class="nav-number">2.</span> <span class="nav-text">一般问题原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆内存分析使用到的工具"><span class="nav-number">3.</span> <span class="nav-text">堆内存分析使用到的工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tomcat配置文件优化"><span class="nav-number">4.</span> <span class="nav-text">tomcat配置文件优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接器优化"><span class="nav-number">4.0.1.</span> <span class="nav-text">连接器优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置实例"><span class="nav-number">4.0.2.</span> <span class="nav-text">配置实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于linux的IPv4的网络优化"><span class="nav-number">5.</span> <span class="nav-text">基于linux的IPv4的网络优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种修改内核参数方法"><span class="nav-number">5.0.1.</span> <span class="nav-text">两种修改内核参数方法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#保留现场"><span class="nav-number">1.</span> <span class="nav-text">保留现场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般问题原因"><span class="nav-number">2.</span> <span class="nav-text">一般问题原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆内存分析使用到的工具"><span class="nav-number">3.</span> <span class="nav-text">堆内存分析使用到的工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tomcat配置文件优化"><span class="nav-number">4.</span> <span class="nav-text">tomcat配置文件优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接器优化"><span class="nav-number">4.0.1.</span> <span class="nav-text">连接器优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置实例"><span class="nav-number">4.0.2.</span> <span class="nav-text">配置实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于linux的IPv4的网络优化"><span class="nav-number">5.</span> <span class="nav-text">基于linux的IPv4的网络优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前linux网络状态"><span class="nav-number">5.0.1.</span> <span class="nav-text">查看当前linux网络状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种修改内核参数方法"><span class="nav-number">5.0.2.</span> <span class="nav-text">两种修改内核参数方法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -955,7 +967,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">62.8k</span>
+    <span title="本站总字数">63.0k</span>
   
 </div>
 
