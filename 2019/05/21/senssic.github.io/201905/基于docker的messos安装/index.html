@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="数据库," />
+  <meta name="keywords" content="messos," />
 
 
 
@@ -96,27 +96,18 @@
 
 
 
-<meta name="description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
-<meta name="keywords" content="数据库">
+<meta name="description" content="前期准备 查看此机器之前有无登陆过 12who /var/log/wtmplast  查看linux版本  centos 1lsb_release -a  所有linux版本 1uname -a  RedHat,Centos 1cat /etc/redhat-release    更新原 123456mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.rep">
+<meta name="keywords" content="messos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql索引原理">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/index.html">
+<meta property="og:title" content="基于docker的messos安装">
+<meta property="og:url" content="http://yoursite.com/2019/05/21/senssic.github.io/201905/基于docker的messos安装/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
+<meta property="og:description" content="前期准备 查看此机器之前有无登陆过 12who /var/log/wtmplast  查看linux版本  centos 1lsb_release -a  所有linux版本 1uname -a  RedHat,Centos 1cat /etc/redhat-release    更新原 123456mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.rep">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/2.gif">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/4.gif">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/8.png">
-<meta property="og:updated_time" content="2019-02-17T15:36:31.030Z">
+<meta property="og:updated_time" content="2019-05-21T13:12:48.417Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql索引原理">
-<meta name="twitter:description" content="在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？ 带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。 B-tree和B+treeb树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/1.png">
+<meta name="twitter:title" content="基于docker的messos安装">
+<meta name="twitter:description" content="前期准备 查看此机器之前有无登陆过 12who /var/log/wtmplast  查看linux版本  centos 1lsb_release -a  所有linux版本 1uname -a  RedHat,Centos 1cat /etc/redhat-release    更新原 123456mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.rep">
 
 
 
@@ -146,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/21/senssic.github.io/201905/基于docker的messos安装/"/>
 
 
 
 
 
-  <title>mysql索引原理 | senssic</title>
+  <title>基于docker的messos安装 | senssic</title>
   
 
 
@@ -333,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/senssic.github.io/201902/MySql索引原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/senssic.github.io/201905/基于docker的messos安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -350,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mysql索引原理</h1>
+          <h1 class="post-title" itemprop="name headline">基于docker的messos安装</h1>
         
 
         <div class="post-meta">
@@ -362,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-17T21:21:10+08:00">
-                2019-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T21:11:56+08:00">
+                2019-05-21
               </time>
             
 
@@ -386,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/messos/" itemprop="url" rel="index">
+                    <span itemprop="name">messos</span>
                   </a>
                 </span>
 
@@ -404,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/17/senssic.github.io/201902/MySql索引原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/17/senssic.github.io/201902/MySql索引原理/" itemprop="commentCount"></span>
+                <a href="/2019/05/21/senssic.github.io/201905/基于docker的messos安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/senssic.github.io/201905/基于docker的messos安装/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -413,7 +404,7 @@
 
           
           
-             <span id="/2019/02/17/senssic.github.io/201902/MySql索引原理/" class="leancloud_visitors" data-flag-title="mysql索引原理">
+             <span id="/2019/05/21/senssic.github.io/201905/基于docker的messos安装/" class="leancloud_visitors" data-flag-title="基于docker的messos安装">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,249
+                  98
                 </span>
               
 
@@ -455,7 +446,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  1
                 </span>
               
             </div>
@@ -476,105 +467,27 @@
       
 
       
-        <p>在使用mysql索引的时候,会很好奇为什么一般都使用B+树作为索引，而不使用哈希表。非主键字段是怎么创建索引的,其索引内容是什么,怎么和对应行关联？为什么必须存在主键,为什么主键最好是自增的？</p>
-<p>带着这些问题,我们先了解一下B+树是什么,以及mysql的最左前缀原理。</p>
-<h2 id="B-tree和B-tree"><a href="#B-tree和B-tree" class="headerlink" title="B-tree和B+tree"></a>B-tree和B+tree</h2><p>b树和B+树主要用于数据库索引的原因之一是因为数据库数据是存放在磁盘上的,虽然理论上二叉树的查找和比较次数都是最优的,但对于需要访问磁盘IO这种慢操作就不太适用了,使用B树可以使计算机在IO操作的时候基于局部原理和磁盘预读的页读取更少。进而使IO操作更少,每次都恰好读取到B树的一个节点数据。</p>
-<h3 id="B-tree的特点"><a href="#B-tree的特点" class="headerlink" title="B-tree的特点"></a>B-tree的特点</h3><p>一个M阶的b树具有如下几个特征(M阶为每个节点最多包含M个孩子)：定义任意非叶子结点最多只有M个儿子，且M&gt;2；</p>
-<ol>
-<li>根结点的儿子数为[2, M]；</li>
-<li>除根结点以外的非叶子结点的儿子数为[M/2, M]，向上取整；</li>
-<li>非叶子结点的关键字个数=儿子数-1；</li>
-<li>所有叶子结点位于同一层；</li>
-<li>k个关键字把节点拆成k+1段，分别指向k+1个儿子，同时满足查找树的大小关系。</li>
-</ol>
-<p>如图为一个M=4的B树</p>
-<p><img src="1.png" alt="M=4阶的b树"></p>
-<p>依次插入<strong>6 10 4 14 5 11 15 3 2 12 1 7 8 8 6 3 6 21 5 15 15 6 32 23 45 65 7 8 6 5 4</strong>B树的演示图片</p>
-<p><img src="2.gif" alt="b树的插入"></p>
-<h3 id="B-tree的特点-1"><a href="#B-tree的特点-1" class="headerlink" title="B+tree的特点"></a>B+tree的特点</h3><p>b+tree是b-tree的一种变形,在B树的基础上有如下新特点</p>
+        <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
+<li><p>查看此机器之前有无登陆过</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">who /var/log/wtmp</span><br><span class="line">last</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看linux版本</p>
 <ul>
-<li>有k个子结点的结点必然有k个关键码；</li>
-<li>非叶结点仅具有索引作用，跟记录有关的信息均存放在叶结点中。</li>
-<li>树的所有叶结点构成一个有序链表，可以按照关键码排序的次序遍历全部记录。</li>
+<li><p>centos</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所有linux版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RedHat,Centos</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>如图为一个M=4的B+树</p>
-<p><img src="3.png" alt="M=4的b+树"></p>
-<p>B+树的插入演示</p>
-<p><img src="4.gif" alt="b+树的演示"></p>
-<p>相较于B树,B+树的非叶子结点只包含导航信息,不包含实际的值,所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。但B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。</p>
-<h2 id="MyISAM的索引和InnoDB索引"><a href="#MyISAM的索引和InnoDB索引" class="headerlink" title="MyISAM的索引和InnoDB索引"></a>MyISAM的索引和InnoDB索引</h2><h3 id="一-、MyISAM的索引"><a href="#一-、MyISAM的索引" class="headerlink" title="一 、MyISAM的索引"></a>一 、MyISAM的索引</h3><p>MyISAM的索引方式是“非聚集”索引。MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。MyISAM引擎使用B+Tree作为索引结构，叶节点的data域存放的是<strong>*数据记录的地址*</strong>。</p>
-<h4 id="1-MyISam主索引"><a href="#1-MyISam主索引" class="headerlink" title="1. MyISam主索引"></a>1. MyISam主索引</h4><p><img src="5.png" alt="MyISAM表的主索引"></p>
-<p>如图一共有三列，假设我们以Col1为主键，以col1构造B+树。B+树的叶子节点上保存的是该记录的地址，可以理解为该行数据的物理存储位置。</p>
-<h4 id="2-MyISam辅助索引"><a href="#2-MyISam辅助索引" class="headerlink" title="2. MyISam辅助索引"></a>2. MyISam辅助索引</h4><p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。</p>
-<p><img src="6.png" alt="Myisam 辅助索引(Second index)"></p>
-<p>如图，在col2上建立辅助索引，则以col2构造B+树，B+树的叶子节点上保存的是该记录的地址。</p>
-<h3 id="二、InnoDB索引"><a href="#二、InnoDB索引" class="headerlink" title="二、InnoDB索引"></a>二、InnoDB索引</h3><p>在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的<strong>叶节点data域保存了完整的数据记录</strong>。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
-<h4 id="1-InnoDB主索引"><a href="#1-InnoDB主索引" class="headerlink" title="1. InnoDB主索引"></a>1. InnoDB主索引</h4><p>因为InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形.</p>
-<p><img src="7.png" alt="InnoDB主索引（同时也是数据文件）"></p>
-<p>如图，主键是col1，则根据col1构造B+树,整个数据行其实就存在B+树的叶子上。</p>
-<h4 id="2-InnoDB的辅助索引"><a href="#2-InnoDB的辅助索引" class="headerlink" title="2. InnoDB的辅助索引"></a>2. InnoDB的辅助索引</h4><p>InnoDB的辅助索引<strong>data域存储相应记录主键的值而不是地址</strong>。</p>
-<p><img src="8.png" alt="InnoDB的辅助索引"></p>
-<p>如图在col3上建立辅助索引，则根据col3构造B+树，B+树的叶节点存的是该行的主键，即col1的值。</p>
-<p>在Innodb中，聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</p>
-<h2 id="最左前匹配原则"><a href="#最左前匹配原则" class="headerlink" title="最左前匹配原则"></a>最左前匹配原则</h2><p>在mysql建立联合索引时会遵循最左前缀匹配的原则，即最左优先，在检索数据时从联合索引的最左边开始匹配，示例：<br>对列col1、列col2和列col3建一个联合索引</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEY test_col1_col2_col3 on test(col1,col2,col3);</span><br></pre></td></tr></table></figure>
-<p>联合索引 test_col1_col2_col3 实际建立了(col1)、(col1,col2)、(col,col2,col3)三个索引。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col1=“<span class="number">1</span>” <span class="keyword">AND</span> clo2=“<span class="number">2</span>” <span class="keyword">AND</span> clo4=“<span class="number">4</span>”</span><br></pre></td></tr></table></figure>
-<p>上面这个查询语句执行时会依照最左前缀匹配原则，检索时会使用索引(col1,col2)进行数据匹配。</p>
-<p><strong><em>SELECT </em> FROM test WHERE  clo2=“2”*</strong><br>会触发索引么,答案是会的,只是触发的类型为index,表示msql会对整个索引进行扫描,只要是索引或者某个联合索引的一部分,mysql会从索引中的一个数据一个个查找到最后一个数据,直到找到符合判断条件的某个索引。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col2=<span class="number">2</span>;   <span class="comment">--type=index</span></span><br><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> col1=<span class="number">1</span>;   <span class="comment">--type=ref</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>index：Full Index Scan，index与ALL区别为index类型只遍历索引树</li>
-<li>ref：表示上述表的连接匹配条件，即哪些列或常量被用于查找索引列上的值</li>
+</li>
+<li><p>更新原</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line">wget http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">mv Centos-7.repo CentOS-Base.repo</span><br><span class="line">yum makecache</span><br><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><strong>对于Explain中Type字段的说明</strong></p>
-<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>type显示的是访问类型，是较为重要的一个指标，结果值从好到坏依次是：<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL ，一般来说，得保证查询至少达到range级别，最好能达到ref。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>All</td>
-<td>最坏的情况,全表扫描</td>
-</tr>
-<tr>
-<td>index</td>
-<td>和全表扫描一样。只是扫描表的时候按照索引次序进行而不是行。主要优点就是避免了排序, 但是开销仍然非常大。如在Extra列看到Using index，说明正在使用覆盖索引，只扫描索引的数据，它比按索引次序全表扫描的开销要小很多</td>
-</tr>
-<tr>
-<td>range</td>
-<td>范围扫描，一个有限制的索引扫描。key 列显示使用了哪个索引。当使用=、 &lt;&gt;、&gt;、&gt;=、&lt;、&lt;=、IS NULL、&lt;=&gt;、BETWEEN 或者 IN 操作符,用常量比较关键字列时,可以使用 range</td>
-</tr>
-<tr>
-<td>ref</td>
-<td>一种索引访问，它返回所有匹配某个单个值的行。此类索引访问只有当使用非唯一性索引或唯一性索引非唯一性前缀时才会发生。这个类型跟eq_ref不同的是，它用在关联操作只使用了索引的最左前缀，或者索引不是UNIQUE和PRIMARY KEY。ref可以用于使用=或&lt;=&gt;操作符的带索引的列。</td>
-</tr>
-<tr>
-<td>eq_ref</td>
-<td>最多只返回一条符合条件的记录。使用唯一性索引或主键查找时会发生 （高效）</td>
-</tr>
-<tr>
-<td>const</td>
-<td>当确定最多只会有一行匹配的时候，MySQL优化器会在查询前读取它而且只读取一次，因此非常快。当主键放入where子句时，mysql把这个查询转为一个常量（高效）</td>
-</tr>
-<tr>
-<td>system</td>
-<td>这是const连接类型的一种特例，表仅有一行满足条件。</td>
-</tr>
-<tr>
-<td>Null</td>
-<td>意味说mysql能在优化阶段分解查询语句，在执行阶段甚至用不到访问表或索引（高效）</td>
-</tr>
-</tbody>
-</table>
-<p>结果值从好到坏依次是：<br>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL</p>
-<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>通过上面的了解,我们可以大概明白开始的几个问题,对于常用的InnoDB的索引,不建议使用过长的字段作为主键,因为对于InnoDB所有辅助索引的子节点数据都是引用主索引,若主索引过大会令辅助索引变得过大,十分占用索引文件。而一般用自增是因为InnoDB数据文件本身是一个B+树,非单调的主键会造成在插入新记录的时候为维持B+tree的数据单调而频繁的移动位置和页分裂调整。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000015416513" target="_blank" rel="noopener">Mysql联合索引最左匹配原则</a></p>
-<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></p>
 
       
     </div>
@@ -592,9 +505,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/messos/" rel="tag"><i class="fa fa-tag"></i>
 
- 数据库</a>
+ messos</a>
           
         </div>
       
@@ -607,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/02/senssic.github.io/201902/java多线程/" rel="next" title="java多线程">
-                <i class="fa fa-chevron-left"></i> java多线程
+              <a href="/2019/05/21/senssic.github.io/201905/harbor安装手册/" rel="next" title="harbor安装教程">
+                <i class="fa fa-chevron-left"></i> harbor安装教程
               </a>
             
           </div>
@@ -616,10 +529,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/18/senssic.github.io/201902/java内存模型/" rel="prev" title="java内存模型">
-                java内存模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -758,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-tree和B-tree"><span class="nav-number">1.</span> <span class="nav-text">B-tree和B+tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree的特点"><span class="nav-number">1.1.</span> <span class="nav-text">B-tree的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree的特点-1"><span class="nav-number">1.2.</span> <span class="nav-text">B+tree的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM的索引和InnoDB索引"><span class="nav-number">2.</span> <span class="nav-text">MyISAM的索引和InnoDB索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-、MyISAM的索引"><span class="nav-number">2.1.</span> <span class="nav-text">一 、MyISAM的索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MyISam主索引"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. MyISam主索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MyISam辅助索引"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. MyISam辅助索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、InnoDB索引"><span class="nav-number">2.2.</span> <span class="nav-text">二、InnoDB索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-InnoDB主索引"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. InnoDB主索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-InnoDB的辅助索引"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. InnoDB的辅助索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最左前匹配原则"><span class="nav-number">3.</span> <span class="nav-text">最左前匹配原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">3.1.</span> <span class="nav-text">type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回顾"><span class="nav-number">4.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li></ol></div>
             
 
           </div>
