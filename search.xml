@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[temp]]></title>
+    <url>%2F2019%2F06%2F09%2Fsenssic.github.io%2Ftemp%2F</url>
+    <content type="text"><![CDATA[容器相关pod内部容器不可用echo $TERM export TERM=dumb通过 –previous参数可以看之前Pod的日志kubectl logs zookeeper-1 –previous log日志最优格式化以及配置每日文件滚动:log4j.rootLogger=INFO,stdout,fileAppenderlog4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppenderlog4j.appender.fileAppender.DatePattern=’.’yyyy-MM-ddlog4j.appender.fileAppender.File=/opt/config/fileAppender.loglog4j.appender.fileAppender.layout=org.apache.log4j.PatternLayoutlog4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n 桥接网络虚拟机无法自动获取ipdhclient 网卡 -v virtual Boxs使用virtual host和nat网络固定ip1.新建net网络(管理-&gt;全局设置-&gt;网络设置)2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)4.固定NAT网络IP地址 编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建 修改属性BOOTPROTO=static 新增属性(对应网卡的属性) IPADDR=10.0.1.101 NETMASK=255.255.255.255 GATEWAY=10.0.1.15.同上固定virtual host连接的网络IP地址 …]]></content>
+      <tags>
+        <tag>杂项</tag>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[搭建NTP服务器]]></title>
     <url>%2F2019%2F06%2F01%2Fsenssic.github.io%2F201905%2F%E6%90%AD%E5%BB%BANTP%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
     <content type="text"><![CDATA[时间相关准备12345678910#设置时区(东八区)cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime -R#设置时间date -s "20190601 16:51:50"#查看格式化时间date "+%Y-%m-%d %H:%M:%S"#查看硬件时间hwclock -r#将当前时间回写到硬件上hwclock -w 安装NTP离线安装包以及其依赖包下载NTP离线安装包 服务器端-192.168.0.13212345678#安装相关离线包和NTP服务器rpm -ivh autogen-libopts-5.18-5.el7.x86_64.rpmrpm -ivh ntp-4.2.6p5-18.el7.centos.x86_64.rpmrpm -ivh ntpdate-4.2.6p5-18.el7.centos.x86_64.rpm#启动ntp服务并设置开机启动,若有防火墙需要将防火墙关闭,或者允许123端口systemctl start ntpdsystemctl enable ntpd 客户端配置1234567891011121314151617181920#安装相关离线包rpm -ivh ntpdate-4.2.6p5-18.el7.centos.x86_64.rpm#同步服务器时间ntpdate -u 192.168.0.132#设置自动同步服务器时间crontab -e#追加定时任务同步时间(0 0 0 * * ? * 每天凌晨同步一次)#每30分钟同步一次*/30 * * * * /usr/sbin/ntpdate 192.168.0.132#查看crond的状态service crond statuscrond -l#crond的启动重启停止service crond startservice crond stopservice crond reloadservice crond restart]]></content>
@@ -97,8 +106,8 @@
         <category>杂记</category>
       </categories>
       <tags>
-        <tag>杂记</tag>
         <tag>记录</tag>
+        <tag>杂记</tag>
       </tags>
   </entry>
   <entry>
@@ -121,8 +130,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>多线程</tag>
         <tag>并发编程</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
@@ -168,8 +177,8 @@
         <category>生活百味</category>
       </categories>
       <tags>
-        <tag>生活</tag>
         <tag>杂项</tag>
+        <tag>生活</tag>
         <tag>感悟</tag>
       </tags>
   </entry>
