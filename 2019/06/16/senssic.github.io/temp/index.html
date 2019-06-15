@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="容器相关pod内部容器不可用echo $TERM  export TERM=dumb通过 –previous参数可以看之前Pod的日志kubectl logs zookeeper-1 –previous log日志最优格式化以及配置每日文件滚动:log4j.rootLogger=INFO,stdout,fileAppenderlog4j.appender.fileAppender=org.apac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-15T16:25:18.244Z">
+<meta property="og:updated_time" content="2019-06-15T16:41:18.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
 <meta name="twitter:description" content="容器相关pod内部容器不可用echo $TERM  export TERM=dumb通过 –previous参数可以看之前Pod的日志kubectl logs zookeeper-1 –previous log日志最优格式化以及配置每日文件滚动:log4j.rootLogger=INFO,stdout,fileAppenderlog4j.appender.fileAppender=org.apac">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-16T00:25:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-16T00:41:18+08:00">
                 2019-06-16
               </time>
             
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  558
+                  562
                 </span>
               
 
@@ -448,7 +448,7 @@
         <h5 id="容器相关"><a href="#容器相关" class="headerlink" title="容器相关"></a>容器相关</h5><p>pod内部容器不可用<br>echo $TERM  export TERM=dumb<br>通过 –previous参数可以看之前Pod的日志<br>kubectl logs zookeeper-1 –previous</p>
 <h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
 <h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
-<h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.1.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.1.1<br>        NOBOOT=yes<br>5.同上固定virtual host连接的网络IP地址</p>
+<h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   修改属性NOBOOT=yes<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.2.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.2.1<br>5.同上固定virtual host连接的网络IP地址</p>
 <h5 id="kafka相关"><a href="#kafka相关" class="headerlink" title="kafka相关"></a>kafka相关</h5><p>1.查看指定topic<br>bin/kafka-topics.sh –zookeeper zookeeper01:2181 –describe –topic topic_test<br>2.删除topic<br>bin/kafka-run-class.sh kafka.admin.DeleteTopicCommand –zookeeper zookeeper01:2181 –topic topic_test<br>3.显示某个消费组的消费详情(CURRENT-OFFSET:已消费的,LOG-END-OFFSET:总数,LAG=LOG-END-OFFSET-CURRENT-OFFSET:堆积的消息)<br>bin/kafka-consumer-groups.sh –new-consumer –bootstrap-server localhost:9092 –describe –group test-consumer-group<br>4.消费者列表查询<br>bin/kafka-topics.sh –zookeeper 127.0.0.1:2181 –list<br>5.所有新消费者列表<br>bin/kafka-consumer-groups.sh –new-consumer –bootstrap-server localhost:9092 –list<br>6.查询集群描述<br>bin/kafka-topics.sh –describe –zookeeper </p>
 <h5 id="impala相关"><a href="#impala相关" class="headerlink" title="impala相关"></a>impala相关</h5><p>[常用修改操作][<a href="https://www.cnblogs.com/yhason/p/4724987.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yhason/p/4724987.html]</a><br> 1.查看表的文件分布<br> show files in xxx;<br> 2.查看表的状态<br> show table stats xxx;<br> 3.表基本描述<br> describe xxx;<br> 4.查看表的见表语句<br> show CREATE TABLE xxx;<br> 5.compute stats<br> 为表收集重要的与性能相关的信息,以便被 Impala 用于优化查询<br> 6.更新 impalad 元数据中表的存在性与结构<br> invalidate metadata<br> 7.刷新 impalad 元数据中 Impala 数据文件对应的 HDFS 块的位置<br> refresh xxx;</p>
 
