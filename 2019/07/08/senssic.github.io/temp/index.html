@@ -100,11 +100,11 @@
 <meta name="keywords" content="杂项,记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="temp">
-<meta property="og:url" content="http://yoursite.com/2019/07/05/senssic.github.io/temp/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/senssic.github.io/temp/index.html">
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="linux相关1.设置hostname名称sudo hostnamectl set-hostname  2.查看磁盘 lsblk 3.设置磁盘分区 fdisk /dev/sdf 容器相关1.pod内部容器不可用top命令echo $TERM  export TERM=dumb2.通过 –previous参数可以看之前Pod的日志kubectl logs zookeeper-1 –previous3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-05T13:36:43.308Z">
+<meta property="og:updated_time" content="2019-07-08T15:12:01.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
 <meta name="twitter:description" content="linux相关1.设置hostname名称sudo hostnamectl set-hostname  2.查看磁盘 lsblk 3.设置磁盘分区 fdisk /dev/sdf 容器相关1.pod内部容器不可用top命令echo $TERM  export TERM=dumb2.通过 –previous参数可以看之前Pod的日志kubectl logs zookeeper-1 –previous3">
@@ -137,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/05/senssic.github.io/temp/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/senssic.github.io/temp/"/>
 
 
 
@@ -324,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/senssic.github.io/temp/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/senssic.github.io/temp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T21:36:43+08:00">
-                2019-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T23:12:01+08:00">
+                2019-07-08
               </time>
             
 
@@ -373,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/05/senssic.github.io/temp/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/senssic.github.io/temp/" itemprop="commentCount"></span>
+                <a href="/2019/07/08/senssic.github.io/temp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/08/senssic.github.io/temp/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,7 +382,7 @@
 
           
           
-             <span id="/2019/07/05/senssic.github.io/temp/" class="leancloud_visitors" data-flag-title="temp">
+             <span id="/2019/07/08/senssic.github.io/temp/" class="leancloud_visitors" data-flag-title="temp">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,449
+                  1,728
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -625,6 +625,8 @@
 </tr>
 </tbody>
 </table>
+<h5 id="关于断电"><a href="#关于断电" class="headerlink" title="关于断电"></a>关于断电</h5><p>1.客户端向服务端发送写操作（数据在客户端的内存中）<br>2.数据库服务端接收到写请求的数据（数据在服务端的内存中）<br>3.服务端调用write这个系统调用，将数据往磁盘上写（数据在系统内存的缓冲区中）<br>4.操作系统将缓冲区中的数据转移到磁盘控制器上（数据在磁盘缓存中）<br>5.磁盘控制器将数据写到磁盘的物理介质中（数据真正落到磁盘上）</p>
+<p>当数据库系统故障时，这时候系统内核还是正常运行的，此时只要执行完了第3步，数据就是安全的，操作系统会完成后面几步，保证数据最终会落到磁盘上。<br> 当系统断电，这时候上面5项中提到的所有缓存都会失效，并且数据库和操作系统都会停止工作，数据都会丢失，只有当数据在完成第5步后，机器断电才能保证数据不丢失。</p>
 
       
     </div>
@@ -808,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">1.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">2.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">3.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">4.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">5.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">6.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">7.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">8.</span> <span class="nav-text">hdfs相关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">1.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">2.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">3.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">4.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">5.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">6.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">7.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">8.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">9.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
             
 
           </div>
@@ -843,7 +845,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">67.7k</span>
+    <span title="本站总字数">67.9k</span>
   
 </div>
 
