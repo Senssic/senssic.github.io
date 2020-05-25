@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="锁,分布式," />
+  <meta name="keywords" content="ceph," />
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
-<meta name="keywords" content="锁,分布式">
+<meta name="description" content="节点信息配置   虚拟机名称 虚拟机ip 虚拟机应用     ceph-master 192.168.56.101 ceph-master/deployment   ceph-node-1 192.168.56.102 ceph-node   ceph-node-2 192.168.56.102 ceph-node    环境准备1.关闭防火墙(所有节点) 1234sed -i &apos;s/SELINU">
+<meta name="keywords" content="ceph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式锁的常见实现">
-<meta property="og:url" content="http://yoursite.com/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/index.html">
+<meta property="og:title" content="centos7安装ceph">
+<meta property="og:url" content="http://yoursite.com/2020/05/25/senssic.github.io/201906/cenos7安装ceph/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
+<meta property="og:description" content="节点信息配置   虚拟机名称 虚拟机ip 虚拟机应用     ceph-master 192.168.56.101 ceph-master/deployment   ceph-node-1 192.168.56.102 ceph-node   ceph-node-2 192.168.56.102 ceph-node    环境准备1.关闭防火墙(所有节点) 1234sed -i &apos;s/SELINU">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T16:59:59.587Z">
+<meta property="og:updated_time" content="2019-06-16T16:55:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式锁的常见实现">
-<meta name="twitter:description" content="现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于数据库，缓存(redis,memcached,tair),和zookeeper实现的分布式锁。 对于分布式锁我们希望的理想锁的表现  在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。 这把分布式锁是可重入锁[避免死锁] 可以根据业务需要变成阻塞锁 获取和释放锁性能高  基">
+<meta name="twitter:title" content="centos7安装ceph">
+<meta name="twitter:description" content="节点信息配置   虚拟机名称 虚拟机ip 虚拟机应用     ceph-master 192.168.56.101 ceph-master/deployment   ceph-node-1 192.168.56.102 ceph-node   ceph-node-2 192.168.56.102 ceph-node    环境准备1.关闭防火墙(所有节点) 1234sed -i &apos;s/SELINU">
 
 
 
@@ -137,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/25/senssic.github.io/201906/cenos7安装ceph/"/>
 
 
 
 
 
-  <title>分布式锁的常见实现 | senssic</title>
+  <title>centos7安装ceph | senssic</title>
   
 
 
@@ -324,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/25/senssic.github.io/201906/cenos7安装ceph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="senssic">
@@ -341,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分布式锁的常见实现</h1>
+          <h1 class="post-title" itemprop="name headline">centos7安装ceph</h1>
         
 
         <div class="post-meta">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T00:12:53+08:00">
-                2018-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-25T18:22:15+08:00">
+                2020-05-25
               </time>
             
 
@@ -365,28 +365,6 @@
 
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -395,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/" itemprop="commentCount"></span>
+                <a href="/2020/05/25/senssic.github.io/201906/cenos7安装ceph/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/senssic.github.io/201906/cenos7安装ceph/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +382,7 @@
 
           
           
-             <span id="/2018/08/17/senssic.github.io/201901/分布式锁的常见实现/" class="leancloud_visitors" data-flag-title="分布式锁的常见实现">
+             <span id="/2020/05/25/senssic.github.io/201906/cenos7安装ceph/" class="leancloud_visitors" data-flag-title="centos7安装ceph">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -430,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,035
+                  1,688
                 </span>
               
 
@@ -446,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -467,91 +445,121 @@
       
 
       
-        <hr>
-<p>现在的系统部署大部分都是分布式部署的方式,对于需要使用锁的场景不能再通过使用单纯的Java Api实现。产生了基于<strong><em>数据库，缓存(redis,memcached,tair),和zookeeper</em></strong>实现的分布式锁。</p>
-<p>对于分布式锁我们希望的理想锁的表现</p>
+        <h3 id="节点信息配置"><a href="#节点信息配置" class="headerlink" title="节点信息配置"></a>节点信息配置</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">虚拟机名称</th>
+<th style="text-align:left">虚拟机ip</th>
+<th style="text-align:left">虚拟机应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ceph-master</td>
+<td style="text-align:left">192.168.56.101</td>
+<td style="text-align:left">ceph-master/deployment</td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-node-1</td>
+<td style="text-align:left">192.168.56.102</td>
+<td style="text-align:left">ceph-node</td>
+</tr>
+<tr>
+<td style="text-align:left">ceph-node-2</td>
+<td style="text-align:left">192.168.56.102</td>
+<td style="text-align:left">ceph-node</td>
+</tr>
+</tbody>
+</table>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>1.关闭防火墙(所有节点)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config</span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+<p>2.配置节点host解析设置hostname(所有节点)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101 ceph-master</span><br><span class="line">192.168.56.102 ceph-node-1</span><br><span class="line">192.168.56.103 ceph-node-2</span><br><span class="line"><span class="meta">#</span>ceph-master</span><br><span class="line">sudo hostnamectl set-hostname ceph-master</span><br><span class="line"><span class="meta">#</span>ceph-node-</span><br><span class="line">sudo hostnamectl set-hostname ceph-node-1</span><br><span class="line"><span class="meta">#</span>ceph-node-2</span><br><span class="line">sudo hostnamectl set-hostname ceph-node-2</span><br></pre></td></tr></table></figure>
+<p>3.安装依赖(所有节点)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install tree nmap sysstat lrzsz dos2unix wegt git net-tools -y</span><br></pre></td></tr></table></figure>
+<p>4.设置免密登录</p>
 <ol>
-<li>在分布式环境中保证同一个临界区在同一时间只在一台机器上执行。</li>
-<li>这把分布式锁是可重入锁[<strong>避免死锁</strong>]</li>
-<li>可以根据业务需要变成阻塞锁</li>
-<li>获取和释放锁性能高</li>
+<li><p>生成秘钥文件(ceph-master节点)</p>
+<p>ssh-keygen -t rsa</p>
+</li>
+<li><p>拷贝秘钥文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@ceph-master</span><br><span class="line">ssh-copy-id root@ceph-node-1</span><br><span class="line">ssh-copy-id root@ceph-node-2</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="基于数据库实现分布式锁"><a href="#基于数据库实现分布式锁" class="headerlink" title="基于数据库实现分布式锁"></a>基于数据库实现分布式锁</h1><h2 id="基于唯一索引实现"><a href="#基于唯一索引实现" class="headerlink" title="基于唯一索引实现"></a>基于唯一索引实现</h2><p>1.创建一张带唯一索引的表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`blockLock`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'主键'</span>,</span><br><span class="line">  <span class="string">`block_name`</span> <span class="built_in">varchar</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'锁定的块名称'</span>,</span><br><span class="line">  <span class="string">`desc`</span> <span class="built_in">varchar</span>(<span class="number">1024</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'备注信息'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> <span class="keyword">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'保存数据时间，自动生成'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`uidx_method_name`</span> (<span class="string">`block_name `</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
-<p>2.在想要<em>添加锁</em>的块代码之前插入数据,由于<strong>block_name</strong>做了唯一索引,同样块名称的操作只能有一个成功。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> methodLock(method_name,<span class="keyword">desc</span>) <span class="keyword">values</span> (‘block_name’,‘the same block_name <span class="keyword">commit</span>’);</span><br></pre></td></tr></table></figure>
-<p>3.临界代码执行完毕需要<em>释放锁</em>,此时只需要将<strong>block_name</strong>这条数据删除或更新即可</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> methodLock <span class="keyword">where</span> method_name =<span class="string">'block_name'</span></span><br></pre></td></tr></table></figure>
-<p>优点:</p>
+<p>5.配置NTP服务</p>
 <ol>
-<li>实现方便,便于理解</li>
-</ol>
-<p>缺点:</p>
+<li><p>安装NTP服务(所有节点)</p>
+<p>yum install -y ntp</p>
+</li>
+<li><p>ceph-master节点配置</p>
 <ol>
-<li>如果数据库是单点,则可靠性不能保证</li>
-<li>没有失效时间,不会自动释放锁,一旦解锁失败会导致其他线程无法再获取到锁。</li>
-<li>这把锁只能是非阻塞的,插入失败直接报错返回,无法自动阻塞再次尝试获取锁</li>
-<li>这把锁是非重入锁,线程获取锁后无法再次获取此锁,因为数据库已存在唯一索引值。</li>
-<li>对于基于数据库的锁获取和释放锁的开销相对比较大</li>
+<li><p>修改NTP配置文件/etc/ntp.conf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ntp.conf</span><br><span class="line"><span class="meta">#</span>server 0.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 1.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 2.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 3.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>网关和广播地址</span><br><span class="line">restrict 192.168.56.1 mask 255.255.255.0 nomodify notrap</span><br><span class="line">server 127.127.1.0 minpoll 4</span><br><span class="line">fudge 127.127.1.0 stratum 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件/etc/ntp/step-tickers</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> vim /etc/ntp/step-tickers</span><br><span class="line"><span class="meta">#</span>0.centos.pool.ntp.org</span><br><span class="line">127.127.1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动NTP服务并设置开机启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable ntpd</span><br><span class="line">systemctl start ntpd</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="基于数据库的排他锁"><a href="#基于数据库的排他锁" class="headerlink" title="基于数据库的排他锁"></a>基于数据库的排他锁</h2><p>在mySql的InnoDB引擎的查询语句后增加<strong><em>for update</em></strong>,这样在查询的过程中数据库会增加排他锁<strong><em>【注意:如果想使用查询参数要建立唯一索引,由于InnoDB 预设是Row-Level Lock，所以只有「明确」的指定主键，MySQL 才会执行Row lock (只锁住被选取的数据) ，否则MySQL 将会执行Table Lock (将整个数据表单给锁住】</em></strong>。</p>
-<h3 id="添加锁代码"><a href="#添加锁代码" class="headerlink" title="添加锁代码"></a>添加锁代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lock</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Long timeout=<span class="number">10000</span>；</span><br><span class="line">    <span class="keyword">long</span> futureTime = System.currentTimeMillis() + timeOuts;</span><br><span class="line">    connection.setAutoCommit(<span class="keyword">false</span>)</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            result = select * from blockLock where block_name=xxx <span class="keyword">for</span> update;</span><br><span class="line">            <span class="keyword">if</span>(result==<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        sleep(<span class="number">1000</span>);</span><br><span class="line">        <span class="keyword">if</span>(futureTime&lt;System.currentTimeMillis())&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="释放锁代码"><a href="#释放锁代码" class="headerlink" title="释放锁代码"></a>释放锁代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span></span>&#123;</span><br><span class="line">    connection.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>优点:</p>
+</li>
+<li><p>所有OSD节点配置</p>
 <ol>
-<li>阻塞锁,<strong>for update</strong>语句会一直等待直到执行成功后返回结果</li>
-<li>自动释放锁,当数据库连接断开时候会自动释放锁</li>
+<li><p>修改NTP配置文件/etc/ntp.conf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ntp.conf</span><br><span class="line"><span class="meta">#</span>server 0.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 1.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 2.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 3.centos.pool.ntp.org iburst</span><br><span class="line">server 192.168.56.101</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动NTP服务并设置开机启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable ntpd</span><br><span class="line">systemctl start ntpd</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>缺点:</p>
+</li>
+<li><p>验证NTP(所有节点)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ntpstat</span><br><span class="line">ntpq -p</span><br><span class="line">     remote           refid      st t when poll reach   delay   offset  jitter</span><br><span class="line">==============================================================================</span><br><span class="line">*ceph-master     .LOCL.           1 u   16   64  377    0.269    0.032   0.269</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="安装ceph"><a href="#安装ceph" class="headerlink" title="安装ceph"></a>安装ceph</h3><p>1.更新系统源(所有节点)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br><span class="line">rm -rf /etc/yum.repos.d/*.repo</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sed -i '/aliyuncs/d' /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">sed -i 's/$releasever/7/g' /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">sed -i '/aliyuncs/d' /etc/yum.repos.d/epel.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache fast</span><br></pre></td></tr></table></figure>
+<p>2.安装ceph-deploy和配置ceph集群(master节点执行)</p>
 <ol>
-<li>如果数据库是单点,则可靠性不能保证</li>
-<li>对于基于数据库的锁获取和释放锁的开销相对比较大</li>
-<li>使用不当容易变成表级锁,容易影响业务</li>
-<li>利用事务进行加锁的时候会导致很多连接不能及时释放,导致连接池爆满</li>
+<li><p>安装ceph-deploy</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install http://mirrors.163.com/ceph/rpm-jewel/el7/noarch/ceph-deploy-1.5.38-0.noarch.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建ceph集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eph-deploy new ceph-node-1 ceph-node-2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑ceph配置文件</p>
+<p>在global下添加一下配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ceph.conf </span><br><span class="line">[global]</span><br><span class="line">mon_clock_drift_allowed = 5</span><br><span class="line">osd_journal_size = 20480</span><br><span class="line"><span class="meta">#</span>查看自己的网关地址</span><br><span class="line">public_network=192.168.56.1/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用163源安装CEPH</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph-deploy install --release jewel --repo-url http://mirrors.163.com/ceph/rpm-jewel/el7 --gpg-url http://mirrors.163.com/ceph/keys/release.asc ceph-master ceph-node-1 ceph-node-2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化节点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph-deploy mon create-initial</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置管理节点(ceph-master)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ceph-deploy admin ceph-master</span><br><span class="line">chmod +r /etc/ceph/ceph.client.admin.keyring</span><br><span class="line"><span class="meta">#</span>查询集群状态</span><br><span class="line">ceph -s</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="基于缓存实现分布式锁"><a href="#基于缓存实现分布式锁" class="headerlink" title="基于缓存实现分布式锁"></a>基于缓存实现分布式锁</h1><p>相较于数据库实现的分布式锁,基于缓存实现的分布式锁更加高效，且有很多成熟的方案,redis,memcached以及tair等都有很好的支持。</p>
-<p>下面是基于redis实现的分布式锁</p>
-<h2 id="添加锁代码-1"><a href="#添加锁代码-1" class="headerlink" title="添加锁代码"></a>添加锁代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOCK_SUCCESS = <span class="string">"OK"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_IF_NOT_EXIST = <span class="string">"NX"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_WITH_EXPIRE_TIME = <span class="string">"PX"</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">tryGetDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (LOCK_SUCCESS.equals(result)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>第一个为key，我们使用key来当锁，因为key是唯一的。</li>
-<li>第二个为value，我们传的是requestId，很多童鞋可能不明白，有key作为锁不就够了吗，为什么还要用到value？原因就是我们在上面讲到可靠性时，分布式锁要满足第四个条件解铃还须系铃人，通过给value赋值为requestId，我们就知道这把锁是哪个请求加的了，在解锁的时候就可以有依据。requestId可以使用UUID.randomUUID().toString()方法生成。</li>
-<li>第三个为nxxx，这个参数我们填的是NX，意思是SET IF NOT EXIST，即当key不存在时，我们进行set操作；若key已经存在，则不做任何操作；</li>
-<li>第四个为expx，这个参数我们传的是PX，意思是我们要给这个key加一个过期的设置，具体时间由第五个参数决定。</li>
-<li>第五个为time，与第四个参数相呼应，代表key的过期时间。</li>
+<h3 id="创建和配置OSD存储节点"><a href="#创建和配置OSD存储节点" class="headerlink" title="创建和配置OSD存储节点"></a>创建和配置OSD存储节点</h3><p>1.查看OSD节点的磁盘情况(找到要挂载的新磁盘)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eph-deploy disk list ceph-node-1</span><br><span class="line">eph-deploy disk list ceph-node-2</span><br></pre></td></tr></table></figure>
+<p>2.创建并激活OSD节点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>重建分区表,磁盘存储要大些,如果比较小会报错</span><br><span class="line">ceph-deploy disk zap ceph-node-1:/dev/sdb</span><br><span class="line">ceph-deploy disk zap ceph-node-2:/dev/sdb</span><br><span class="line"><span class="meta">#</span>创建OSD</span><br><span class="line">ceph-deploy osd prepare ceph-node-1:/dev/sdb</span><br><span class="line">ceph-deploy osd prepare ceph-node-2:/dev/sdb</span><br><span class="line"><span class="meta">#</span>激活若激活失败报:Cannot discover filesystem type 请在OSD执行激活后执行ceph-disk  activate-all</span><br><span class="line">ceph-deploy osd activate ceph-node-1:/dev/sdb</span><br><span class="line">ceph-deploy osd activate ceph-node-2:/dev/sdb</span><br><span class="line"><span class="meta">#</span>查看是否激活挂载成功</span><br><span class="line">fdisk -l /dev/sdb</span><br><span class="line">磁盘 /dev/sdb：1099.5 GB, 1099511627776 字节，2147483648 个扇区</span><br><span class="line">Units = 扇区 of 1 * 512 = 512 bytes</span><br><span class="line">扇区大小(逻辑/物理)：512 字节 / 512 字节</span><br><span class="line">I/O 大小(最小/最佳)：512 字节 / 512 字节</span><br><span class="line">磁盘标签类型：gpt</span><br><span class="line">Disk identifier: AA34481A-A35C-4CB1-BB5E-9D334594D67C</span><br><span class="line"><span class="meta">#</span>         Start          End    Size  Type            Name</span><br><span class="line"> 1     41945088   2147483614   1004G  Ceph OSD        ceph data</span><br><span class="line"> 2         2048     41945087     20G  Ceph Journal    ceph journal</span><br><span class="line"><span class="meta">#</span>查看ceph的状态</span><br><span class="line">ceph health</span><br><span class="line"><span class="meta">#</span>将配置拷贝到其他节点</span><br><span class="line">ceph-deploy --overwrite-conf admin ceph-master ceph-node-1 ceph-node-2</span><br></pre></td></tr></table></figure>
+<h3 id="部署时常用命令"><a href="#部署时常用命令" class="headerlink" title="部署时常用命令"></a>部署时常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#若部署出现问题可以清空一切重新开始部署</span><br><span class="line">#安装包也清除</span><br><span class="line">ceph-deploy purge ceph-master ceph-node-1 ceph-node-2</span><br><span class="line">ceph-deploy purgedata ceph-master ceph-node-1 ceph-node-2</span><br><span class="line">ceph-deploy forgetkeys</span><br><span class="line"></span><br><span class="line">#需要用命令进行服务的启动和关闭等</span><br><span class="line">#监控相关</span><br><span class="line">systemctl start ceph-mon.target</span><br><span class="line">systemctl stop ceph-mon.target</span><br><span class="line">#osd相关</span><br><span class="line">systemctl start ceph-osd.target</span><br><span class="line">systemctl stop ceph-osd.target</span><br><span class="line">#ceph相关</span><br><span class="line">systemctl start ceph.target</span><br><span class="line">systemctl stop ceph.target</span><br><span class="line"></span><br><span class="line">#设置开机启动</span><br><span class="line">systemctl enable ceph-mon.target</span><br><span class="line">systemctl enable ceph-osd.target</span><br><span class="line">systemctl enable ceph.target</span><br><span class="line"></span><br><span class="line">#验证ceph安装是否成功</span><br><span class="line">#创建一个测试文件</span><br><span class="line">echo &quot;hello liberalman&quot; &gt; testfile.txt</span><br><span class="line">#创建一个pool</span><br><span class="line">rados mkpool data</span><br><span class="line">#将文件写入pool</span><br><span class="line">rados put test-object-1 testfile.txt --pool=data</span><br><span class="line">#查看文件是否存在于pool中</span><br><span class="line">rados -p data ls</span><br><span class="line">#确定文件的位置</span><br><span class="line">ceph osd map data test-object-1</span><br><span class="line">#从pool中读取文件</span><br><span class="line">rados get test-object-1 --pool=data myfile</span><br><span class="line">#查看读取的文件是否和之前的一样</span><br><span class="line">cat myfile</span><br><span class="line">#从pool移除文件</span><br><span class="line">rados rm test-object-1 --pool=data</span><br><span class="line"></span><br><span class="line">#查看状态</span><br><span class="line">ceph -s</span><br><span class="line">ceph osd tree</span><br></pre></td></tr></table></figure>
+<h3 id="默认相关文件地址"><a href="#默认相关文件地址" class="headerlink" title="默认相关文件地址"></a>默认相关文件地址</h3><ul>
+<li>配置文件：默认 /etc/ceph/ceph.conf</li>
+<li>日志文件：默认 /var/log/ceph</li>
+<li>运行时文件:默认 /var/run/ceph</li>
 </ul>
-<p>##释放锁代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Long RELEASE_SUCCESS = <span class="number">1L</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">releaseDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//就是在eval命令执行Lua代码的时候，Lua代码将被当成一个命令去执行，并且直到eval命令执行完成，Redis才会执行其他命令。</span></span><br><span class="line">    String script = <span class="string">"if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end"</span>;</span><br><span class="line">    Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (RELEASE_SUCCESS.equals(result)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先获取锁对应的value值，检查是否与requestId相等，如果相等则删除锁（解锁）。使用Lua语言来确保上述操作是原子性。 </p>
-<p>优点：</p>
-<ol>
-<li>缓存服务可以做集群提高可用性</li>
-<li>获取锁和释放锁效率高</li>
-<li>可以设置超时时间,超时会自动释放锁</li>
-</ol>
-<p>缺点:</p>
-<ol>
-<li>这是把非阻塞锁,无论成功失败会直接返回</li>
-<li>这是把非重入锁,当一个线程获取锁后在释放锁前此线程无法再次获得该锁</li>
-<li>失效时间平衡设置比较困难(时间短,会产生并发问题,时间长,会导致浪费的资源等待)</li>
-</ol>
-<h1 id="基于zookeeper实现分布式锁"><a href="#基于zookeeper实现分布式锁" class="headerlink" title="基于zookeeper实现分布式锁"></a>基于zookeeper实现分布式锁</h1><p>zookeeper会为客户端加锁的请求建立唯一一个瞬时有序节点,判断<strong>获取锁</strong>只需要判断此节点是否为此有序节点中序号最小的一个。当<strong>释放锁</strong>时候,只需要将这个瞬时节点删除可以。</p>
-<p>使用curator客户端操作zookeeper</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> interProcessMutex.acquire(timeout, unit);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        interProcessMutex.release();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">        log.error(e.getMessage(), e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        executorService.schedule(<span class="keyword">new</span> Cleaner(client, path), delayTimeForClean, TimeUnit.MILLISECONDS);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>优点:</p>
-<ol>
-<li>锁释放,当客户获取锁后突然挂掉(session连接断开),临时节点会自动删除。其他客户端可以再次获取锁</li>
-<li>可实现阻塞锁,客户端通过在zk中创建有顺序节点,并且绑定监听,如果节点变化zk会通知客户端,客户端检查自己创建的节点是不是当前所有节点中序号最小的从而判断是否获取到锁。</li>
-<li>可重入,客户端在创建节点时,zk会把当前客户端主机信息和线程信息写到节点中,客户端线程再次想获取锁时候和当前最小节点的数据对比一下就可以了。如果信息一样便是已获取到锁。</li>
-<li>高可用,zk是集群部署的。</li>
-</ol>
-<p>缺点:</p>
-<ol>
-<li>由于需要很多判断和信息写入读取,以及分发信息,效率并没有基于缓存的高</li>
-<li>有极低的概率会(zk有重试机制只有多次重试仍检测不到客户端心跳就会删除客户端临时节点)导致并发问题,如:当网络抖动失去客户端连接,别的客户端可能会得到分布式锁。</li>
-</ol>
-<hr>
-<p><a href="http://www.hollischuang.com/archives/1716" target="_blank" rel="noopener">分布式锁的几种实现</a><br><a href="http://www.importnew.com/27477.html" target="_blank" rel="noopener">Redis 分布式锁的正确实现方式（ Java 版 ）</a></p>
-<hr>
+<p>每个进程的管理套接字位置：/var/run/ceph/cluster-name.asok</p>
+<p>使用管理套接字查看osd.0的运行时配置信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ceph --admin-daemon /var/run/ceph/ceph-osd.0.asok config show | less</span><br></pre></td></tr></table></figure>
+<p>集群启动后，每个守护进程从配置文件 /etc/ceph/ceph.conf中查看配置信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[ global ]</span><br><span class="line">#该配置下设置应用于所有ceph守护进程</span><br><span class="line">[ osd ]</span><br><span class="line">#该配置下设置应用于所有osd守护进程</span><br><span class="line">#或者重写global配置</span><br><span class="line">[ osd.0 ]</span><br><span class="line">#该配置设置应用于osd 0进程，或者重写前面配置</span><br><span class="line">[ mon ]</span><br><span class="line">#该配置应用于所有监视器进程</span><br><span class="line">[ mds ]</span><br><span class="line">#该配置应用于所有元数据服务进程</span><br></pre></td></tr></table></figure>
+<p>其他相关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#查看pool类型 默认rbd</span><br><span class="line">ceph osd pool ls</span><br><span class="line">#获取rbd大小</span><br><span class="line">ceph osd pool get rbd size</span><br><span class="line">#设置rbd大小</span><br><span class="line">ceph osd pool set rbd size 3</span><br><span class="line">ceph osd pool set rbd min_size 3</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/26829d796064" target="_blank" rel="noopener">centos 7.4安装ceph集群</a></p>
 
       
     </div>
@@ -569,13 +577,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/锁/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/ceph/" rel="tag"><i class="fa fa-tag"></i>
 
- 锁</a>
-          
-            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i>
-
- 分布式</a>
+ ceph</a>
           
         </div>
       
@@ -588,8 +592,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/16/senssic.github.io/201901/java锁相关/" rel="next" title="java锁相关">
-                <i class="fa fa-chevron-left"></i> java锁相关
+              <a href="/2020/05/25/senssic.github.io/201905/搭建NTP服务器/" rel="next" title="搭建NTP服务器">
+                <i class="fa fa-chevron-left"></i> 搭建NTP服务器
               </a>
             
           </div>
@@ -598,8 +602,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/20/senssic.github.io/201901/哈希表-散列表/" rel="prev" title="哈希表_散列表">
-                哈希表_散列表 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/25/senssic.github.io/temp/" rel="prev" title="temp">
+                temp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -739,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于数据库实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">基于数据库实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于唯一索引实现"><span class="nav-number">1.1.</span> <span class="nav-text">基于唯一索引实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据库的排他锁"><span class="nav-number">1.2.</span> <span class="nav-text">基于数据库的排他锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加锁代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加锁代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#释放锁代码"><span class="nav-number">1.2.2.</span> <span class="nav-text">释放锁代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于缓存实现分布式锁"><span class="nav-number">2.</span> <span class="nav-text">基于缓存实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加锁代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">添加锁代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于zookeeper实现分布式锁"><span class="nav-number">3.</span> <span class="nav-text">基于zookeeper实现分布式锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#节点信息配置"><span class="nav-number">1.</span> <span class="nav-text">节点信息配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ceph"><span class="nav-number">3.</span> <span class="nav-text">安装ceph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和配置OSD存储节点"><span class="nav-number">4.</span> <span class="nav-text">创建和配置OSD存储节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署时常用命令"><span class="nav-number">5.</span> <span class="nav-text">部署时常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认相关文件地址"><span class="nav-number">6.</span> <span class="nav-text">默认相关文件地址</span></a></li></ol></div>
             
 
           </div>
