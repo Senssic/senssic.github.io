@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-03T08:01:10.566Z">
+<meta property="og:updated_time" content="2020-07-03T08:13:37.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
 <meta name="twitter:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,907
+                  1,938
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -468,6 +468,7 @@
 <h5 id="容器相关"><a href="#容器相关" class="headerlink" title="容器相关"></a>容器相关</h5><p>1.pod内部容器不可用top命令<br>echo $TERM  export TERM=dumb<br>2.通过 –previous参数可以看之前Pod的日志<br>kubectl logs zookeeper-1 –previous<br>3.获取登陆dashbord相关<br>kubectl cluster-info|grep dashboard<br>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk ‘{print $1}’)</p>
 <h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
 <h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
+<h5 id="virtual-Boxs设置已存在的硬盘的大小"><a href="#virtual-Boxs设置已存在的硬盘的大小" class="headerlink" title="virtual Boxs设置已存在的硬盘的大小"></a>virtual Boxs设置已存在的硬盘的大小</h5><p><strong>C:\Program Files\Oracle\VirtualBox\VBoxManage.exe modifyhd E:\vribox\k8s-temp\k8s-temp-disk1.vdi –resize 512000</strong></p>
 <h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   修改属性NOBOOT=yes<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.2.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.2.1<br>5.同上固定virtual host连接的网络IP地址</p>
 <blockquote>
 <p>virtual boxs上网</p>
@@ -835,7 +836,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">1.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">2.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">3.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">4.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">5.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">6.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">7.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">8.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">9.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">10.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">1.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">2.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">3.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">4.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">5.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs设置已存在的硬盘的大小"><span class="nav-number">6.</span> <span class="nav-text">virtual Boxs设置已存在的硬盘的大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">7.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">8.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">9.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">10.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">11.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
             
 
           </div>
