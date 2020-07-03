@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-25T10:41:15.591Z">
+<meta property="og:updated_time" content="2020-07-03T08:01:10.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
 <meta name="twitter:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,799
+                  1,907
                 </span>
               
 
@@ -451,12 +451,27 @@
 <p>lsblk</p>
 <p>3.设置磁盘分区</p>
 <p>fdisk /dev/sdf</p>
+<p>输入 n 开始进行设置</p>
+<p>输入 p  设置主分区</p>
+<p>分区号默认</p>
+<p>起始扇区默认</p>
+<p>结束扇区默认</p>
+<p>输入 w 设置保存</p>
+<p>重启机器</p>
+<p>lsblk 查看磁盘信息</p>
+<p>mkfs.ext3 /dev/sda3  #格式化新创建的分区</p>
+<p>mkdir data #创建目录</p>
+<p>mount /dev/sda3  #挂载分区</p>
+<p>vim /etc/fstab #挂载重启生效，永久挂载</p>
+<p>df -h  #查看硬盘信息</p>
+<p>重启系统</p>
 <h5 id="容器相关"><a href="#容器相关" class="headerlink" title="容器相关"></a>容器相关</h5><p>1.pod内部容器不可用top命令<br>echo $TERM  export TERM=dumb<br>2.通过 –previous参数可以看之前Pod的日志<br>kubectl logs zookeeper-1 –previous<br>3.获取登陆dashbord相关<br>kubectl cluster-info|grep dashboard<br>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk ‘{print $1}’)</p>
 <h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
 <h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
 <h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   修改属性NOBOOT=yes<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.2.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.2.1<br>5.同上固定virtual host连接的网络IP地址</p>
 <blockquote>
-<p>virtual boxs上网</p>
+<p>virtual boxs上网</p>
+<p>0.使用everthing的iso</p>
 <p>1.使用NET网络选择准虚拟化网络(virtio-net),混杂模式拒绝</p>
 <p>2.创建host-noly网络并选择,混杂模式拒绝</p>
 </blockquote>
@@ -855,7 +870,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">68.1k</span>
+    <span title="本站总字数">68.2k</span>
   
 </div>
 
