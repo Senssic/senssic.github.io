@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="senssic">
 <meta property="og:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-03T08:13:37.754Z">
+<meta property="og:updated_time" content="2020-07-03T10:11:36.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
 <meta name="twitter:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,938
+                  2,088
                 </span>
               
 
@@ -469,6 +469,7 @@
 <h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
 <h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
 <h5 id="virtual-Boxs设置已存在的硬盘的大小"><a href="#virtual-Boxs设置已存在的硬盘的大小" class="headerlink" title="virtual Boxs设置已存在的硬盘的大小"></a>virtual Boxs设置已存在的硬盘的大小</h5><p><strong>C:\Program Files\Oracle\VirtualBox\VBoxManage.exe modifyhd E:\vribox\k8s-temp\k8s-temp-disk1.vdi –resize 512000</strong></p>
+<h5 id="主盘扩容-dev-mapper-centos-root-空间不足"><a href="#主盘扩容-dev-mapper-centos-root-空间不足" class="headerlink" title="主盘扩容(/dev/mapper/centos-root 空间不足)"></a>主盘扩容(/dev/mapper/centos-root 空间不足)</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls  /dev/sd*  #使用fdisk分区然后找一块空的分区</span><br><span class="line">pvcreate /dev/sda3 #使用空的分区创建pv</span><br><span class="line">vgs  #先使用vgs查看vg组大小</span><br><span class="line">vgextend centos /dev/sda3 #扩展vg</span><br><span class="line">vgs  #再查看一下vg组大小，看是否发生变化</span><br><span class="line">lvs #查看lv大小,虽然我们把vg扩展了，但是lv还没有扩展</span><br><span class="line">lvextend -L +20G /dev/mapper/centos-root #扩展lv,使用lvextend</span><br><span class="line">xfs_growfs /dev/mapper/centos-root #命令使系统重新读取大小</span><br><span class="line">df -h  #查看磁盘是否成功变化大小</span><br></pre></td></tr></table></figure>
 <h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   修改属性NOBOOT=yes<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.2.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.2.1<br>5.同上固定virtual host连接的网络IP地址</p>
 <blockquote>
 <p>virtual boxs上网</p>
@@ -836,7 +837,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">1.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">2.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">3.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">4.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">5.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs设置已存在的硬盘的大小"><span class="nav-number">6.</span> <span class="nav-text">virtual Boxs设置已存在的硬盘的大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">7.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">8.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">9.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">10.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">11.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">1.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">2.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">3.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">4.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">5.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs设置已存在的硬盘的大小"><span class="nav-number">6.</span> <span class="nav-text">virtual Boxs设置已存在的硬盘的大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主盘扩容-dev-mapper-centos-root-空间不足"><span class="nav-number">7.</span> <span class="nav-text">主盘扩容(/dev/mapper/centos-root 空间不足)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">8.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">9.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">10.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">11.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">12.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
             
 
           </div>
@@ -871,7 +872,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">68.2k</span>
+    <span title="本站总字数">68.3k</span>
   
 </div>
 
