@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
+<meta name="description" content="使用阿里源123456789yum install -y wgetrm -rf /etc/yum.repos.d/*.repowget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repowget -O /etc/yum.repos.d/epel.repo http://mirrors.a">
 <meta name="keywords" content="杂项,记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="temp">
 <meta property="og:url" content="http://yoursite.com/2020/05/25/senssic.github.io/temp/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
+<meta property="og:description" content="使用阿里源123456789yum install -y wgetrm -rf /etc/yum.repos.d/*.repowget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repowget -O /etc/yum.repos.d/epel.repo http://mirrors.a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-03T10:11:36.472Z">
+<meta property="og:updated_time" content="2020-07-13T09:26:02.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="temp">
-<meta name="twitter:description" content="mysql相关1.重置root密码update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;2.刷新权限flush privileges linux相关1.设置hostname名称sudo">
+<meta name="twitter:description" content="使用阿里源123456789yum install -y wgetrm -rf /etc/yum.repos.d/*.repowget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repowget -O /etc/yum.repos.d/epel.repo http://mirrors.a">
 
 
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,088
+                  2,366
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  11
                 </span>
               
             </div>
@@ -445,38 +445,30 @@
       
 
       
-        <h5 id="mysql相关"><a href="#mysql相关" class="headerlink" title="mysql相关"></a>mysql相关</h5><p>1.重置root密码<br>update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;<br>2.刷新权限<br>flush privileges</p>
-<h5 id="linux相关"><a href="#linux相关" class="headerlink" title="linux相关"></a>linux相关</h5><p>1.设置hostname名称<br>sudo hostnamectl set-hostname <newhostname></newhostname></p>
-<p>2.查看磁盘</p>
-<p>lsblk</p>
-<p>3.设置磁盘分区</p>
-<p>fdisk /dev/sdf</p>
-<p>输入 n 开始进行设置</p>
-<p>输入 p  设置主分区</p>
-<p>分区号默认</p>
-<p>起始扇区默认</p>
-<p>结束扇区默认</p>
-<p>输入 w 设置保存</p>
-<p>重启机器</p>
-<p>lsblk 查看磁盘信息</p>
-<p>mkfs.ext3 /dev/sda3  #格式化新创建的分区</p>
-<p>mkdir data #创建目录</p>
-<p>mount /dev/sda3  #挂载分区</p>
-<p>vim /etc/fstab #挂载重启生效，永久挂载</p>
-<p>df -h  #查看硬盘信息</p>
-<p>重启系统</p>
-<h5 id="容器相关"><a href="#容器相关" class="headerlink" title="容器相关"></a>容器相关</h5><p>1.pod内部容器不可用top命令<br>echo $TERM  export TERM=dumb<br>2.通过 –previous参数可以看之前Pod的日志<br>kubectl logs zookeeper-1 –previous<br>3.获取登陆dashbord相关<br>kubectl cluster-info|grep dashboard<br>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk ‘{print $1}’)</p>
-<h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
-<h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
-<h5 id="virtual-Boxs设置已存在的硬盘的大小"><a href="#virtual-Boxs设置已存在的硬盘的大小" class="headerlink" title="virtual Boxs设置已存在的硬盘的大小"></a>virtual Boxs设置已存在的硬盘的大小</h5><p><strong>C:\Program Files\Oracle\VirtualBox\VBoxManage.exe modifyhd E:\vribox\k8s-temp\k8s-temp-disk1.vdi –resize 512000</strong></p>
-<h5 id="主盘扩容-dev-mapper-centos-root-空间不足"><a href="#主盘扩容-dev-mapper-centos-root-空间不足" class="headerlink" title="主盘扩容(/dev/mapper/centos-root 空间不足)"></a>主盘扩容(/dev/mapper/centos-root 空间不足)</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls  /dev/sd*  #使用fdisk分区然后找一块空的分区</span><br><span class="line">pvcreate /dev/sda3 #使用空的分区创建pv</span><br><span class="line">vgs  #先使用vgs查看vg组大小</span><br><span class="line">vgextend centos /dev/sda3 #扩展vg</span><br><span class="line">vgs  #再查看一下vg组大小，看是否发生变化</span><br><span class="line">lvs #查看lv大小,虽然我们把vg扩展了，但是lv还没有扩展</span><br><span class="line">lvextend -L +20G /dev/mapper/centos-root #扩展lv,使用lvextend</span><br><span class="line">xfs_growfs /dev/mapper/centos-root #命令使系统重新读取大小</span><br><span class="line">df -h  #查看磁盘是否成功变化大小</span><br></pre></td></tr></table></figure>
+        <h5 id="使用阿里源"><a href="#使用阿里源" class="headerlink" title="使用阿里源"></a>使用阿里源</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br><span class="line">rm -rf /etc/yum.repos.d/*.repo</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line">sed -i '/aliyuncs/d' /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">sed -i 's/$releasever/7/g' /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">sed -i '/aliyuncs/d' /etc/yum.repos.d/epel.repo</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache fast</span><br></pre></td></tr></table></figure>
 <h5 id="virtual-Boxs使用virtual-host和nat网络固定ip"><a href="#virtual-Boxs使用virtual-host和nat网络固定ip" class="headerlink" title="virtual Boxs使用virtual host和nat网络固定ip"></a>virtual Boxs使用virtual host和nat网络固定ip</h5><p>1.新建net网络(管理-&gt;全局设置-&gt;网络设置)<br>2.虚拟机新建网卡1virtual host(可以指定网址段)，设置网络类型为virtual host<br>3.虚拟机新建网卡2设置网络类型为NAT(选择新建的NAT网络,可以指定网址段)<br>4.固定NAT网络IP地址<br>   编辑/etc/sysconfig/network-scripts/对应的网卡信息如果没有则新建<br>   修改属性BOOTPROTO=static<br>   修改属性NOBOOT=yes<br>   新增属性(对应网卡的属性)<br>        IPADDR=10.0.2.101<br>        NETMASK=255.255.255.0<br>        GATEWAY=10.0.2.1<br>5.同上固定virtual host连接的网络IP地址</p>
 <blockquote>
 <p>virtual boxs上网</p>
 <p>0.使用everthing的iso</p>
 <p>1.使用NET网络选择准虚拟化网络(virtio-net),混杂模式拒绝</p>
-<p>2.创建host-noly网络并选择,混杂模式拒绝</p>
+<p>2.创建host-noly网络并选择选择准虚拟化网络(virtio-net),混杂模式拒绝</p>
+<p><strong>如果无法自动获取net和host-noly的ip,到/etc/sysconfig/network-scripts/目录下将这两个网卡的配置(ifcfg-xxx)删除然后重启</strong></p>
 </blockquote>
+<h5 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h5><h6 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">nowdate=$(date)</span><br><span class="line">echo $&#123;nowdate&#125;</span><br><span class="line"></span><br><span class="line">cd /Users/senssic/work/mkdown/githublog/senssic</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">cd ./source/_posts/senssic.github.io</span><br><span class="line">git pull</span><br><span class="line">git add .</span><br><span class="line">git commit -m 'updated:'$(date +%y年%m月%d日%H时%M分)</span><br><span class="line">git push</span><br><span class="line">cd /Users/senssic/work/mkdown/githublog</span><br></pre></td></tr></table></figure>
+<h5 id="mysql相关"><a href="#mysql相关" class="headerlink" title="mysql相关"></a>mysql相关</h5><p>1.重置root密码<br>update user set authentication_string = password(‘123456’), password_expired = ‘N’, password_last_changed = now() where user = ‘root’;<br>2.刷新权限<br>flush privileges</p>
+<h5 id="linux相关"><a href="#linux相关" class="headerlink" title="linux相关"></a>linux相关</h5><p>1.设置hostname名称<br>sudo hostnamectl set-hostname <newhostname></newhostname></p>
+<p>2.查看磁盘</p>
+<p>lsblk</p>
+<p>3.设置磁盘分区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdf</span><br><span class="line">输入 n 开始进行设置</span><br><span class="line">输入 p  设置主分区</span><br><span class="line">分区号默认</span><br><span class="line">起始扇区默认</span><br><span class="line">结束扇区默认</span><br><span class="line">输入 w 设置保存</span><br><span class="line">重启机器</span><br><span class="line">lsblk 查看磁盘信息</span><br><span class="line">mkfs.ext3 /dev/sda3  #格式化新创建的分区</span><br><span class="line">mkdir data #创建目录</span><br><span class="line">mount /dev/sda3  #挂载分区</span><br><span class="line">vim /etc/fstab #挂载重启生效，永久挂载</span><br><span class="line">df -h  #查看硬盘信息</span><br><span class="line">重启系统</span><br></pre></td></tr></table></figure>
+<p>4.tcpdump 网络抓包</p>
+<p>#详细输出且目标端host为10.19.146.223且目标端端口为28201 且网卡为ens160</p>
+<p> tcpdump -s 0 -l -w - dst 10.19.146.223 and port 28201 -i ens160|strings &gt; tcpdump.txt</p>
+<h5 id="容器相关"><a href="#容器相关" class="headerlink" title="容器相关"></a>容器相关</h5><p>1.pod内部容器不可用top命令<br>echo $TERM  export TERM=dumb<br>2.通过 –previous参数可以看之前Pod的日志<br>kubectl logs zookeeper-1 –previous<br>3.获取登陆dashbord相关<br>kubectl cluster-info|grep dashboard<br>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk ‘{print $1}’)</p>
+<h5 id="log日志最优格式化以及配置每日文件滚动"><a href="#log日志最优格式化以及配置每日文件滚动" class="headerlink" title="log日志最优格式化以及配置每日文件滚动:"></a>log日志最优格式化以及配置每日文件滚动:</h5><p>log4j.rootLogger=INFO,stdout,fileAppender<br>log4j.appender.fileAppender=org.apache.log4j.DailyRollingFileAppender<br>log4j.appender.fileAppender.DatePattern=’.’yyyy-MM-dd<br>log4j.appender.fileAppender.File=/opt/config/fileAppender.log<br>log4j.appender.fileAppender.layout=org.apache.log4j.PatternLayout<br>log4j.appender.fileAppender.layout.ConversionPattern=[%p][%t]%-d{yyyy-MM-dd HH:mm:ss.SSS}: (%c{1}.%M:line %L) - %m%n</p>
+<h5 id="桥接网络虚拟机无法自动获取ip"><a href="#桥接网络虚拟机无法自动获取ip" class="headerlink" title="桥接网络虚拟机无法自动获取ip"></a>桥接网络虚拟机无法自动获取ip</h5><p>dhclient 网卡 -v</p>
+<h5 id="virtual-Boxs设置已存在的硬盘的大小"><a href="#virtual-Boxs设置已存在的硬盘的大小" class="headerlink" title="virtual Boxs设置已存在的硬盘的大小"></a>virtual Boxs设置已存在的硬盘的大小</h5><p><strong>C:\Program Files\Oracle\VirtualBox\VBoxManage.exe modifyhd E:\vribox\k8s-temp\k8s-temp-disk1.vdi –resize 512000</strong></p>
+<h5 id="主盘扩容-dev-mapper-centos-root-空间不足"><a href="#主盘扩容-dev-mapper-centos-root-空间不足" class="headerlink" title="主盘扩容(/dev/mapper/centos-root 空间不足)"></a>主盘扩容(/dev/mapper/centos-root 空间不足)</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls  /dev/sd*  #使用fdisk分区然后找一块空的分区</span><br><span class="line">pvcreate /dev/sda3 #使用空的分区创建pv</span><br><span class="line">vgs  #先使用vgs查看vg组大小</span><br><span class="line">vgextend centos /dev/sda3 #扩展vg</span><br><span class="line">vgs  #再查看一下vg组大小，看是否发生变化</span><br><span class="line">lvs #查看lv大小,虽然我们把vg扩展了，但是lv还没有扩展</span><br><span class="line">lvextend -L +20G /dev/mapper/centos-root #扩展lv,使用lvextend</span><br><span class="line">xfs_growfs /dev/mapper/centos-root #命令使系统重新读取大小</span><br><span class="line">df -h  #查看磁盘是否成功变化大小</span><br></pre></td></tr></table></figure>
 <h5 id="kafka相关"><a href="#kafka相关" class="headerlink" title="kafka相关"></a>kafka相关</h5><p>1.新建topic<br>bin/kafka-topics.sh –create –zookeeper node:2181 –topic test –partitions 2 –replication-factor 1<br>2.修改partition数 只能增<br>./bin/kafka-topics.sh –alter –topic test2 –zookeeper node:2181 –partitions 3<br>3.查看指定topic<br>bin/kafka-topics.sh –zookeeper zookeeper01:2181 –describe –topic topic_test<br>4.删除topic<br>bin/kafka-topics.sh  –delete –topic test –zookeeper node:2181<br>5.显示某个消费组的消费详情(CURRENT-OFFSET:已消费的,LOG-END-OFFSET:总数,LAG=LOG-END-OFFSET-CURRENT-OFFSET:堆积的消息)<br>bin/kafka-consumer-groups.sh –new-consumer –bootstrap-server localhost:9092 –describe –group test-consumer-group<br>6.消费者列表查询<br>bin/kafka-topics.sh –zookeeper 127.0.0.1:2181 –list<br>7.所有新消费者列表<br>bin/kafka-consumer-groups.sh –new-consumer –bootstrap-server localhost:9092 –list<br>8.查询集群描述<br>bin/kafka-topics.sh –describe –zookeeper<br>9.从头开始消费<br>bin/kafka-console-consumer.sh –zookeeper node:2181 –topic test –from-beginning<br>10.获取主题(其分区)的最大偏移量<br>bin/kafka-run-class.sh kafka.tools.GetOffsetShell –broker-list localhost:9092 –topic mytopic<br>11.从尾开始消费指定分区指定消费个数<br>kafka-console-consumer.sh –bootstrap-server localhost:9092 –topic mytopic –offset 10 –partition 0   –max-messages 1 </p>
 <h5 id="impala相关"><a href="#impala相关" class="headerlink" title="impala相关"></a>impala相关</h5><p>[常用修改操作][<a href="https://www.cnblogs.com/yhason/p/4724987.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yhason/p/4724987.html]</a><br> 1.查看表的文件分布<br> show files in xxx;<br> 2.查看表的状态<br> show table stats xxx;<br> 3.表基本描述<br> describe xxx;<br> 4.查看表的见表语句<br> show CREATE TABLE xxx;<br> 5.compute stats<br> 为表收集重要的与性能相关的信息,以便被 Impala 用于优化查询<br> 6.更新 impalad 元数据中表的存在性与结构<br> invalidate metadata<br> 7.刷新 impalad 元数据中 Impala 数据文件对应的 HDFS 块的位置<br> refresh xxx;<br> 8.使用jar包查看parquet文件<br> <a href="https://github.com/apache/parquet-mr/tree/master/parquet-tools?spm=5176.doc52798.2.6.H3s2kL" target="_blank" rel="noopener">https://github.com/apache/parquet-mr/tree/master/parquet-tools?spm=5176.doc52798.2.6.H3s2kL</a><br> <a href="http://logservice-resource.oss-cn-shanghai.aliyuncs.com/tools/parquet-tools-1.6.0rc3-SNAPSHOT.jar?spm=5176.doc52798.2.7.H3s2kL&amp;file=parquet-tools-1.6.0rc3-SNAPSHOT.jar" target="_blank" rel="noopener">http://logservice-resource.oss-cn-shanghai.aliyuncs.com/tools/parquet-tools-1.6.0rc3-SNAPSHOT.jar?spm=5176.doc52798.2.7.H3s2kL&amp;file=parquet-tools-1.6.0rc3-SNAPSHOT.jar</a><br> 查看结构：<br> java -jar parquet-tools-1.6.0rc3-SNAPSHOT.jar schema -d activity.201711171437.0.parquet |head -n 30<br> 查看内容：<br> java -jar parquet-tools-1.6.0rc3-SNAPSHOT.jar head -n 2 activity.201711171437.0.parquet</p>
 <h5 id="hdfs相关"><a href="#hdfs相关" class="headerlink" title="hdfs相关"></a>hdfs相关</h5><p> <code>hadoop fs &lt;选项&gt;</code> 建议使用<br><code>hdfs dfs &lt;选项&gt;</code></p>
@@ -837,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">1.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">2.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">3.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">4.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">5.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs设置已存在的硬盘的大小"><span class="nav-number">6.</span> <span class="nav-text">virtual Boxs设置已存在的硬盘的大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主盘扩容-dev-mapper-centos-root-空间不足"><span class="nav-number">7.</span> <span class="nav-text">主盘扩容(/dev/mapper/centos-root 空间不足)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">8.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">9.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">10.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">11.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">12.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用阿里源"><span class="nav-number">1.</span> <span class="nav-text">使用阿里源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs使用virtual-host和nat网络固定ip"><span class="nav-number">2.</span> <span class="nav-text">virtual Boxs使用virtual host和nat网络固定ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#脚本"><span class="nav-number">3.</span> <span class="nav-text">脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hexo"><span class="nav-number">3.1.</span> <span class="nav-text">hexo</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql相关"><span class="nav-number">4.</span> <span class="nav-text">mysql相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux相关"><span class="nav-number">5.</span> <span class="nav-text">linux相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器相关"><span class="nav-number">6.</span> <span class="nav-text">容器相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#log日志最优格式化以及配置每日文件滚动"><span class="nav-number">7.</span> <span class="nav-text">log日志最优格式化以及配置每日文件滚动:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#桥接网络虚拟机无法自动获取ip"><span class="nav-number">8.</span> <span class="nav-text">桥接网络虚拟机无法自动获取ip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#virtual-Boxs设置已存在的硬盘的大小"><span class="nav-number">9.</span> <span class="nav-text">virtual Boxs设置已存在的硬盘的大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主盘扩容-dev-mapper-centos-root-空间不足"><span class="nav-number">10.</span> <span class="nav-text">主盘扩容(/dev/mapper/centos-root 空间不足)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka相关"><span class="nav-number">11.</span> <span class="nav-text">kafka相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#impala相关"><span class="nav-number">12.</span> <span class="nav-text">impala相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hdfs相关"><span class="nav-number">13.</span> <span class="nav-text">hdfs相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于断电"><span class="nav-number">14.</span> <span class="nav-text">关于断电</span></a></li></ol></div>
             
 
           </div>
@@ -872,7 +864,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">68.3k</span>
+    <span title="本站总字数">68.6k</span>
   
 </div>
 
