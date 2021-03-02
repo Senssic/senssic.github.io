@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://yoursite.com/2021/03/02/senssic.github.io/202103/rabbitmq简明介绍/pic_03.png">
 <meta property="og:image" content="http://yoursite.com/2021/03/02/senssic.github.io/202103/rabbitmq简明介绍/pic_04.png">
 <meta property="og:image" content="http://yoursite.com/2021/03/02/senssic.github.io/202103/rabbitmq简明介绍/pic_05.png">
-<meta property="og:updated_time" content="2021-03-02T13:35:12.862Z">
+<meta property="og:updated_time" content="2021-03-02T13:42:11.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq简明介绍">
 <meta name="twitter:description" content="1 rabbit关键概念1.1 rabbit内部概念说明  Message 消息，消息是不具名的，它由消息头和消息体组成。消息体是不透明的，而消息头则由一系列的可选属性组成，这些属性包括routing-key（路由键）、priority（相对于其他消息的优先权）、delivery-mode（指出该消息可能需要持久性存储）等。  Publisher 消息的生产者，也是一个向交换器发布消息的客户端应用">
@@ -534,18 +534,18 @@
 <li><p>当有消息到达Queue时Broker默认将消息推送到消费者</p>
 </li>
 <li><p>消费者接收到消息</p>
-<h1 id="2-RabbitMq关键知识点"><a href="#2-RabbitMq关键知识点" class="headerlink" title="2. RabbitMq关键知识点"></a>2. RabbitMq关键知识点</h1><h3 id="2-1-消息的持久性"><a href="#2-1-消息的持久性" class="headerlink" title="2.1 消息的持久性"></a>2.1 消息的持久性</h3><p>虽然消费者被杀死，消息也不会被丢失。但是如果此时RabbitMQ服务被停止，我们的消息仍然会丢失。<br>当RabbitMQ退出或者异常退出，将会丢失所有的队列和信息，除非你告诉它不要丢失。我们需要做两件事来确保信息不会被丢失：我们需要给所有的队列和消息设置持久化的标志。</p>
-<p>第一， 我们需要确认RabbitMQ永远不会丢失我们的队列。为了这样，我们需要声明它为持久化的。</p>
-<p>复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean durable = true;</span><br><span class="line">channel.queueDeclare(&quot;task_queue&quot;, durable, false, false, null);</span><br></pre></td></tr></table></figure>
-<p>注：RabbitMQ不允许使用不同的参数重新定义一个队列，所以已经存在的队列，我们无法修改其属性。</p>
-<p>第二， 我们需要标识我们的信息为持久化的。通过设置MessageProperties（implements BasicProperties）值为<code>PERSISTENT_TEXT_PLAIN</code></p>
-<p>复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.basicPublish(&quot;&quot;, &quot;task_queue&quot;,MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes());</span><br></pre></td></tr></table></figure>
-<p>现在你可以执行一个发送消息的程序，然后关闭服务，再重新启动服务，运行消费者程序测试。</p>
-<h3 id="2-2-Confirm确认消息-Return返回消息"><a href="#2-2-Confirm确认消息-Return返回消息" class="headerlink" title="2.2 Confirm确认消息 Return返回消息"></a>2.2 Confirm确认消息 Return返回消息</h3></li>
+</li>
 </ol>
-<ul>
+<h1 id="2-RabbitMq关键知识点"><a href="#2-RabbitMq关键知识点" class="headerlink" title="2. RabbitMq关键知识点"></a>2. RabbitMq关键知识点</h1><h3 id="2-1-消息的持久性"><a href="#2-1-消息的持久性" class="headerlink" title="2.1 消息的持久性"></a>2.1 消息的持久性</h3><p>  虽然消费者被杀死，消息也不会被丢失。但是如果此时RabbitMQ服务被停止，我们的消息仍然会丢失。<br>  当RabbitMQ退出或者异常退出，将会丢失所有的队列和信息，除非你告诉它不要丢失。我们需要做两件事来确保信息不会被丢失：我们需要给所有的队列和消息设置持久化的标志。</p>
+<p>  第一， 我们需要确认RabbitMQ永远不会丢失我们的队列。为了这样，我们需要声明它为持久化的。</p>
+<p>  复制</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean durable = true;</span><br><span class="line">channel.queueDeclare(&quot;task_queue&quot;, durable, false, false, null);</span><br></pre></td></tr></table></figure>
+<p>  注：RabbitMQ不允许使用不同的参数重新定义一个队列，所以已经存在的队列，我们无法修改其属性。</p>
+<p>  第二， 我们需要标识我们的信息为持久化的。通过设置MessageProperties（implements BasicProperties）值为<code>PERSISTENT_TEXT_PLAIN</code></p>
+<p>  复制</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.basicPublish(&quot;&quot;, &quot;task_queue&quot;,MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes());</span><br></pre></td></tr></table></figure>
+<p>  现在你可以执行一个发送消息的程序，然后关闭服务，再重新启动服务，运行消费者程序测试。</p>
+<h3 id="2-2-Confirm确认消息-Return返回消息"><a href="#2-2-Confirm确认消息-Return返回消息" class="headerlink" title="2.2 Confirm确认消息 Return返回消息"></a>2.2 Confirm确认消息 Return返回消息</h3><ul>
 <li><p>confirm消息确认机制</p>
 <p>消息的确认：是指生产者投递消息后，如果Broker收到消息，则会给生产者一个应答</p>
 <p>生产者进行接收应答，用来确定这条消息是否正常的发送到Broker，这种方式也是消息的可靠性投递的核心保障。</p>
@@ -583,13 +583,13 @@
 <p>RabbitMQ支持消息的过期时间，在消息发送时可以进行指定</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> AMQP.BasicProperties().builder().expiration(<span class="string">""</span>).build();</span><br></pre></td></tr></table></figure>
 <p>RabbitMQ支持队列的过期时间，从消息入队列开始计算，只要超过了队列的超时时间配置，那么消息会自动的清除。在声明队列的queueDeclare方法的arguments参数中设置。</p>
+</li>
+</ul>
 <h3 id="2-6-死信队列"><a href="#2-6-死信队列" class="headerlink" title="2.6 死信队列"></a>2.6 死信队列</h3><blockquote>
 <p>DLX：Dead Letter Exchange 死信队列</p>
 </blockquote>
-<p>利用DLX，当消息在一个队列中变成死信（dead message）之后，它能被重新publish到另一个Exchange，这个Exchange就是DLX。</p>
-<p><strong>消息变成死信的情况：</strong></p>
-</li>
-</ul>
+<p>  利用DLX，当消息在一个队列中变成死信（dead message）之后，它能被重新publish到另一个Exchange，这个Exchange就是DLX。</p>
+<p>  <strong>消息变成死信的情况：</strong></p>
 <ol>
 <li><p>消息被拒绝（basic.reject/basic.nack）,并且requeue=false</p>
 </li>
