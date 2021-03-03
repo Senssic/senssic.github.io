@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="mybatis,">
 
 
 
@@ -96,16 +96,18 @@
 
 
 
-<meta name="description" content="不要在生活中迷失">
-<meta property="og:type" content="website">
-<meta property="og:title" content="senssic">
-<meta property="og:url" content="http://yoursite.com/tags/生活/index.html">
+<meta name="description" content="1.环境版本 spring-boot  2.1.7.RELEASE mapper-spring-boot-starter  2.1.5  2.基本原理 MappedStatement  MappedStatement维护了一条&amp;lt;select|update|delete|insert&amp;gt;节点的封装  SqlSource 负责根据用户传递的parameterObject，动态地生成SQL语句">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tk-mybatis的自定义Mapper实现原理">
+<meta property="og:url" content="http://yoursite.com/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/index.html">
 <meta property="og:site_name" content="senssic">
-<meta property="og:description" content="不要在生活中迷失">
+<meta property="og:description" content="1.环境版本 spring-boot  2.1.7.RELEASE mapper-spring-boot-starter  2.1.5  2.基本原理 MappedStatement  MappedStatement维护了一条&amp;lt;select|update|delete|insert&amp;gt;节点的封装  SqlSource 负责根据用户传递的parameterObject，动态地生成SQL语句">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-03-03T11:45:58.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="senssic">
-<meta name="twitter:description" content="不要在生活中迷失">
+<meta name="twitter:title" content="tk-mybatis的自定义Mapper实现原理">
+<meta name="twitter:description" content="1.环境版本 spring-boot  2.1.7.RELEASE mapper-spring-boot-starter  2.1.5  2.基本原理 MappedStatement  MappedStatement维护了一条&amp;lt;select|update|delete|insert&amp;gt;节点的封装  SqlSource 负责根据用户传递的parameterObject，动态地生成SQL语句">
 
 
 
@@ -135,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/生活/">
+  <link rel="canonical" href="http://yoursite.com/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/">
 
 
 
 
 
-  <title>标签: 生活 | senssic</title>
+  <title>tk-mybatis的自定义Mapper实现原理 | senssic</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,52 +308,256 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>生活<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="senssic">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="senssic">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/05/25/senssic.github.io/你好,世界/" itemprop="url">
-              
-                <span itemprop="name">你好,世界</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">tk-mybatis的自定义Mapper实现原理</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-05-25T18:22:15+08:00" content="2020-05-25">
-          05-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-03T19:04:23+08:00">
+                2021-03-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/03/03/senssic.github.io/202103/tk-mybatis的自定义Mapper实现原理/" class="leancloud_visitors" data-flag-title="tk-mybatis的自定义Mapper实现原理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+                
+			   <span class="leancloud-visitors-count"></span>
+			   <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,218
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-环境版本"><a href="#1-环境版本" class="headerlink" title="1.环境版本"></a>1.环境版本</h1><ul>
+<li>spring-boot  2.1.7.RELEASE</li>
+<li>mapper-spring-boot-starter  2.1.5</li>
+</ul>
+<h1 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2.基本原理"></a>2.基本原理</h1><ol>
+<li><p>MappedStatement </p>
+<p>MappedStatement维护了一条&lt;select|update|delete|insert&gt;节点的封装</p>
+</li>
+<li><p>SqlSource</p>
+<p>负责根据用户传递的parameterObject，<strong>动态地生成SQL语句</strong>，将信息封装到BoundSql对象中。</p>
+</li>
+<li><p>BoundSql</p>
+<p>示动态生成的SQL语句以及相应的参数信息</p>
+<p>当调用SqlSource的getBoundSql方法，传入的就是parameterMappings相对应的参数,最终生成BoundSql对象,有了BoundSql就可以执行sql语句了。</p>
+</li>
+</ol>
+<p>​          在 MyBatis 中，使用@SelectProvider 这种方式定义的方法，最终会构造成 ProviderSqlSource，ProviderSqlSource 是一种处于中间的 SqlSource，它本身不能作为最终执行时使用的 SqlSource，但是他会根据指定方法返回的 SQL 去构造一个可用于最后执行的 StaticSqlSource，StaticSqlSource的特点就是静态 SQL，支持在 SQL 中使用#{param} 方式的参数，但是不支持 <if>，<where> 等标签。</where></if></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SelectMapper</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">//使用mybatis提供的@SelectProvider注解</span></span><br><span class="line">    <span class="meta">@SelectProvider</span>(type = BaseSelectProvider.class, method = <span class="string">"dynamicSQL"</span>)</span><br><span class="line">    <span class="function">List&lt;T&gt; <span class="title">select</span><span class="params">(T record)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​         在 MyBatis 中，每一个方法（注解或 XML 方式）经过处理后，最终会构造成 MappedStatement 实例，这个对象包含了方法id（namespace+id）、结果映射、缓存配置、SqlSource 等信息，和 SQL 关系最紧密的是其中的 SqlSource，MyBatis 最终执行的 SQL 时就是通过这个接口的 getBoundSql 方法获取的。</p>
+<p>​         针对不同的运行环境，需要用不同的方式去替换。当使用纯 MyBatis （没有Spring）方式运行时，替换很简单，因为会在系统中初始化 SqlSessionFactory，可以初始化的时候进行替换，这个时候也不会出现前面提到的问题。替换的方式也很简单，通过 SqlSessionFactory 可以得到 SqlSession，然后就能得到 Configuration，通过 configuration.getMappedStatements() 就能得到所有的 MappedStatement，循环判断其中的方法是否为通用接口提供的方法，如果是就按照前面的方式替换就可以了。</p>
+<p>​           在使用 Spring 的情况下，以继承的方式重写了 MapperScannerConfigurer 和 MapperFactoryBean，在 Spring 调用 checkDaoConfig 的时候对 SqlSource 进行替换。在使用 Spring Boot 时，提供的 mapper-starter 中，直接注入 List<sqlsessionfactory> sqlSessionFactoryList 进行替换。</sqlsessionfactory></p>
+<h1 id="3-基于springboot版本的代码分析"><a href="#3-基于springboot版本的代码分析" class="headerlink" title="3.基于springboot版本的代码分析"></a>3.基于springboot版本的代码分析</h1><p>​         tk.mybatis.spring.mapper.MapperFactoryBean为整个基于springboot加载的入口类。其继承的抽象类org.springframework.dao.support.DaoSupport实现了org.springframework.beans.factory.InitializingBean最终会执行到MapperFactoryBean的checkDaoConfig()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//位置tk.mybatis.spring.mapper.MapperFactoryBean,动态创建每个mapper的代理</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">checkDaoConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.checkDaoConfig();</span><br><span class="line">        Assert.notNull(<span class="keyword">this</span>.mapperInterface, <span class="string">"Property 'mapperInterface' is required"</span>);</span><br><span class="line">        Configuration configuration = <span class="keyword">this</span>.getSqlSession().getConfiguration();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.addToConfig &amp;&amp; !configuration.hasMapper(<span class="keyword">this</span>.mapperInterface)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                configuration.addMapper(<span class="keyword">this</span>.mapperInterface);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception var6) &#123;</span><br><span class="line">                <span class="keyword">this</span>.logger.error(<span class="string">"Error while adding the mapper '"</span> + <span class="keyword">this</span>.mapperInterface + <span class="string">"' to configuration."</span>, var6);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(var6);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                ErrorContext.instance().reset();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (configuration.hasMapper(<span class="keyword">this</span>.mapperInterface) &amp;&amp; <span class="keyword">this</span>.mapperHelper != <span class="keyword">null</span> &amp;&amp; <span class="keyword">this</span>.mapperHelper.isExtendCommonMapper(<span class="keyword">this</span>.mapperInterface)) &#123;</span><br><span class="line">            <span class="comment">//为每个代理的mapper开始配置</span></span><br><span class="line">            <span class="keyword">this</span>.mapperHelper.processConfiguration(<span class="keyword">this</span>.getSqlSession().getConfiguration(), <span class="keyword">this</span>.mapperInterface);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>匹配MappedStatement进行配置，类位置tk.mybatis.mapper.mapperhelper.MapperHelper</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">processConfiguration</span><span class="params">(Configuration configuration, Class&lt;?&gt; mapperInterface)</span> </span>&#123;</span><br><span class="line">       String prefix;</span><br><span class="line">       <span class="keyword">if</span> (mapperInterface != <span class="keyword">null</span>) &#123;</span><br><span class="line">           prefix = mapperInterface.getCanonicalName();</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           prefix = <span class="string">""</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    <span class="comment">//通过configuration获取所有getMappedStatements,循环匹配</span></span><br><span class="line">       <span class="keyword">for</span> (Object object : <span class="keyword">new</span> ArrayList&lt;Object&gt;(configuration.getMappedStatements())) &#123;</span><br><span class="line">           <span class="keyword">if</span> (object <span class="keyword">instanceof</span> MappedStatement) &#123;</span><br><span class="line">               MappedStatement ms = (MappedStatement) object;</span><br><span class="line">               <span class="keyword">if</span> (ms.getId().startsWith(prefix)) &#123;</span><br><span class="line">                   <span class="comment">//开始处理此MappedStatements</span></span><br><span class="line">                   processMappedStatement(ms);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>继续处理，找到之前通过扫描缓存的MapperTemplate,所有@SelectProvider注解指定的自定义provider类都会继承MapperTemplate,后续缓存的信息进行和MapperTemplate进行设置处理，类位置tk.mybatis.mapper.mapperhelper.MapperHelper</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">processMappedStatement</span><span class="params">(MappedStatement ms)</span></span>&#123;</span><br><span class="line">		<span class="comment">//根据id找到之前缓存的MapperTemplate</span></span><br><span class="line">      MapperTemplate mapperTemplate = isMapperMethod(ms.getId());</span><br><span class="line">      <span class="keyword">if</span>(mapperTemplate != <span class="keyword">null</span> &amp;&amp; ms.getSqlSource() <span class="keyword">instanceof</span> ProviderSqlSource) &#123;</span><br><span class="line">          <span class="comment">//替换SqlSource,替换信息从mapperTemplate而来</span></span><br><span class="line">          setSqlSource(ms, mapperTemplate);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>继续跟进设置,为每个MappedStatement替换其setSqlSource,类位置tk.mybatis.mapper.mapperhelper.MapperTemplate</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSqlSource</span><span class="params">(MappedStatement ms)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.mapperClass == getMapperClass(ms.getId())) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> MapperException(<span class="string">"请不要配置或扫描通用Mapper接口类："</span> + <span class="keyword">this</span>.mapperClass);</span><br><span class="line">        &#125;</span><br><span class="line">        Method method = methodMap.get(getMethodName(ms));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//第一种，直接操作ms，不需要返回值</span></span><br><span class="line">            <span class="keyword">if</span> (method.getReturnType() == Void.TYPE) &#123;</span><br><span class="line">                method.invoke(<span class="keyword">this</span>, ms);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//第二种，返回SqlNode</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (SqlNode.class.isAssignableFrom(method.getReturnType())) &#123;</span><br><span class="line">                SqlNode sqlNode = (SqlNode) method.invoke(<span class="keyword">this</span>, ms);</span><br><span class="line">                DynamicSqlSource dynamicSqlSource = <span class="keyword">new</span> DynamicSqlSource(ms.getConfiguration(), sqlNode);</span><br><span class="line">                setSqlSource(ms, dynamicSqlSource);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//第三种，返回xml形式的sql字符串</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (String.class.equals(method.getReturnType())) &#123;</span><br><span class="line">                String xmlSql = (String) method.invoke(<span class="keyword">this</span>, ms);</span><br><span class="line">                SqlSource sqlSource = createSqlSource(ms, xmlSql);</span><br><span class="line">                <span class="comment">//替换原有的SqlSource</span></span><br><span class="line">                setSqlSource(ms, sqlSource);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> MapperException(<span class="string">"自定义Mapper方法返回类型错误,可选的返回类型为void,SqlNode,String三种!"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> MapperException(e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> MapperException(e.getTargetException() != <span class="keyword">null</span> ? e.getTargetException() : e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>支持在spring容器启动完毕后，所有的MappedStatement的SqlSource都已经被替换完毕。后续的增删等直接调用spring和mybatis的原生接口即可实现。</p>
+<hr>
+<p><a href="https://blog.csdn.net/isea533/article/details/78493852" target="_blank" rel="noopener">MyBatis 通用 Mapper 实现原理</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mybatis/" rel="tag"><i class="fa fa-tag"></i>
+
+ mybatis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/02/senssic.github.io/202103/rabbitmq简明介绍/" rel="next" title="rabbitmq简明介绍">
+                <i class="fa fa-chevron-left"></i> rabbitmq简明介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -359,6 +565,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -379,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -442,6 +664,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-环境版本"><span class="nav-number">1.</span> <span class="nav-text">1.环境版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基本原理"><span class="nav-number">2.</span> <span class="nav-text">2.基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-基于springboot版本的代码分析"><span class="nav-number">3.</span> <span class="nav-text">3.基于springboot版本的代码分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -581,6 +819,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
